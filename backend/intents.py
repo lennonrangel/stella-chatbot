@@ -1,5 +1,6 @@
 import random
 
+import random
 
 def _pick_response(intent: dict, hint: str | None = None) -> dict:
     responses = intent["responses"]
@@ -20,12 +21,27 @@ def _pick_response(intent: dict, hint: str | None = None) -> dict:
         }
 
     matched = None
+
     if hint:
-        hint_norm = hint.lower()
+        hint_norm = hint.lower().strip()
+        best_score = -1
+        best_response = None
+
         for r in responses:
-            if any(h in hint_norm for h in r.get("match_hints", [])):
-                matched = r
-                break
+            hints = r.get("match_hints", [])
+            score = 0
+
+            for h in hints:
+                h_norm = h.lower().strip()
+                if h_norm and h_norm in hint_norm:
+                    score = max(score, len(h_norm))
+
+            if score > best_score:
+                best_score = score
+                best_response = r
+
+        if best_score > 0:
+            matched = best_response
 
     if not matched:
         matched = random.choice(responses)
@@ -67,7 +83,7 @@ INTENTS = [
         "responses": [
             {
                 "match_hints": [],
-                "text": "Oi! Que bom te ver por aqui. O universo é enorme e cheio de mistérios.",
+                "text": "Oi! Que bom te ver por aqui. O universo é enorme e cheio de mistérios.\n\n",
                 "followup": {
                     "pergunta": "Por onde você quer começar? Posso falar sobre buracos negros, planetas, estrelas, galáxias ou até vida extraterrestre.",
                     "proxima_tag": None,
@@ -76,7 +92,7 @@ INTENTS = [
             },
             {
                 "match_hints": [],
-                "text": "Olá! Sou a Stella, sua guia pelo cosmos.",
+                "text": "Olá! Sou a Stella, sua guia pelo cosmos.\n\n",
                 "followup": {
                     "pergunta": "Tem algum canto do universo que sempre te deixou curioso?",
                     "proxima_tag": None,
@@ -85,7 +101,7 @@ INTENTS = [
             },
             {
                 "match_hints": [],
-                "text": "Hey! Tô aqui prontinha pra embarcar numa viagem pelo espaço com você.",
+                "text": "Hey! Tô aqui prontinha pra embarcar numa viagem pelo espaço com você.\n\n",
                 "followup": {
                     "pergunta": "O que você quer descobrir hoje?",
                     "proxima_tag": None,
@@ -133,9 +149,9 @@ INTENTS = [
             {
                 "match_hints": ["o que", "o que e", "defin", "conceito", "explica"],
                 "text": (
-                    "Um buraco negro é uma região do espaço onde a gravidade é tão intensa que nem a luz consegue escapar.\n\n"
-                    "Não é um buraco de verdade, mas uma concentração enorme de massa num espaço minúsculo.\n\n"
-                    "O tempo passa mais devagar perto deles, um efeito previsto pela Teoria da Relatividade Geral de Einstein.\n\n"
+                    "Um buraco negro é uma região do espaço onde a gravidade é tão intensa que nada consegue escapar, nem mesmo a luz.\n\n"
+                    "Não é um buraco no sentido literal, mas um ponto onde a matéria foi esmagada a densidades absurdas.\n\n"
+                    "Perto de um buraco negro, o espaço e o tempo são distorcidos. O tempo passa mais devagar ali, um efeito previsto pela Teoria da Relatividade Geral de Einstein.\n\n"
                 ),
                 "followup": {
                     "pergunta": "Quer saber como um buraco negro se forma?",
@@ -150,7 +166,7 @@ INTENTS = [
                     "Já os buracos negros supermassivos, com milhões ou bilhões de massas solares, têm origem ainda debatida pelos cientistas. A NASA acredita que podem ter se formado nos primeiros momentos do universo.\n\n"
                 ),
                 "followup": {
-                    "pergunta": "No centro da nossa galáxia existe um desses supermassivos. Quer saber sobre ele?",
+                    "pergunta": "No centro da nossa galáxia existe um desses supermassivos. Ficou curioso pra saber mais sobre ele?",
                     "proxima_tag": "buraco_negro",
                     "proximo_hint": "sagitario"
                 }
@@ -159,7 +175,7 @@ INTENTS = [
                 "match_hints": ["sagitario", "via lactea", "centro da galaxia", "supermassivo", "o que tem no centro da via lactea", "centro da via lactea"],
                 "text": (
                     "O buraco negro no centro da Via Láctea se chama Sagitário A*. Ele tem a massa de 4 milhões de sóis comprimidos numa região menor que nosso sistema solar.\n\n"
-                    "Em 2022, o Event Horizon Telescope divulgou a primeira imagem real dele."
+                    "Em 2022, o Event Horizon Telescope divulgou a primeira imagem real dele:"
                 ),
                 "imagem": ["img/sagitario-a.jpg", "img/via-lactea.jpeg"],
                 "followup": {
@@ -169,16 +185,140 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["cair", "entrar", "dentro", "o que acontece", "espaguetificacao"],
+                "match_hints": ["cair", "caisse", "entrar", "dentro", "o que acontece", "acontece", "aconteceria", "espaguetificacao"],
                 "text": (
                     "Se alguém caísse em um buraco negro, passaria pelo processo de espaguetificação.\n\n"
                     "A diferença de gravidade entre a cabeça e os pés esticaria o corpo como um espaguete.\n\n"
-                    "Para quem observa de fora, a pessoa pareceria congelar no horizonte de eventos e desaparecer lentamente. Para quem cai, atravessaria a fronteira sem perceber, mas seria destruído na singularidade.\n\n"
+                    "Para quem observa de fora, a pessoa pareceria congelar no horizonte de eventos e desaparecer lentamente. Para quem cai, atravessaria a fronteira sem perceber, mas seria destruído na singularidade."
                 ),
+                "imagem": "img/buraconegro.jpg",
                 "followup": {
                     "pergunta": "Quer explorar outro tema? Posso falar sobre estrelas, galáxias, planetas ou o Big Bang.",
                     "proxima_tag": None,
                     "proximo_hint": None
+                }
+            }
+        ]
+    },
+
+    # -------------------------------------------------------------------------
+    # CONTELAÇÕES
+    # -------------------------------------------------------------------------
+    {
+        "tag": "constelacoes",
+        "patterns": [
+            "constelacao", "constelação", "constelacoes", "constelações", "constelacao de orion","agrupamento", "padrao no ceu", "cinturao de orion", "cinturão de órion", "tres marias", "três marias", "alnitak", "alnilam", "mintaka", "betelgeuse",
+        ],
+        "responses": [
+            {
+                "match_hints": ["constelacao", "constelação", "constelacoes", "constelações", "agrupamento", "padrao no ceu"],
+                "text": (
+                    "Constelações são grupos de estrelas que, vistas da Terra, formam desenhos no céu, mesmo estando a distâncias diferentes.\n\n"
+                    "Existem 88 constelações oficiais que dividem todo o céu, como se fosse um mapa. Toda estrela que vemos faz parte de alguma delas.\n\n"
+                    "Um exemplo famoso é o Cruzeiro do Sul, visível no hemisfério sul e usado há séculos para orientação, ajudando a localizar o sul no céu:"
+                ),
+                "imagem": "img/cruzeiro-sul.jpg",
+                "followup": {
+                    "pergunta": "Quer saber sobre as Três Marias e a Constelação de Órion, uma das mais famosas do céu?",
+                    "proxima_tag": "constelacoes",
+                    "proximo_hint": "tres marias"
+                }
+            },
+            {
+                "match_hints": ["cinturao de orion", "cinturão de órion", "tres marias", "três marias", "alnitak", "alnilam", "mintaka"],
+                "text": (
+                    "O Cinturão de Órion, popularmente conhecido como Três Marias, é formado por três estrelas alinhadas na constelação de Órion.\n\n"
+                    "Seus nomes são Alnitak, Alnilam e Mintaka. Elas estão a diferentes distâncias da Terra, variando de cerca de 800 a 2.000 anos-luz, e estão entre as estrelas mais brilhantes do céu noturno.\n\n"
+                    "Embora pareçam pontos únicos no céu, Alnitak é um sistema triplo de estrelas, Alnilam é uma supergigante azul e Mintaka é um sistema quádruplo."
+                ),
+                "imagem": "img/cinturao-orion.jpg",
+                "followup": {
+                    "pergunta": "Quer saber mais sobre a Constelação de Órion e o que existe ao redor das Três Marias?",
+                    "proxima_tag": "constelacoes",
+                    "proximo_hint": "orion"
+                }
+            },
+            {
+                "match_hints": ["orion", "constelacao", "constelação", "constelacao de orion", "ao redor", "nebulosa de orion"],
+                "text": (
+                    "A Constelação de Órion é uma das mais reconhecíveis do céu e visível em quase todo o planeta.\n\n"
+                    "Abaixo do cinturão fica a Nebulosa de Órion, uma das regiões de formação estelar mais ativas próximas da Terra, a cerca de 1.344 anos-luz de distância.\n\n"
+                    "Duas das estrelas mais famosas de Órion são Betelgeuse, uma supergigante vermelha que pode explodir em supernova em qualquer momento em escala astronômica, e Rigel, uma das estrelas mais luminosas do céu noturno."
+                ),
+                "imagem": "img/orion.png",
+                "followup": {
+                    "pergunta": "Quer saber sobre Betelgeuse e por que os astrônomos acompanham ela de perto?",
+                    "proxima_tag": "constelacoes",
+                    "proximo_hint": "betelgeuse"
+                }
+            },
+            {
+                "match_hints": ["betelgeuse", "supergigante", "vai explodir", "supernova"],
+                "text": (
+                    "Betelgeuse é uma supergigante vermelha localizada no ombro de Órion, a cerca de 700 anos-luz da Terra.\n\n"
+                    "Ela é tão grande que, se estivesse no lugar do Sol, se estenderia até além da órbita de Júpiter\n\n"
+                    "Em 2019, ela escureceu de forma incomum, o que gerou especulação sobre uma supernova iminente. Os astrônomos concluíram que foi uma ejeção de massa, mas Betelgeuse está mesmo no fim da vida e vai explodir em supernova, provavelmente nos próximos 100 mil anos.\n\n"
+                ),
+                "followup": {
+                    "pergunta": "Quer explorar outros temas? Posso falar sobre constelações, signos ou qualquer tema do cosmos.",
+                    "proxima_tag": None,
+                    "proximo_hint": None
+                }
+            }
+        ]
+    },
+
+    # -------------------------------------------------------------------------
+    # SIGNOS
+    # -------------------------------------------------------------------------
+    {
+        "tag": "signos",
+        "patterns": [
+            "signos", "signo", "zodiaco", "zodíaco", "astrologia",
+            "constelacoes do zodiaco", "constelações do zodíaco",
+            "signo e astronomia", "astrologia e astronomia", "precessao dos equinocios", "precessão dos equinócios"
+        ],
+        "responses": [
+            {
+                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "signos", "zodiaco"],
+                "text": (
+                    "Os signos do zodíaco têm origem na astronomia antiga. As civilizações observaram que o Sol parece passar por diferentes grupos de estrelas ao longo do ano.\n\n"
+                    "Esses grupos foram divididos em 12 constelações, que formam o zodíaco. A ideia era que a posição do Sol em relação a essas constelações no momento do nascimento de alguém influenciaria sua personalidade.\n\n"
+                    "A astronomia e a astrologia caminharam juntas por séculos antes de se separarem como ciência e crença."
+                ),
+                "imagem": "img/constelacoes-zodiaco.jpg",
+                "followup": {
+                    "pergunta": "Quer saber a diferença entre o que a astrologia diz e o que a astronomia realmente observa?",
+                    "proxima_tag": "signos",
+                    "proximo_hint": "diferenca"
+                }
+            },
+            {
+                "match_hints": ["diferenca", "diferença", "astronomia", "ciencia", "real", "verdade"],
+                "text": (
+                    "A astronomia e a astrologia divergem em um ponto fundamental, a posição do Sol nas constelações mudou desde que o zodíaco foi criado há 2.500 anos.\n\n"
+                    "Isso acontece por causa da precessão dos equinócios, uma oscilação lenta do eixo da Terra. Hoje o Sol está numa constelação diferente da que a astrologia indica para cada signo.\n\n"
+                    "Além disso, a astrologia usa 12 constelações, mas o Sol na verdade passa por 13, incluindo Ofiúco, que a astrologia tradicional simplesmente ignora."
+                ),
+                "imagem": "img/ofiúco.jpg",
+                "followup": {
+                    "pergunta": "Quer saber o que é a precessão dos equinócios e como ela afeta nossa visão do céu?",
+                    "proxima_tag": "signos",
+                    "proximo_hint": "precessao"
+                }
+            },
+            {
+                "match_hints": ["precessao", "precessão", "equinocio", "equinócio", "eixo da terra", "oscilacao"],
+                "text": (
+                    "A precessão dos equinócios é um movimento lento do eixo da Terra, parecido com o bambolear de um pião que está perdendo velocidade.\n\n"
+                    "Um ciclo completo leva cerca de 26.000 anos. Por causa disso, a estrela que apontamos como norte muda ao longo dos milênios. Hoje é Polaris, mas daqui a 12.000 anos será Vega.\n\n"
+                    "Os antigos egípcios e gregos já observavam esse fenômeno, e foi justamente essa mudança gradual que desconectou os signos astrológicos das constelações reais ao longo dos séculos."
+                ),
+                "imagem": "img/precessao.png",
+                "followup": {
+                    "pergunta": "Quer explorar as constelações de forma mais ampla?",
+                    "proxima_tag": "constelacoes",
+                    "proximo_hint": "constelacao"
                 }
             }
         ]
@@ -240,11 +380,12 @@ INTENTS = [
                 "match_hints": ["tipos", "maior", "menor", "ana vermelha", "hipergigante", "uy scuti", "ana branca"],
                 "text": (
                     "Existe uma enorme variedade de estrelas.\n\n"
-                    "Anãs vermelhas são as mais comuns e as mais longevas, podendo viver trilhões de anos.\n\n"
-                    "Já a UY Scuti, uma hipergigante, tem raio 1.700 vezes maior que o Sol.\n\n"
-                    "Anãs brancas são núcleos de estrelas mortas, do tamanho da Terra mas com massa comparável ao Sol."
+                    "Anãs vermelhas, como o Sol, são as mais comuns e as mais longevas, podendo viver trilhões de anos.\n\n"
+                    "Já a Antares, uma hipergigante, tem raio 883 vezes maior que o Sol.\n\n"
+                    "Anãs brancas como Sirius B são núcleos de estrelas mortas, do tamanho da Terra mas com massa comparável à do Sol.\n\n"
+                    "O Sol é gigantesco em comparação com a Terra. Mas é um pequeno grão de poeira quando comparado à outras estrelas:"
                 ),
-                "imagem": "img/tipos-estrelas.png",
+                "imagem": "img/tipos-estrelas.jpg",
                 "followup": {
                     "pergunta": "Quer saber sobre supernovas, o maior espetáculo do universo?",
                     "proxima_tag": "supernova",
@@ -253,131 +394,6 @@ INTENTS = [
             }
         ]
     },
-
-    # -------------------------------------------------------------------------
-    # CONTELAÇÕES
-    # -------------------------------------------------------------------------
-    {
-        "tag": "constelacoes",
-        "patterns": [
-            "constelacao", "constelação", "constelacoes", "constelações", "agrupamento", "padrao no ceu"
-        ],
-        "responses": [
-            {
-                "match_hints": ["constelacao", "constelação", "constelacoes", "constelações", "agrupamento", "padrao no ceu"],
-                "text": (
-                    "Constelações são agrupamentos de estrelas que, vistas da Terra, formam padrões reconhecíveis no céu.\n\n"
-                    "A União Astronômica Internacional reconhece oficialmente 88 constelações que dividem o céu inteiro em regiões, como países num mapa. Toda estrela do céu pertence a alguma delas.\n\n"
-                    "As estrelas de uma mesma constelação geralmente não têm nenhuma relação entre si. Estão a distâncias completamente diferentes da Terra e apenas parecem próximas pela perspectiva de quem observa daqui."
-                ),
-                "imagem": "img/constelacoes.jpg",
-                "followup": {
-                    "pergunta": "Quer saber sobre as Três Marias e a Constelação de Órion, uma das mais famosas do céu?",
-                    "proxima_tag": "tres_marias",
-                    "proximo_hint": "o que e"
-                }
-            },
-            {
-                "match_hints": ["tres marias", "três marias", "cinturao de orion", "cinturão de órion", "alnitak", "alnilam", "mintaka"],
-                "text": (
-                    "As Três Marias são três estrelas alinhadas que formam o cinturão da Constelação de Órion.\n\n"
-                    "Seus nomes são Alnitak, Alnilam e Mintaka. As três ficam a cerca de 1.200 anos-luz da Terra e estão entre as estrelas mais brilhantes do céu noturno.\n\n"
-                    "O alinhamento quase perfeito das três é uma coincidência visual, elas não estão na mesma distância, apenas parecem alinhadas vistas daqui da Terra."
-                ),
-                "imagem": "img/tres-marias.jpg",
-                "followup": {
-                    "pergunta": "Quer saber mais sobre a Constelação de Órion e o que existe ao redor das Três Marias?",
-                    "proxima_tag": "tres_marias",
-                    "proximo_hint": "orion"
-                }
-            },
-            {
-                "match_hints": ["orion", "constelacao", "constelação", "ao redor", "nebulosa de orion"],
-                "text": (
-                    "A Constelação de Órion é uma das mais reconhecíveis do céu e visível em quase todo o planeta.\n\n"
-                    "Abaixo do cinturão das Três Marias fica a Nebulosa de Órion, uma das regiões de formação estelar mais ativas próximas da Terra, a cerca de 1.344 anos-luz de distância.\n\n"
-                    "Duas das estrelas mais famosas de Órion são Betelgeuse, uma supergigante vermelha que pode explodir em supernova em qualquer momento em escala astronômica, e Rigel, uma das estrelas mais luminosas do céu noturno."
-                ),
-                "imagem": "img/constelacao-orion.jpg",
-                "followup": {
-                    "pergunta": "Quer saber sobre Betelgeuse e por que os astrônomos acompanham ela de perto?",
-                    "proxima_tag": "tres_marias",
-                    "proximo_hint": "betelgeuse"
-                }
-            },
-            {
-                "match_hints": ["betelgeuse", "supergigante", "vai explodir", "supernova"],
-                "text": (
-                    "Betelgeuse é uma supergigante vermelha localizada no ombro de Órion, a cerca de 700 anos-luz da Terra.\n\n"
-                    "Ela é tão grande que, se estivesse no lugar do Sol, engolir ia além da órbita de Júpiter.\n\n"
-                    "Em 2019, ela escureceu de forma incomum, o que gerou especulação sobre uma supernova iminente. Os astrônomos concluíram que foi uma ejeção de massa, mas Betelgeuse está mesmo no fim da vida e vai explodir em supernova, provavelmente nos próximos 100 mil anos."
-                ),
-                "imagem": "img/betelgeuse.jpg",
-                "followup": {
-                    "pergunta": "Quer explorar outros temas? Posso falar sobre constelações, signos ou qualquer tema do cosmos.",
-                    "proxima_tag": None,
-                    "proximo_hint": None
-                }
-            }
-        ]
-    },
-
-    # -------------------------------------------------------------------------
-    # SIGNOS
-    # -------------------------------------------------------------------------
-    {
-        "tag": "signos",
-        "patterns": [
-            "signos", "signo", "zodiaco", "zodíaco", "astrologia",
-            "constelacoes do zodiaco", "constelações do zodíaco",
-            "signo e astronomia", "astrologia e astronomia"
-        ],
-        "responses": [
-            {
-                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "signos", "zodiaco"],
-                "text": (
-                    "Os signos do zodíaco têm origem na astronomia antiga. As civilizações observaram que o Sol parece passar por diferentes grupos de estrelas ao longo do ano.\n\n"
-                    "Esses grupos foram divididos em 12 constelações, que formam o zodíaco. A ideia era que a posição do Sol em relação a essas constelações no momento do nascimento de alguém influenciaria sua personalidade.\n\n"
-                    "A astronomia e a astrologia caminharam juntas por séculos antes de se separarem como ciência e crença."
-                ),
-                "imagem": "img/zodiaco.jpg",
-                "followup": {
-                    "pergunta": "Quer saber a diferença entre o que a astrologia diz e o que a astronomia realmente observa?",
-                    "proxima_tag": "signos",
-                    "proximo_hint": "diferenca"
-                }
-            },
-            {
-                "match_hints": ["diferenca", "diferença", "astronomia", "ciencia", "real", "verdade"],
-                "text": (
-                    "A astronomia e a astrologia divergem em um ponto fundamental, a posição do Sol nas constelações mudou desde que o zodíaco foi criado há 2.000 anos.\n\n"
-                    "Isso acontece por causa da precessão dos equinócios, uma oscilação lenta do eixo da Terra. Hoje o Sol está numa constelação diferente da que a astrologia indica para cada signo.\n\n"
-                    "Além disso, a astrologia usa 12 constelações, mas o Sol na verdade passa por 13, incluindo Ofiúco, que a astrologia tradicional simplesmente ignora."
-                ),
-                "imagem": "img/precessao.jpg",
-                "followup": {
-                    "pergunta": "Quer saber o que é a precessão dos equinócios e como ela afeta nossa visão do céu?",
-                    "proxima_tag": "signos",
-                    "proximo_hint": "precessao"
-                }
-            },
-            {
-                "match_hints": ["precessao", "precessão", "equinocio", "equinócio", "eixo da terra", "oscilacao"],
-                "text": (
-                    "A precessão dos equinócios é um movimento lento do eixo da Terra, parecido com o bambolear de um pião que está perdendo velocidade.\n\n"
-                    "Um ciclo completo leva cerca de 26.000 anos. Por causa disso, a estrela que apontamos como norte muda ao longo dos milênios. Hoje é Polaris, mas daqui a 12.000 anos será Vega.\n\n"
-                    "Os antigos egípcios e gregos já observavam esse fenômeno, e foi justamente essa mudança gradual que desconectou os signos astrológicos das constelações reais ao longo dos séculos."
-                ),
-                "imagem": "img/precessao-equinocios.jpg",
-                "followup": {
-                    "pergunta": "Quer explorar as constelações de forma mais ampla?",
-                    "proxima_tag": "tres_marias",
-                    "proximo_hint": "constelacao"
-                }
-            }
-        ]
-    },
-
 
     # -------------------------------------------------------------------------
     # SUPERNOVA
@@ -424,7 +440,7 @@ INTENTS = [
                 ),
                 "imagem": "img/nebulosa-caranguejo.jpg",
                 "followup": {
-                    "pergunta": "Quer saber sobre estrelas de nêutrons?",
+                    "pergunta": "Gostaria de saber sobre estrelas de nêutrons?",
                     "proxima_tag": "estrela_neutrons",
                     "proximo_hint": "conceito"
                 }
@@ -467,7 +483,64 @@ INTENTS = [
                     "proxima_tag": None,
                     "proximo_hint": None
                 }
+            }
+        ]
+    },
+
+    # -------------------------------------------------------------------------
+    # NEBULOSAS
+    # -------------------------------------------------------------------------
+    {
+        "tag": "nebulosa",
+        "patterns": [
+            "nebulosa", "nebulosas", "o que e nebulosa", "o que é nebulosa",
+            "nuvem espacial", "nuvem de gas", "nuvem de gás",
+            "orion nebulosa", "nebulosa de orion", "nebulosa de órion",
+            "nebulosa colorida", "formacao de estrelas", "formação de estrelas"
+        ],
+        "responses": [
+            {
+                "match_hints": ["o que", "o que e", "o que e nebulosa", "defin", "conceito", "explica", "nebulosa", "berçário"],
+                "text": (
+                    "Uma nebulosa é uma grande nuvem de gás e poeira no espaço. Muitas delas são chamadas de berçários estelares, pois é onde novas estrelas começam a se formar.\n\n"
+                    "Elas podem ter formas e cores diferentes, dependendo dos elementos presentes e da luz das estrelas ao redor.\n\n"
+                    "Algumas são densas e escuras, enquanto outras brilham intensamente, criando algumas das imagens mais impressionantes do universo."
+                ),
+                "imagem": ["img/nebulosa-helix.jpg", "img/nebulosa-borboleta.jpg"],
+                "followup": {
+                    "pergunta": "Tem uma nebulosa famosa bem perto de nós. Quer conhecer?",
+                    "proxima_tag": "nebulosa",
+                    "proximo_hint": "orion"
+                }
             },
+            {
+                "match_hints": ["o que e", "o que é", "orion", "órion", "nebulosa de orion", "nebulosa de órion"],
+                "text": (
+                    "A Nebulosa de Órion é uma das mais famosas e fica na constelação de Órion.\n\n"
+                    "Ela é um dos berçários estelares mais próximos da Terra e pode até ser vista a olho nu em noites escuras.\n\n"
+                    "Ali, novas estrelas estão se formando ativamente."
+                ),
+                "imagem": "img/Orion_Nebula.jpg",
+                "followup": {
+                    "pergunta": "Nem todas as nebulosas formam estrelas. Posso te mostrar outro tipo?",
+                    "proxima_tag": "nebulosa",
+                    "proximo_hint": "tipos"
+                }
+            },
+            {
+                "match_hints": ["tipos", "tipos de nebulosa", "diferentes", "quais tipos"],
+                "text": (
+                    "Existem diferentes tipos de nebulosas.\n\n"
+                    "Algumas são regiões de nascimento de estrelas, outras são restos de explosões de supernovas, e também existem as chamadas nebulosas planetárias, formadas quando estrelas como o Sol chegam ao fim da vida.\n\n"
+                    "Cada tipo mostra uma fase diferente da vida das estrelas."
+                ),
+                "imagem": "img/cassiopeia-a.jpg",
+                "followup": {
+                    "pergunta": "Bora descobrir como uma estrela morre?",
+                    "proxima_tag": "estrelas",
+                    "proximo_hint": "morte"
+                }
+            }
         ]
     },
     
@@ -489,7 +562,7 @@ INTENTS = [
                     "Existem em formas diferentes: espirais, elípticas e irregulares.\n\n"
                     "O universo observável tem mais de 2 trilhões de galáxias, segundo estimativas do Hubble Space Telescope."
                 ),
-                "imagem": "img/galaxias.jpg",
+                "imagem": "img/tipos-galaxias.jpg",
                 "followup": {
                     "pergunta": "Quer saber sobre a nossa galáxia, a Via Láctea?",
                     "proxima_tag": "galaxias",
@@ -501,9 +574,9 @@ INTENTS = [
                 "text": (
                     "A Via Láctea tem entre 100 e 400 bilhões de estrelas e cerca de 100 mil anos-luz de diâmetro.\n\n"
                     "Ela é uma galáxia espiral barrada, com um núcleo em forma de barra e braços espirais saindo.\n\n"
-                    "O sistema solar fica num dos braços, a cerca de 26 mil anos-luz do centro. Levamos 225 milhões de anos para dar uma volta completa ao redor do núcleo galático."
+                    "O sistema solar fica num dos braços, a cerca de 26 mil anos-luz do centro."
                 ),
-                "imagem": "img/via-lactea.jpeg",
+                "imagem": "img/via-lactea-terra.jpg",
                 "followup": {
                     "pergunta": "Nossa vizinha mais próxima é a Andrômeda. Sabia que ela vai colidir com a Via Láctea?",
                     "proxima_tag": "galaxias",
@@ -515,23 +588,9 @@ INTENTS = [
                 "text": (
                     "A Galáxia de Andrômeda está a 2,5 milhões de anos-luz da Terra.\n\n"
                     "Ela se aproxima da Via Láctea a cerca de 110 km por segundo.\n\n"
-                    "Daqui a 4,5 bilhões de anos, as duas vão colidir e fundir numa galáxia elíptica gigante. Mas não precisa se preocupar: o espaço entre as estrelas é tão vasto que quase nenhuma vai realmente bater em outra."
+                    "Daqui a 4,5 bilhões de anos, as duas vão colidir e fundir numa galáxia elíptica gigante. Mas não precisa se preocupar, o espaço entre as estrelas é tão vasto que quase nenhuma vai realmente bater em outra."
                 ),
                 "imagem": "img/andromeda.jpg",
-                "followup": {
-                    "pergunta": "Quer saber sobre as galáxias mais extremas que existem?",
-                    "proxima_tag": "galaxias",
-                    "proximo_hint": "extremas"
-                }
-            },
-            {
-                "match_hints": ["extremas", "maior", "ic 1101", "mais distante", "quasar"],
-                "text": (
-                    "A maior galáxia conhecida, IC 1101, tem mais de 6 milhões de anos-luz de diâmetro, 60 vezes maior que a Via Láctea.\n\n"
-                    "Quasares são os núcleos de galáxias antigas com buracos negros supermassivos ativos.\n\n"
-                    "O mais distante já observado fica a mais de 13 bilhões de anos-luz. Quando olhamos para ele, estamos vendo o universo com menos de 1 bilhão de anos de existência."
-                ),
-                "imagem": "img/quasar.jpg",
                 "followup": {
                     "pergunta": "Quer entender o Big Bang, como tudo isso começou?",
                     "proxima_tag": "big_bang",
@@ -553,15 +612,15 @@ INTENTS = [
         ],
         "responses": [
             {
-                "match_hints": ["o que", "o que e", "defin", "conceito", "explica"],
+                "match_hints": ["o que", "o que e", "defin", "conceito", "big bang", "explica", "origem", "começo", "inicio", "como tudo começou", "como surgiu"],
                 "text": (
-                    "O Big Bang não foi uma explosão no espaço, foi uma expansão do próprio espaço.\n\n"
-                    "Há 13,8 bilhões de anos, todo o universo estava concentrado num ponto minúsculo e incrivelmente quente.\n\n"
-                    "Em frações de segundo, expandiu de tamanho subatômico para o tamanho de uma laranja num evento chamado inflação cósmica. Até hoje o universo continua se expandindo, cada vez mais rápido."
+                    "A teoria do Big Bang é a explicação mais aceita para a origem do nosso Universo.\n\n"
+                    "De acordo com essa hipótese, todos os elementos conhecidos e desconhecidos que estão presentes no espaço vieram de um único ponto de altíssima temperatura e densidade infinita que era chamado então de “átomo primordial”.\n\n"
+                    "Há aproximadamente 13,8 bilhões de anos, esse único ponto começou a se inflar, por uma pequena fração de tempo, e “explodiu” logo na sequência, isto é, começou o seu processo de expansão, que continua até o presente."
                 ),
-                "imagem": "img/big-bang.jpg",
+                "imagem": "img/big-bang.png",
                 "followup": {
-                    "pergunta": "Quais são as evidências de que o Big Bang realmente aconteceu?",
+                    "pergunta": "Tá a fim de descobrir as evidências de que o Big Bang realmente aconteceu?",
                     "proxima_tag": "big_bang",
                     "proximo_hint": "evidencias"
                 }
@@ -569,13 +628,12 @@ INTENTS = [
             {
                 "match_hints": ["evidencias", "provas", "como sabemos", "comprovacao"],
                 "text": (
-                    "A principal evidência é a Radiação Cósmica de Fundo, o eco de luz do Big Bang.\n\n"
-                    "Em 1965, dois engenheiros da Bell Labs detectaram por acidente esse sinal vindo de todas as direções.\n\n"
-                    "Outro indício é que o universo se expande. Se você rebobinar esse movimento, tudo converge para um ponto. O telescópio WMAP da NASA mapeou esse eco com precisão extraordinária em 2003."
+                    "O Big Bang aconteceu há bilhões de anos, mas deixou sinais que ainda conseguimos observar hoje.\n\n"
+                    "Um dos principais sinais é a radiação cósmica de fundo. Em 1965, cientistas detectaram um sinal de micro-ondas vindo de todas as direções do céu. Esse sinal é uma luz muito antiga, formada quando o universo era extremamente quente. \n\n"
+                    "Outro sinal é a expansão do universo. As galáxias estão se afastando umas das outras. Isso mostra que o universo está aumentando de tamanho. Ao analisar esse movimento ao contrário, tudo aponta para um passado em que estava muito mais concentrado.\n\n"
                 ),
-                "imagem": "img/radiacao-cosmica.jpg",
                 "followup": {
-                    "pergunta": "O que havia antes do Big Bang? É uma das perguntas mais profundas da física.",
+                    "pergunta": "Ficou interessado em saber o que havia antes do Big Bang? É uma das perguntas mais profundas da física.",
                     "proxima_tag": "big_bang",
                     "proximo_hint": "antes"
                 }
@@ -584,10 +642,9 @@ INTENTS = [
                 "match_hints": ["antes", "antes do big bang", "o que havia", "anterior"],
                 "text": (
                     "A pergunta sobre o que havia antes do Big Bang pode não fazer sentido.\n\n"
-                    "O tempo surgiu junto com o universo. Perguntar o que havia antes é como perguntar o que está ao sul do Polo Sul.\n\n"
-                    "Algumas teorias propõem um universo cíclico, ou um multiverso onde nosso universo seria apenas um bolso de espuma quântica. Mas são especulações e ainda não temos como testá-las."
+                    "O tempo surgiu junto com o universo. Perguntar o que havia antes é como perguntar o que está ao sul do Polo Sul. A resposta é: nada, pois o próprio conceito de direção (ou tempo) começa ali.\n\n"
+                    "Algumas teorias propõem um universo cíclico, ou um multiverso onde nosso universo seria apenas um bolso de espuma quântica. Mas são especulações e ainda não temos como testá-las.\n\n"
                 ),
-                "imagem": "img/multiverso.jpg",
                 "followup": {
                     "pergunta": "Quer saber sobre o destino final do universo, como tudo isso vai terminar?",
                     "proxima_tag": "destino_universo",
@@ -608,13 +665,12 @@ INTENTS = [
         ],
         "responses": [
             {
-                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "como vai acabar"],
+                "match_hints": ["qual", "qual e", "como o universo vai acabar", "universo vai acabar", "fim do universo", "destino", "fim", "morte", "big freeze", "congelamento"],
                 "text": (
                     "O universo está se expandindo, e cada vez mais rápido, empurrado pela energia escura.\n\n"
                     "O cenário mais aceito hoje é o Big Freeze, ou Grande Congelamento.\n\n"
-                    "Daqui a trilhões de anos, as estrelas vão se apagar, os buracos negros vão evaporar e o universo vai esfriar até o zero absoluto. Tudo para. Tudo esfria."
+                    "Daqui a trilhões de anos, as estrelas vão se apagar, os buracos negros vão evaporar e o universo vai esfriar até o zero absoluto. Tudo para. Tudo esfria.\n\n"
                 ),
-                "imagem": "img/big-freeze.jpg",
                 "followup": {
                     "pergunta": "Quer conhecer os outros cenários possíveis, como o Big Rip e o Big Crunch?",
                     "proxima_tag": "destino_universo",
@@ -622,14 +678,14 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["cenarios", "big rip", "big crunch", "possibilidades", "outros cenarios"],
+                "match_hints": ["cenarios", "big rip", "big crunch", "possibilidades", "outros cenarios", "destino do universo"],
                 "text": (
-                    "Existem três cenários principais para o fim do universo.\n\n"
+                    "Existem três cenários principais para o destino do universo.\n\n"
                     "Big Freeze: expansão eterna até o universo esfriar completamente. É o mais provável.\n\n"
                     "Big Rip: a energia escura fica forte demais e rasga o próprio tecido do espaço, até os átomos seriam destruídos.\n\n"
                     "Big Crunch: o universo para de se expandir, reverte e colapsa sobre si mesmo. Tudo depende da natureza da energia escura, que ainda não entendemos completamente."
                 ),
-                "imagem": "img/fim-universo.jpg",
+                "imagem": "img/fim-universo.png",
                 "followup": {
                     "pergunta": "Quer entender de onde vem a energia escura que está acelerando o universo?",
                     "proxima_tag": "materia_escura",
@@ -646,7 +702,7 @@ INTENTS = [
         "tag": "materia_escura",
         "patterns": [
             "materia escura", "matéria escura", "dark matter",
-            "energia escura", "dark energy", "o que e materia escura"
+            "energia escura", "dark energy", "o que e materia escura", "o que é matéria escura", "o que e energia escura", "o que é energia escura", "o que é o efeito lente gravitacional", "o que é a expansão acelerada do universo"
         ],
         "responses": [
             {
@@ -654,9 +710,9 @@ INTENTS = [
                 "text": (
                     "Matéria escura é uma substância invisível que não emite, absorve nem reflete luz.\n\n"
                     "Sabemos que existe porque sua gravidade afeta galáxias e aglomerados de formas que a matéria visível não explica.\n\n"
-                    "Segundo a NASA, ela compõe cerca de 27% do universo. Tudo que você pode ver, estrelas, planetas, você mesmo, forma apenas 5%."
+                    "Segundo a NASA, ela compõe cerca de 27% do universo. Já tudo o que conseguimos observar, como estrelas, planetas e até nós mesmos, corresponde a apenas 5%."
                 ),
-                "imagem": "img/materia-escura.jpg",
+                "imagem": "img/materia-escura-energia-escura-universo.jpg",
                 "followup": {
                     "pergunta": "Como os cientistas detectam algo que não pode ser visto?",
                     "proxima_tag": "materia_escura",
@@ -664,7 +720,7 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["como detecta", "como sabemos", "evidencia", "prova"],
+                "match_hints": ["como detecta", "como sabemos", "evidencia", "prova", "lente gravitacional", "galaxias girando"],
                 "text": (
                     "A matéria escura é detectada pelos seus efeitos gravitacionais.\n\n"
                     "Um dos métodos é o lente gravitacional: a matéria escura dobra a luz de objetos distantes, distorcendo sua imagem.\n\n"
@@ -680,11 +736,10 @@ INTENTS = [
             {
                 "match_hints": ["energia escura", "dark energy", "expansao", "acelerando"],
                 "text": (
-                    "Energia escura é diferente da matéria escura e ainda mais enigmática.\n\n"
-                    "Ela representa cerca de 68% do universo e está acelerando sua expansão.\n\n"
-                    "Em 1998, dois grupos de cientistas descobriram essa aceleração estudando supernovas distantes. Eles ganharam o Nobel de Física em 2011 por isso. Não sabemos o que é a energia escura. É a maior questão em aberto da cosmologia moderna."
+                    "Energia escura representa cerca de 68% do universo e está acelerando sua expansão.\n\n"
+                    "Em 1998, dois grupos de cientistas descobriram essa aceleração estudando supernovas distantes. Eles ganharam o Nobel de Física em 2011 por isso.\n\n"
+                    "Não sabemos o que é a energia escura. É a maior questão em aberto da cosmologia moderna.\n\n"
                 ),
-                "imagem": "img/energia-escura.jpg",
                 "followup": {
                     "pergunta": "Quer explorar o destino do universo impulsionado por essa energia?",
                     "proxima_tag": "destino_universo",
@@ -893,6 +948,76 @@ INTENTS = [
                 "pergunta": "Quer saber como a Lua se formou e qual foi o impacto que a criou?",
                 "proxima_tag": "lua",
                 "proximo_hint": "formacao"
+                }
+            }
+        ]
+    },
+
+    # -------------------------------------------------------------------------
+    # LUA
+    # -------------------------------------------------------------------------
+    {
+        "tag": "lua",
+        "patterns": [
+            "lua", "mare", "maré", "eclipse", "missao apollo", "missão apollo",
+            "armstrong", "lua cheia", "fases da lua", "crateras",
+            "como a lua se formou", "origem da lua"
+        ],
+        "responses": [
+            {
+                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "sobre"],
+                "text": (
+                    "A Lua é o único satélite natural da Terra e o quinto maior do sistema solar.\n\n"
+                    "Tem 3.474 km de diâmetro, cerca de um quarto da Terra.\n\n"
+                    "A Lua está em rotação síncrona com a Terra: completa uma rotação no mesmo tempo que orbita o planeta. Por isso sempre vemos a mesma face dela."
+                ),
+                "imagem": "img/lua.jpg",
+                "followup": {
+                    "pergunta": "Como a Lua se formou? A história é mais dramática do que parece.",
+                    "proxima_tag": "lua",
+                    "proximo_hint": "formacao"
+                }
+            },
+            {
+                "match_hints": ["formacao", "como se formou", "origem", "nasceu"],
+                "text": (
+                    "A hipótese mais aceita é a do Grande Impacto.\n\n"
+                    "Há 4,5 bilhões de anos, um objeto do tamanho de Marte, chamado Theia, colidiu com a Terra jovem.\n\n"
+                    "Os detritos da colisão foram ejetados para órbita e se acumularam formando a Lua. A Lua está se afastando da Terra a 3,8 cm por ano. Quando os dinossauros viviam, os dias terrestres tinham 23 horas."
+                ),
+                "imagem": "img/formacao-lua.jpg",
+                "followup": {
+                    "pergunta": "O programa Apollo foi um marco histórico. Quer saber o que os astronautas descobriram lá?",
+                    "proxima_tag": "lua",
+                    "proximo_hint": "apollo"
+                }
+            },
+            {
+                "match_hints": ["apollo", "missao", "armstrong", "astronauta", "caminharam", "amostras"],
+                "text": (
+                    "Entre 1969 e 1972, o programa Apollo da NASA enviou 12 astronautas à superfície lunar.\n\n"
+                    "Eles trouxeram 382 kg de rochas que ainda são estudadas hoje.\n\n"
+                    "Neil Armstrong e Buzz Aldrin pousaram na Lua em 20 de julho de 1969. A missão Apollo 17 em 1972 foi a última e até hoje nenhum humano voltou à superfície lunar."
+                ),
+                "imagem": "img/apollo.jpg",
+                "followup": {
+                    "pergunta": "A NASA está desenvolvendo o programa Artemis para retornar à Lua. Quer saber sobre ele?",
+                    "proxima_tag": "lua",
+                    "proximo_hint": "artemis"
+                }
+            },
+            {
+                "match_hints": ["artemis", "volta a lua", "retorno", "futuro da lua"],
+                "text": (
+                    "O programa Artemis da NASA tem como objetivo retornar humanos à Lua, desta vez para ficar.\n\n"
+                    "A meta é estabelecer uma presença sustentável com a Gateway, uma estação espacial em órbita lunar.\n\n"
+                    "O programa prevê levar a primeira mulher e a primeira pessoa negra à superfície lunar. A Lua também serve como trampolim para Marte, testando tecnologias e experiência operacional num ambiente próximo."
+                ),
+                "imagem": "img/artemis.jpg",
+                "followup": {
+                    "pergunta": "Quer explorar mais sobre o sistema solar ou partir para temas como galáxias e o Big Bang?",
+                    "proxima_tag": None,
+                    "proximo_hint": None
                 }
             }
         ]
@@ -1209,76 +1334,6 @@ INTENTS = [
                 "imagem": "img/nuvem-oort.jpg",
                 "followup": {
                     "pergunta": "Quer explorar outros temas, como buracos negros, galáxias ou vida extraterrestre?",
-                    "proxima_tag": None,
-                    "proximo_hint": None
-                }
-            }
-        ]
-    },
-
-    # -------------------------------------------------------------------------
-    # LUA
-    # -------------------------------------------------------------------------
-    {
-        "tag": "lua",
-        "patterns": [
-            "lua", "mare", "maré", "eclipse", "missao apollo", "missão apollo",
-            "armstrong", "lua cheia", "fases da lua", "crateras",
-            "como a lua se formou", "origem da lua"
-        ],
-        "responses": [
-            {
-                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "sobre"],
-                "text": (
-                    "A Lua é o único satélite natural da Terra e o quinto maior do sistema solar.\n\n"
-                    "Tem 3.474 km de diâmetro, cerca de um quarto da Terra.\n\n"
-                    "A Lua está em rotação síncrona com a Terra: completa uma rotação no mesmo tempo que orbita o planeta. Por isso sempre vemos a mesma face dela."
-                ),
-                "imagem": "img/lua.jpg",
-                "followup": {
-                    "pergunta": "Como a Lua se formou? A história é mais dramática do que parece.",
-                    "proxima_tag": "lua",
-                    "proximo_hint": "formacao"
-                }
-            },
-            {
-                "match_hints": ["formacao", "como se formou", "origem", "nasceu"],
-                "text": (
-                    "A hipótese mais aceita é a do Grande Impacto.\n\n"
-                    "Há 4,5 bilhões de anos, um objeto do tamanho de Marte, chamado Theia, colidiu com a Terra jovem.\n\n"
-                    "Os detritos da colisão foram ejetados para órbita e se acumularam formando a Lua. A Lua está se afastando da Terra a 3,8 cm por ano. Quando os dinossauros viviam, os dias terrestres tinham 23 horas."
-                ),
-                "imagem": "img/formacao-lua.jpg",
-                "followup": {
-                    "pergunta": "O programa Apollo foi um marco histórico. Quer saber o que os astronautas descobriram lá?",
-                    "proxima_tag": "lua",
-                    "proximo_hint": "apollo"
-                }
-            },
-            {
-                "match_hints": ["apollo", "missao", "armstrong", "astronauta", "caminharam", "amostras"],
-                "text": (
-                    "Entre 1969 e 1972, o programa Apollo da NASA enviou 12 astronautas à superfície lunar.\n\n"
-                    "Eles trouxeram 382 kg de rochas que ainda são estudadas hoje.\n\n"
-                    "Neil Armstrong e Buzz Aldrin pousaram na Lua em 20 de julho de 1969. A missão Apollo 17 em 1972 foi a última e até hoje nenhum humano voltou à superfície lunar."
-                ),
-                "imagem": "img/apollo.jpg",
-                "followup": {
-                    "pergunta": "A NASA está desenvolvendo o programa Artemis para retornar à Lua. Quer saber sobre ele?",
-                    "proxima_tag": "lua",
-                    "proximo_hint": "artemis"
-                }
-            },
-            {
-                "match_hints": ["artemis", "volta a lua", "retorno", "futuro da lua"],
-                "text": (
-                    "O programa Artemis da NASA tem como objetivo retornar humanos à Lua, desta vez para ficar.\n\n"
-                    "A meta é estabelecer uma presença sustentável com a Gateway, uma estação espacial em órbita lunar.\n\n"
-                    "O programa prevê levar a primeira mulher e a primeira pessoa negra à superfície lunar. A Lua também serve como trampolim para Marte, testando tecnologias e experiência operacional num ambiente próximo."
-                ),
-                "imagem": "img/artemis.jpg",
-                "followup": {
-                    "pergunta": "Quer explorar mais sobre o sistema solar ou partir para temas como galáxias e o Big Bang?",
                     "proxima_tag": None,
                     "proximo_hint": None
                 }

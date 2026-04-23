@@ -41,8 +41,8 @@ NEGATIVAS = {
 }
 
 _TAGS_SORTEAVEIS = [
-    "buraco_negro", "estrelas", "constelacoes", "signos", "supernova", "estrela_neutrons", "galaxias", "big_bang", "destino_universo", "materia_escura", "sol", "mercurio", "venus", "terra", "marte", 
-    "jupiter", "saturno", "urano", "netuno", "plutao", "lua", 
+    "buraco_negro", "constelacoes", "signos", "estrelas", "supernova", "estrela_neutrons", "nebulosa", "galaxias", "big_bang", "destino_universo", "materia_escura", "sol", "mercurio", "venus", "terra", "lua", 
+    "marte", "jupiter", "saturno", "urano", "netuno", "plutao", 
     "exoplanetas", "vida_extraterrestre", "cometas_asteroides", 
     "espaco_tempo", "ano_luz", "sistema_solar"
 ]
@@ -151,6 +151,14 @@ def get_response(user_input: str, sessao_id: str, followup_pendente=None) -> dic
 
     texto_norm = _normalize(user_input.lower().strip())
 
+    # Pedido de tema aleatório
+    if _is_aleatorio(user_input):
+        ultimo_tema = buscar_ultimo_tema(sessao_id)
+        candidatos = [t for t in _TAGS_SORTEAVEIS if t != ultimo_tema]
+        resultado = get_response_for_tag(random.choice(candidatos))
+        resultado["text"] = "Vou te surpreender com um tema!\n\n" + resultado["text"]
+        return resultado
+
     # Trata followup pendente
     if followup_pendente is not None:
         proxima_tag = followup_pendente.get("proxima_tag")
@@ -168,14 +176,6 @@ def get_response(user_input: str, sessao_id: str, followup_pendente=None) -> dic
                     "followup_pergunta": None,
                     "followup_data": None
                 }
-
-    # Pedido de tema aleatório
-    if _is_aleatorio(user_input):
-        ultimo_tema = buscar_ultimo_tema(sessao_id)
-        candidatos = [t for t in _TAGS_SORTEAVEIS if t != ultimo_tema]
-        resultado = get_response_for_tag(random.choice(candidatos))
-        resultado["text"] = "Vou te surpreender com um tema!\n\n" + resultado["text"]
-        return resultado
 
     # Detecção de posição ordinal (primeiro, segundo... planeta)
     tag_posicao = _detect_posicao(user_input)
