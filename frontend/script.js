@@ -23,8 +23,7 @@ async function initSession() {
     SESSION_ID = data.sessao_id;
     localStorage.setItem("stellar_session", SESSION_ID);
 
-  } catch (erro) {
-    console.error("Erro ao iniciar sessão:", erro);
+  } catch {
   }
 }
 
@@ -51,11 +50,11 @@ function initStars() {
   }));
 }
 
-function drawStars(timestamp) {
+function drawStars(t) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   stars.forEach(s => {
-    const o = s.opacity * (0.6 + 0.4 * Math.sin(timestamp * s.speed + s.phase));
+    const o = s.opacity * (0.6 + 0.4 * Math.sin(t * s.speed + s.phase));
     ctx.beginPath();
     ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
     ctx.fillStyle = `rgba(220, 210, 190, ${o})`;
@@ -183,10 +182,6 @@ function escapeHtml(str) {
 
 let loading = false;
 
-let data;
-data.followup_data = undefined;
-data.followup_data.proxima_tag = undefined;
-
 async function sendMessage(text) {
   text = text.trim();
   if (!text || loading) return;
@@ -211,8 +206,6 @@ async function sendMessage(text) {
     });
 
     const [data] = await Promise.all([res.json(), delay]);
-    data.followup_pergunta = undefined;
-    data.imagem = undefined;
     removeTyping();
 
     if (data.error) {
@@ -229,8 +222,7 @@ async function sendMessage(text) {
       followupPendente = null;
     }
 
-  } catch (erro) {
-    console.error("Erro ao enviar mensagem:", erro);
+  } catch {
     removeTyping();
     addBotMessage("Conexão com o cosmos falhou. Tenta novamente!", "default");
   } finally {
@@ -242,10 +234,7 @@ async function sendMessage(text) {
 
 sendBtn.addEventListener("click", () => sendMessage(inputEl.value));
 inputEl.addEventListener("keydown", e => {
-  if (e.key === "Enter") sendMessage(inputEl.value).then(r =>{} );
+  if (e.key === "Enter") sendMessage(inputEl.value);
 });
 
-// Corrigindo a chamada da sessão para não ignorar a Promise
-(async () => {
-  await initSession();
-})();
+initSession();
