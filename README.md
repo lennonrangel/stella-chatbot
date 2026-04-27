@@ -5,7 +5,7 @@ Stella é um chatbot desenvolvido para responder perguntas sobre astronomia de f
 ## Interface
 
 <p align="center">
-  <img src="https://cdn.discordapp.com/attachments/1002050908156334082/1496555142865092638/image.png?ex=69ea4f16&is=69e8fd96&hm=767b2e611c4f23510ae8f9ef853e687ff6bd9caa4f889cebb0510a9ebe416763&">
+  <img src="./frontend/img/landingpage.png" alt="Landing Page do Projeto"/>
 </p>
 
 ## Tecnologias utilizadas
