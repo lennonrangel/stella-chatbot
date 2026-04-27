@@ -1435,9 +1435,9 @@ INTENTS = [
                 ),
                 "imagem": ["img/Artemis-II.jpg", "img/artemis-decolando.jpg"],
                 "followup": {
-                    "pergunta": "Quer explorar mais sobre o sistema solar ou partir para temas como galáxias e o Big Bang?",
-                    "proxima_tag": None,
-                    "proximo_hint": None
+                    "pergunta": "Quer descobrir qual nave pode tornar Marte uma realidade?",
+                    "proxima_tag": "spacex",
+                    "proximo_hint": "starship"
                 }
             }
         ]
@@ -2154,6 +2154,74 @@ INTENTS = [
                     "pergunta": "Quer entender a dilatação do tempo, o que acontece quando você chega perto dessa velocidade?",
                     "proxima_tag": "espaco_tempo",
                     "proximo_hint": "dilatacao do tempo"
+                }
+            }
+        ]
+    },
+
+    # -------------------------------------------------------------------------
+    # SPACEX
+    # -------------------------------------------------------------------------
+    {
+        "tag": "spacex",
+        "patterns": [
+            "spacex", "space x", "empresa spacex", "elon musk spacex", "empresa de foguetes spacex", "quem criou a spacex", "o que e spacex", "o que é spacex", "o que a spacex faz", "foguetes da spacex", "falcon 9", "falcon heavy", "starship", "lancamentos da spacex", "lançamentos da spacex", "reutilizacao de foguetes", "foguete reutilizavel"
+        ],
+        "responses": [
+             {
+                "match_hints": ["o que", "o que e", "defin", "conceito", "spacex", "space x"],
+                "text": (
+                    "A SpaceX é uma empresa aeroespacial fundada em 2002 por Elon Musk.\n\n"
+                    "O objetivo principal dela é reduzir o custo das viagens espaciais e tornar possível a colonização de Marte.\n\n"
+                    "Ela revolucionou o setor ao criar foguetes reutilizáveis, algo que antes parecia impossível."
+                ),
+                "imagem": "img/spacex.jpg",
+                "followup": {
+                    "pergunta": "Quer saber como funcionam os foguetes reutilizáveis da SpaceX?",
+                    "proxima_tag": "spacex",
+                    "proximo_hint": "reutilizavel"
+                }
+            },
+            {
+                "match_hints": ["reutilizavel", "reutilizacao", "reutilizaveis", "pouso", "foguetes"],
+                "text": (
+                    "Os foguetes da SpaceX, como o Falcon 9, conseguem voltar e pousar na Terra após o lançamento.\n\n"
+                    "Isso reduz drasticamente os custos, já que o mesmo foguete pode ser usado várias vezes.\n\n"
+                    "Eles pousam verticalmente, usando motores para desacelerar antes de tocar o solo."
+                ),
+                "imagem": ["img/falcon9.jpg", "img/Falcon9.gif"],
+                "followup": {
+                    "pergunta": "Quer conhecer o projeto mais ambicioso da SpaceX, o Starship?",
+                    "proxima_tag": "spacex",
+                    "proximo_hint": "starship"
+                }
+            },
+            {
+                "match_hints": ["starship", "colonizar marte"],
+                "text": (
+                    "O Starship é o foguete mais ambicioso da SpaceX.\n\n"
+                    "Ele foi projetado para levar humanos à Lua, Marte e além.\n\n"
+                    "A ideia é tornar viagens interplanetárias algo viável no futuro, com capacidade para dezenas de pessoas por missão."
+                ),
+                "imagem": "img/Starship.jpg",
+                "followup": {
+                    "pergunta": "Quer saber sobre outros foguetes como o Falcon Heavy?",
+                    "proxima_tag": "spacex",
+                    "proximo_hint": "falcon heavy"
+                }
+            },
+            {
+                "match_hints": ["falcon heavy", "foguete mais poderoso"],
+                "text": (
+                    "O Falcon Heavy é um dos foguetes mais poderosos já construídos.\n\n"
+                    "Ele usa três boosters do Falcon 9 juntos, permitindo transportar cargas extremamente pesadas para o espaço.\n\n"
+                    "Em 2018, no primeiro lançamento, a SpaceX enviou um Tesla Roadster ao espaço como teste."
+                ),
+                "imagem": ["img/falcon-heavy.jpg", "img/Roadster.jpg", "img/Roadster1.png"],
+                "followup": {
+                    "pergunta": "Quer explorar outro tema do universo?",
+                    "proxima_tag": None,
+                    "proximo_hint": None
                 }
             }
         ]

@@ -43,7 +43,7 @@ NEGATIVAS = {
 _TAGS_SORTEAVEIS = [
     "buraco_negro", "constelacoes", "signos", "estrelas", "supernova", "estrela_neutrons", "nebulosa", "galaxias", "big_bang", "destino_universo", "materia_escura", "sistema_solar", "sol", "mercurio", "venus", "terra", "lua", "marte", "jupiter", "saturno", "urano", "netuno", "plutao", 
     "exoplanetas", "vida_extraterrestre", "cometas_asteroides", 
-    "espaco_tempo", "ano_luz", 
+    "espaco_tempo", "ano_luz", "spacex"
 ]
 
 _GATILHOS_ALEATORIO = {
@@ -248,10 +248,18 @@ def get_response(user_input: str, sessao_id: str, followup_pendente=None) -> dic
     # 6. Não entendeu nada
     return _nao_entendeu()
  
- 
+
 def _nao_entendeu(followup_pendente=None) -> dict:
+    respostas = [
+        "Não entendi o que você perguntou. Tente reformular ou escolha um assunto.",
+        "Não entendi o que você quis dizer. Pode tentar explicar de outro jeito?",
+        "Hmm, não consegui entender. Quer tentar reformular?",
+        "Essa eu não consegui entender. Tenta escrever de um jeito diferente",
+        "Fiquei meio perdido aqui, pode reformular a pergunta?",
+    ]
+
     return {
-        "text": "Não entendi o que você perguntou. Tente reformular ou escolha um assunto.",
+        "text": random.choice(respostas),
         "tag": "default",
         "imagem": None,
         "followup_pergunta": None,
