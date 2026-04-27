@@ -143,7 +143,7 @@ INTENTS = [
         "patterns": [
             "buraco negro", "buracos negros", "singularidade",
             "horizonte de eventos", "hawking", "espaguetificacao",
-            "sagitario", "gravidade extrema", "radiacao hawking"
+            "sagitario", "gravidade extrema", "radiacao hawking", "buraco negro central", "sagitario a*", "centro",
         ],
         "responses": [
             {
@@ -151,6 +151,16 @@ INTENTS = [
                 "text": (
                     "Um buraco negro é uma região do espaço onde a gravidade é tão intensa que nada consegue escapar, nem mesmo a luz.\n\n"
                     "Não é um buraco no sentido literal, mas um ponto onde a matéria foi esmagada a densidades absurdas.\n\n"
+                ),
+                "followup": {
+                    "pergunta": "Quer saber como um buraco negro se forma?",
+                    "proxima_tag": "buraco_negro",
+                    "proximo_hint": "como se forma"
+                }
+            },
+            {
+                "match_hints": ["perto de um buraco negro", "aproximo a um buraco negro", "ao redor de um buraco negro", "ao chegar perto de um buraco negro"],
+                "text": (
                     "Perto de um buraco negro, o espaço e o tempo são distorcidos. O tempo passa mais devagar ali, um efeito previsto pela Teoria da Relatividade Geral de Einstein.\n\n"
                 ),
                 "followup": {
@@ -160,7 +170,7 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["como se forma", "como nasce", "origem", "formacao", "surge"],
+                "match_hints": ["como se forma", "como nasce", "origem", "formacao", "forma", "surge"],
                 "text": (
                     "Um buraco negro estelar se forma quando uma estrela com mais de 20 massas solares chega ao fim da vida. Ela colapsa sobre si mesma numa supernova e o núcleo é comprimido até virar uma singularidade.\n\n"
                     "Já os buracos negros supermassivos, com milhões ou bilhões de massas solares, têm origem ainda debatida pelos cientistas. A NASA acredita que podem ter se formado nos primeiros momentos do universo.\n\n"
@@ -168,11 +178,11 @@ INTENTS = [
                 "followup": {
                     "pergunta": "No centro da nossa galáxia existe um desses supermassivos. Ficou curioso pra saber mais sobre ele?",
                     "proxima_tag": "buraco_negro",
-                    "proximo_hint": "sagitario"
+                    "proximo_hint": "sagitario a*"
                 }
             },
             {
-                "match_hints": ["sagitario", "via lactea", "centro da galaxia", "supermassivo", "o que tem no centro da via lactea", "centro da via lactea"],
+                "match_hints": ["centro", "buraco negro central", "o que ha no centro", "o que tem no centro", "sagitario a*", "o que tem no centro da via lactea"],
                 "text": (
                     "O buraco negro no centro da Via Láctea se chama Sagitário A*. Ele tem a massa de 4 milhões de sóis comprimidos numa região menor que nosso sistema solar.\n\n"
                     "Em 2022, o Event Horizon Telescope divulgou a primeira imagem real dele:"
@@ -181,11 +191,11 @@ INTENTS = [
                 "followup": {
                     "pergunta": "E se alguém caísse nele, quer descobrir o que aconteceria?",
                     "proxima_tag": "buraco_negro",
-                    "proximo_hint": "cair"
+                    "proximo_hint": "dentro"
                 }
             },
             {
-                "match_hints": ["cair", "caisse", "entrar", "dentro", "o que acontece", "acontece", "aconteceria", "espaguetificacao"],
+                "match_hints": ["cair em um buraco negro", "caisse em um buraco negro", "entrar em um buraco negro", "dentro", "espaguetificacao"],
                 "text": (
                     "Se alguém caísse em um buraco negro, passaria pelo processo de espaguetificação.\n\n"
                     "A diferença de gravidade entre a cabeça e os pés esticaria o corpo como um espaguete.\n\n"
@@ -194,6 +204,19 @@ INTENTS = [
                 "imagem": "img/buraconegro.jpg",
                 "followup": {
                     "pergunta": "Quer explorar outro tema? Posso falar sobre estrelas, galáxias, planetas ou o Big Bang.",
+                    "proxima_tag": None,
+                    "proximo_hint": None
+                }
+            },
+            {
+                "match_hints": ["engolir outro", "dois buracos negros", "fusao de buracos negros", "colisao de buracos negros", "buracos negros se unem"],
+                "text": (
+                    "Um buraco negro não engole o outro no sentido literal, mas os dois podem se unir formando um ainda maior.\n\n"
+                    "Não existe limite teórico para o tamanho que um buraco negro pode atingir ao absorver matéria. Eles crescem conforme consomem.\n\n"
+                    "Quando dois se fundem, liberam ondas gravitacionais, ondulações no tecido do espaço-tempo. Em 2015, o detector LIGO captou pela primeira vez esse fenômeno, confirmando uma previsão de Einstein de um século antes.\n\n"
+                ),
+                "followup": {
+                    "pergunta": "Quer saber mais sobre buracos negros ou gostaria de explorar outro tema?",
                     "proxima_tag": None,
                     "proximo_hint": None
                 }
@@ -207,21 +230,45 @@ INTENTS = [
     {
         "tag": "constelacoes",
         "patterns": [
-            "constelacao", "constelação", "constelacoes", "constelações", "constelacao de orion","agrupamento", "padrao no ceu", "cinturao de orion", "cinturão de órion", "tres marias", "três marias", "alnitak", "alnilam", "mintaka", "betelgeuse",
+            "constelacao", "constelação", "constelacoes", "constelações", "constelacao de orion", "cinturao de orion", "cinturão de órion", "tres marias", "três marias", "alnitak", "alnilam", "mintaka", "betelgeuse", "cruzeiro do sul", "bandeira brasileira", "paises", "cruzeiro do sul na bandeira", "constelação do cruzeiro do sul na bandeira"
         ],
         "responses": [
             {
-                "match_hints": ["constelacao", "constelação", "constelacoes", "constelações", "agrupamento", "padrao no ceu"],
+                "match_hints": ["constelacao", "constelação", "constelacoes", "constelações"],
                 "text": (
                     "Constelações são grupos de estrelas que, vistas da Terra, formam desenhos no céu, mesmo estando a distâncias diferentes.\n\n"
                     "Existem 88 constelações oficiais que dividem todo o céu, como se fosse um mapa. Toda estrela que vemos faz parte de alguma delas.\n\n"
-                    "Um exemplo famoso é o Cruzeiro do Sul, visível no hemisfério sul e usado há séculos para orientação, ajudando a localizar o sul no céu:"
+                ),
+                "followup": {
+                    "pergunta": "Quer saber sobre o Cruzeiro do Sul, uma das mais famosas do nosso céu?",
+                    "proxima_tag": "constelacoes",
+                    "proximo_hint": "cruzeiro do sul"
+                }
+            },
+            {
+                "match_hints": ["cruzeiro do sul", "onde fica o cruzeiro do sul", "constelacao do cruzeiro do sul", "constelação do cruzeiro do sul", "onde esta o cruzeiro do sul", "onde está o cruzeiro do sul"],
+                "text": (
+                    "O Cruzeiro do Sul é a menor, porém mais famosa constelação da Via Láctea, facilmente visível no Hemisfério Sul.\n\n"
+                    "Ele é usado há séculos para orientação, ajudando a localizar o sul no céu."
                 ),
                 "imagem": "img/cruzeiro-sul.jpg",
                 "followup": {
-                    "pergunta": "Quer saber sobre as Três Marias e a Constelação de Órion, uma das mais famosas do céu?",
+                    "pergunta": "Curiosamente, o Cruzeiro do Sul não está só no céu. Ele também aparece na bandeira do Brasil. Quer entender isso?",
                     "proxima_tag": "constelacoes",
-                    "proximo_hint": "tres marias"
+                    "proximo_hint": "bandeira brasileira"
+                }
+            },
+            {
+                "match_hints": ["bandeira", "cruzeiro do sul na bandeira", "cruzeiro do sul na bandeira brasileira", "cruzeiro do sul simbolo", "bandeira brasileira", "bandeira do brasil", "cruzeiro do sul na bandeira", "constelação do cruzeiro do sul na bandeira"],
+                "text": (
+                    "A constelação do Cruzeiro do Sul é o elemento central do círculo azul na bandeira brasileira, representando o céu do Rio de Janeiro em 19 de novembro de 1889 e simbolizando a localização austral do país.\n\n"
+                    "Além do Brasil, outros países também têm o Cruzeiro do Sul em suas bandeiras, como Austrália, Nova Zelândia e Papua Nova Guiné, simbolizando sua posição no Hemisfério Sul."
+                ),
+                "imagem": ["img/bandeira.png", "img/bandeiras.png"],
+                "followup": {
+                    "pergunta": "Quer saber sobre as Três Marias na constelação de Órion, uma das mais famosas do nosso céu?",
+                    "proxima_tag": "constelacoes",
+                    "proximo_hint": "O Cinturão de Órion"
                 }
             },
             {
@@ -247,7 +294,7 @@ INTENTS = [
                 ),
                 "imagem": "img/orion.png",
                 "followup": {
-                    "pergunta": "Quer saber sobre Betelgeuse e por que os astrônomos acompanham ela de perto?",
+                    "pergunta": "Bora descobrir mais sobre a Betelgeuse e por que os astrônomos acompanham ela de perto?",
                     "proxima_tag": "constelacoes",
                     "proximo_hint": "betelgeuse"
                 }
@@ -260,7 +307,7 @@ INTENTS = [
                     "Em 2019, ela escureceu de forma incomum, o que gerou especulação sobre uma supernova iminente. Os astrônomos concluíram que foi uma ejeção de massa, mas Betelgeuse está mesmo no fim da vida e vai explodir em supernova, provavelmente nos próximos 100 mil anos.\n\n"
                 ),
                 "followup": {
-                    "pergunta": "Quer explorar outros temas? Posso falar sobre constelações, signos ou qualquer tema do cosmos.",
+                    "pergunta": "Tá a fim de explorar outros temas? Posso falar sobre constelações, signos ou qualquer tema do cosmos.",
                     "proxima_tag": None,
                     "proximo_hint": None
                 }
@@ -288,7 +335,7 @@ INTENTS = [
                 ),
                 "imagem": "img/constelacoes-zodiaco.jpg",
                 "followup": {
-                    "pergunta": "Quer saber a diferença entre o que a astrologia diz e o que a astronomia realmente observa?",
+                    "pergunta": "Quer saber a diferença entre astrologia e astronomia?",
                     "proxima_tag": "signos",
                     "proximo_hint": "diferenca"
                 }
@@ -332,15 +379,14 @@ INTENTS = [
         "patterns": [
             "estrela", "estrelas", "ciclo estelar", "fusão nuclear",
             "fusao nuclear", "vida de uma estrela", "como nasce uma estrela",
-            "morte de uma estrela", "ana amarela", "gigante vermelha"
+            "morte de uma estrela", "ana amarela", "gigante vermelha", "próxima centauri", "proxima centauri", "estrela mais proxima", "estrela mais próxima", "quantas estrelas", "escuro", "espaco escuro", "por que o espaço é escuro", "cores das estrelas", "cor", "estrela mais proxima da terra", "estrela mais próxima da terra", "feito de estrelas", "por que o espaco é escuro", "estrelas", "estrelas sao coloridas", "por que as estrelas são coloridas", "como morre", "ciclo de vida", "ciclo de vida de uma estrela", "tipos de estrelas", "tipos", "maior estrela", "menor estrela", "ana vermelha", "hipergigante", "ana branca", "Carl Sagan"
         ],
         "responses": [
             {
                 "match_hints": ["o que", "o que e", "defin", "conceito", "explica"],
                 "text": (
                     "Estrelas são esferas de gás, principalmente hidrogênio e hélio, que brilham por fusão nuclear.\n\n"
-                    "No núcleo, a temperatura passa de 15 milhões de graus Celsius.\n\n"
-                    "A NASA calcula que existem cerca de 200 a 400 bilhões de estrelas só na Via Láctea. No universo inteiro, há mais estrelas do que grãos de areia em todas as praias da Terra."
+                    "No núcleo, a temperatura passa de 15 milhões de graus Celsius."
                 ),
                 "imagem": "img/estrelas.jpg",
                 "followup": {
@@ -350,7 +396,23 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["como nasce", "nascem", "origem", "formacao", "nebulosa"],
+                "match_hints": [
+                    "quantas estrelas", "numero de estrelas", "quantidade", "universo observavel",
+                ],
+                "text": (
+                    "Estima-se que existam mais de 10 sextilhões (10^22) de estrelas no universo observável.\n\n"
+                    "A NASA calcula que existem cerca de 200 a 400 bilhões de estrelas só na Via Láctea. No universo inteiro, há mais estrelas do que grãos de areia em todas as praias da Terra.\n\n"
+                    "Um dos aglomerados mais densos e compactos já observados é o Messier 69, localizado próximo ao centro da Via Láctea. Ele contém cerca de 1 milhão de estrelas em uma região com apenas 50 anos-luz de diâmetro."
+                ),
+                "imagem": "img/Messier_69.jpg",
+                "followup": {
+                    "pergunta": "Mesmo com esse número absurdo, cada estrela pode ser bem diferente. Quer descobrir os tipos de estrelas?",
+                    "proxima_tag": "estrelas",
+                    "proximo_hint": "tipos"
+                }
+            },
+            {
+                "match_hints": ["como nasce", "nasce", "nascem", "origem", "formacao", "nebulosa"],
                 "text": (
                     "Estrelas nascem em nebulosas, nuvens de gás e poeira que a gravidade vai comprimindo.\n\n"
                     "Quando a pressão e a temperatura no centro ficam altas o suficiente, a fusão nuclear acende.\n\n"
@@ -363,7 +425,7 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["como morre", "morte", "morrer", "fim", "ciclo"],
+                "match_hints": ["como morre", "morre", "morrem", "fim", "ciclo", "destino final", "ciclo de vida", "ciclo de vida de uma estrela"],
                 "text": (
                     "O destino de uma estrela depende da sua massa.\n\n"
                     "Estrelas como o Sol viram gigantes vermelhas, depois nebulosas planetárias e, por fim, anãs brancas.\n\n"
@@ -377,7 +439,7 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["tipos", "maior", "menor", "ana vermelha", "hipergigante", "uy scuti", "ana branca"],
+                "match_hints": ["tipos", "maior", "menor", "ana vermelha", "hipergigante", "ana branca"],
                 "text": (
                     "Existe uma enorme variedade de estrelas.\n\n"
                     "Anãs vermelhas, como o Sol, são as mais comuns e as mais longevas, podendo viver trilhões de anos.\n\n"
@@ -391,6 +453,78 @@ INTENTS = [
                     "proxima_tag": "supernova",
                     "proximo_hint": "o que e"
                 }
+            },
+            {
+                "match_hints": ["proxima centauri", "próxima centauri", "estrela mais proxima", "estrela mais próxima", "vizinha do sol"],
+                "text": (
+                    "Próxima Centauri é a estrela mais próxima da Terra, localizada a cerca de 4,24 anos-luz de distância.\n\n"
+                    "Ela é uma anã vermelha, menor e mais fria que o Sol, mas ainda assim muito ativa, com erupções frequentes.\n\n"
+                    "Ao seu redor orbita pelo menos um planeta, Próxima Centauri b, que está na chamada zona habitável, onde poderia existir água líquida.\n\n"
+                ),
+                "followup": {
+                    "pergunta": "Mesmo sendo a estrela mais próxima, chegar até ela ainda é um grande desafio. Quer entender por quê?",
+                    "proxima_tag": "ano_luz",
+                    "proximo_hint": "limite da luz"
+                }
+            },
+            {
+                "match_hints": ["stephenson 2-18", "maior estrela", "maior estrela do universo", "estrela mais enorme"
+                ],
+                "text": (
+                    "Stephenson 2-18 é considerada uma das maiores estrelas já descobertas.\n\n"
+                    "Ela é uma hipergigante vermelha com um raio cerca de 2.100 vezes maior que o do Sol.\n\n"
+                    "Se estivesse no lugar do Sol, sua superfície ultrapassaria a órbita de Saturno.\n\n"
+                    "Mesmo sendo tão gigantesca, é uma estrela instável e está nos estágios finais da sua vida."
+                ),
+                "imagem": "img/Stephenson_2-18.png",
+                "followup": {
+                    "pergunta": "Quer conhecer a estrela mais próxima da Terra?",
+                    "proxima_tag": "estrelas",
+                    "proximo_hint": "proxima centauri"
+                }
+            },
+            {
+                "match_hints": ["espaco escuro", "por que o espaco e escuro", "espaco escuro perto do sol", "espaco e escuro mesmo com o sol"],
+                "text": (
+                    "O universo é escuro porque não é eterno nem infinito. Com cerca de 13,8 bilhões de anos, a luz de estrelas muito distantes ainda não chegou até nós.\n\n"
+                    "Mesmo próximo do Sol, o espaço é escuro porque não há atmosfera, e a luz solar não ilumina o vazio ao redor.\n\n"
+                    "A luz azul que vemos na Terra durante o dia é resultado da difusão dos raios solares nas moléculas do ar. Sem esse meio, a luz viaja em linha reta, sem se espalhar.\n\n"
+
+                ),
+                "followup": {
+                    "pergunta": "Quer entender por que as estrelas têm cores diferentes?",
+                    "proxima_tag": "estrelas",
+                    "proximo_hint": "estrelas sao coloridas"
+                }
+            },
+            {
+                "match_hints": ["coloridas", "estrelas sao coloridas", "por que as estrelas são coloridas", "cores diferentes", "cor", "cores"],
+                "text": (
+                    "A cor de uma estrela revela sua temperatura superficial.\n\n"
+                    "• Estrelas vermelhas são as mais frias, com cerca de 3.000°C.\n"
+                    "• Estrelas amarelas como o Sol têm cerca de 5.500°C.\n"
+                    "• Estrelas azuis são as mais quentes, passando de 30.000°C.\n\n"
+                    "A composição química também influencia. Diferentes elementos emitem luz em comprimentos de onda específicos, assim os astrônomos conseguem identificar do que cada estrela é feita."
+                ),
+                "imagem": "img/cores-das-estrelas.jpg",
+                "followup": {
+                    "pergunta": "Quer entender por que somos feitos de poeira de estrelas?",
+                    "proxima_tag": "estrelas",
+                    "proximo_hint": "somos feitos de estrelas"
+                }
+            },
+                        {
+                "match_hints": ["poeira estelar", "somos feitos de estrelas", "elementos das estrelas", "carl sagan", "poeira de estrelas"],
+                "text": (
+                    "Carl Sagan dizia que somos feitos de poeira estelar, e é literalmente verdade.\n\n"
+                    "Os elementos químicos que formam nosso corpo, como carbono, nitrogênio, oxigênio e ferro, foram sintetizados no interior de estrelas bilhões de anos atrás.\n\n"
+                    "Quando essas estrelas explodiram em supernovas, espalharam esses elementos pelo espaço. Eles se juntaram para formar novos sistemas solares, planetas e, eventualmente, vida. Somos o universo tentando se compreender.\n\n"
+                ),
+                "followup": {
+                    "pergunta": "Quer entender melhor as supernovas, as explosões que espalharam esses elementos pelo cosmos?",
+                    "proxima_tag": "supernova",
+                    "proximo_hint": "o que e"
+                }
             }
         ]
     },
@@ -401,8 +535,7 @@ INTENTS = [
     {
         "tag": "supernova",
         "patterns": [
-            "supernova", "supernovas", "explosão de estrela", "explosao de estrela",
-            "estrela explode", "estrela explodindo"
+            "supernova", "supernovas", "explosão de estrela", "explosao de estrela", "estrela explode", "estrela explodindo"
         ],
         "responses": [
             {
@@ -410,7 +543,7 @@ INTENTS = [
                 "text": (
                     "Supernova é a explosão de uma estrela massiva no fim de sua vida.\n\n"
                     "Esse fenômeno libera uma energia gigantesca, dispersando elementos químicos pesados que formam novas estrelas e planetas.\n\n"
-                    "O ferro no seu sangue foi forjado em uma supernova."
+                    "O ferro no seu sangue foi forjado em uma supernova.\n\n"
                 ),
                 "followup": {
                     "pergunta": "Quer entender como uma supernova acontece, passo a passo?",
@@ -419,7 +552,7 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["como acontece", "como", "processo", "colapsa", "combustivel"],
+                "match_hints": ["como acontece", "como ocorre", "processo", "colapsa", "combustivel"],
                 "text": (
                     "Quando uma estrela massiva esgota o hidrogênio no núcleo, começa a fundir elementos mais pesados.\n\n"
                     "Quando chega ao ferro, a fusão deixa de gerar energia e o núcleo colapsa em menos de um segundo.\n\n"
@@ -432,7 +565,7 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["o que sobra", "sobra", "restos", "estrela de neutrons"],
+                "match_hints": ["sobra", "sobra", "restos", "estrela de neutrons"],
                 "text": (
                     "Depois da explosão, o que sobra depende da massa do núcleo.\n\n"
                     "Se o núcleo tiver entre 1,4 e 3 massas solares, vira uma estrela de nêutrons, incrivelmente densa.\n\n"
@@ -440,7 +573,7 @@ INTENTS = [
                 ),
                 "imagem": "img/nebulosa-caranguejo.jpg",
                 "followup": {
-                    "pergunta": "Gostaria de saber sobre estrelas de nêutrons?",
+                    "pergunta": "Além disso, uma supernova pode formar uma estrela de nêutrons, bora descobrir mais sobre?",
                     "proxima_tag": "estrela_neutrons",
                     "proximo_hint": "conceito"
                 }
@@ -454,8 +587,7 @@ INTENTS = [
     {
         "tag": "estrela_neutrons",
         "patterns": [
-            "estrela de neutrons", "estrela de nêutrons",
-            "o que e estrela de nêutrons"],
+            "estrela de neutrons", "estrela de nêutrons", "estrela de neutron", "neutron", "nêutrons", "colisão de estrelas de nêutrons", "choque de estrelas de nêutrons", "kilonova"],
         "responses": [
             {
                 "match_hints": ["o que", "o que e", "defin", "conceito", "explica"],
@@ -471,7 +603,7 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["colisao", "colisão", "fusao", "fusão", "duas estrelas", "kilonova", "o que e kilonova", "onda gravitacional", "ouro", "elementos"],
+                "match_hints": ["colisao", "colisão", "fusao", "fusão", "duas estrelas", "kilonova", "kilonova", "onda gravitacional"],
                 "text": (
                     "Quando duas estrelas de nêutrons orbitam uma à outra, elas vão se aproximando lentamente ao longo de milhões de anos.\n\n"
                     "Quando finalmente colidem, liberam uma quantidade enorme de energia em ondas gravitacionais, ondulações no próprio tecido do espaço-tempo. Em 2017, o detector LIGO captou pela primeira vez esse evento, chamado kilonova.\n\n"
@@ -496,14 +628,14 @@ INTENTS = [
             "nebulosa", "nebulosas", "o que e nebulosa", "o que é nebulosa",
             "nuvem espacial", "nuvem de gas", "nuvem de gás",
             "orion nebulosa", "nebulosa de orion", "nebulosa de órion",
-            "nebulosa colorida", "formacao de estrelas", "formação de estrelas"
+            "nebulosa colorida", "formacao de estrelas", "formação de estrelas", "hélix", "nebulosa mais proxima da terra", "tipos", "tipos de nebulosa"
         ],
         "responses": [
             {
                 "match_hints": ["o que", "o que e", "o que e nebulosa", "defin", "conceito", "explica", "nebulosa", "berçário"],
                 "text": (
-                    "Uma nebulosa é uma grande nuvem de gás e poeira no espaço. Muitas delas são chamadas de berçários estelares, pois é onde novas estrelas começam a se formar.\n\n"
-                    "Elas podem ter formas e cores diferentes, dependendo dos elementos presentes e da luz das estrelas ao redor.\n\n"
+                    "Uma nebulosa é uma grande nuvem de gás e poeira no espaço. Elas podem ter formas e cores diferentes, dependendo dos elementos presentes e da luz das estrelas ao redor.\n\n"
+                    "Muitas delas são chamadas de berçários estelares, pois é onde novas estrelas começam a se formar.\n\n"
                     "Algumas são densas e escuras, enquanto outras brilham intensamente, criando algumas das imagens mais impressionantes do universo."
                 ),
                 "imagem": ["img/nebulosa-helix.jpg", "img/nebulosa-borboleta.jpg"],
@@ -516,7 +648,7 @@ INTENTS = [
             {
                 "match_hints": ["o que e", "o que é", "orion", "órion", "nebulosa de orion", "nebulosa de órion"],
                 "text": (
-                    "A Nebulosa de Órion é uma das mais famosas e fica na constelação de Órion.\n\n"
+                    "A Nebulosa de Órion é uma das mais famosas e fica na constelação de Órion, localizada na nossa galáxia. Ela está situada no mesmo braço espiral que o sistema solar.\n\n"
                     "Ela é um dos berçários estelares mais próximos da Terra e pode até ser vista a olho nu em noites escuras.\n\n"
                     "Ali, novas estrelas estão se formando ativamente."
                 ),
@@ -528,7 +660,7 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["tipos", "tipos de nebulosa", "diferentes", "quais tipos"],
+                "match_hints": ["quais", "tipos", "tipos de nebulosa", "diferentes", "quais tipos"],
                 "text": (
                     "Existem diferentes tipos de nebulosas.\n\n"
                     "Algumas são regiões de nascimento de estrelas, outras são restos de explosões de supernovas, e também existem as chamadas nebulosas planetárias, formadas quando estrelas como o Sol chegam ao fim da vida.\n\n"
@@ -536,9 +668,22 @@ INTENTS = [
                 ),
                 "imagem": "img/cassiopeia-a.jpg",
                 "followup": {
-                    "pergunta": "Bora descobrir como uma estrela morre?",
+                    "pergunta": "Bora descobrir qual é a nebulosa mais proxima da terra?",
                     "proxima_tag": "estrelas",
                     "proximo_hint": "morte"
+                }
+            },
+            {
+                "match_hints": ["nebulosa mais proxima da terra", "hélix", "olho de deus", "olho de sauron"],
+                "text": (
+                    "A Nebulosa de Hélix (NGC 7293), também conhecida como \"Olho de Deus\" ou \"Olho de Sauron\", é uma nebulosa planetária localizada na constelação de Hélix.\n\n"
+                    "Ela é formada por uma estrela que explodiu como supernova e deixou para trás uma camada de gás e poeira que se expande no espaço."
+                ),
+                "imagem": "img/nebulosa-helix.jpg",
+                "followup": {
+                    "pergunta": "Agora que sabemos sobre nebulosas, vamos descobrir mais sobre estrelas?",
+                    "proxima_tag": "estrelas",
+                    "proximo_hint": "formacao"
                 }
             }
         ]
@@ -552,21 +697,33 @@ INTENTS = [
         "patterns": [
             "galaxia", "galáxia", "galaxias", "galáxias", "via lactea",
             "via láctea", "andromeda", "andrômeda", "grupo local",
-            "aglomerado", "universo observavel"
+            "aglomerado", "universo observavel", "quantas galaxias", "numero de galaxias", "formacao", "como se forma", "como se formaram","como se origina", "como se originaram", "como surgiu", "como surgiram", "tipos de galaxias", "tipos de galáxias"
         ],
         "responses": [
             {
-                "match_hints": ["o que", "o que e", "defin", "conceito", "explica"],
+                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "tipos", "galaxia", "galáxia"],
                 "text": (
                     "Galáxias são sistemas de estrelas, gás, poeira e matéria escura mantidos unidos pela gravidade.\n\n"
-                    "Existem em formas diferentes: espirais, elípticas e irregulares.\n\n"
-                    "O universo observável tem mais de 2 trilhões de galáxias, segundo estimativas do Hubble Space Telescope."
+                    "A maioria das grandes galáxias, incluindo a Via Láctea, tem um buraco negro central supermassivo.\n\n"
+                    "Existem em formas diferentes: espirais, elípticas e irregulares."
                 ),
                 "imagem": "img/tipos-galaxias.jpg",
                 "followup": {
                     "pergunta": "Quer saber sobre a nossa galáxia, a Via Láctea?",
                     "proxima_tag": "galaxias",
                     "proximo_hint": "via lactea"
+                }
+            },
+            {
+                "match_hints": ["formaram", "surgiram", "originaram", "como se forma", "como se formaram","como se origina", "como se originaram", "como surgiu", "como surgiram"],
+                "text": (
+                    "As galáxias formaram-se há mais de 10 bilhões de anos, logo após o Big Bang, através do colapso gravitacional de nuvens gigantescas de gás (hidrogênio e hélio) e matéria escura.\n\n"
+                    "O crescimento ocorreu de forma hierárquica, com galáxias menores colidindo e se fundindo para formar galáxias maiores.\n\n"
+                ),
+                "followup": {
+                    "pergunta": "Quer entender o Big Bang e como tudo isso começou?",
+                    "proxima_tag": "big_bang",
+                    "proximo_hint": "big bang"
                 }
             },
             {
@@ -592,9 +749,26 @@ INTENTS = [
                 ),
                 "imagem": "img/andromeda.jpg",
                 "followup": {
-                    "pergunta": "Quer entender o Big Bang, como tudo isso começou?",
-                    "proxima_tag": "big_bang",
-                    "proximo_hint": "o que e"
+                    "pergunta": "Quer entender como as galáxias se formaram?",
+                    "proxima_tag": "galaxias",
+                    "proximo_hint": "formaram"
+                }
+            },
+            {
+                "match_hints": [
+                    "quantas galaxias", "numero de galaxias", "quantidade",
+                    "universo observavel", "quantas existem"
+                ],
+                "text": (
+                    "Estima-se que existam cerca de 2 trilhões de galáxias no universo observável.\n\n"
+                    "Esse número é uma projeção baseada em imagens de campo profundo feitas por telescópios como o Hubble e o James Webb, que analisam pequenas áreas do céu e extrapolam para todo o cosmos.\n\n"
+                    "Estudos recentes indicam que até 90% dessas galáxias ainda não foram observadas diretamente."
+                ),
+                "imagem": "img/galaxias.jpg",
+                "followup": {
+                    "pergunta": "Quer explorar nossa galáxia, a Via Láctea?",
+                    "proxima_tag": "galaxias",
+                    "proximo_hint": "via lactea"
                 }
             }
         ]
@@ -608,7 +782,7 @@ INTENTS = [
         "patterns": [
             "big bang", "origem do universo", "começo do universo",
             "inicio do universo", "como tudo começou", "antes do big bang",
-            "inflacao cosmica", "radiacao cosmica de fundo", "universo surgiu"
+            "inflacao cosmica", "radiacao cosmica de fundo", "universo surgiu", "universo se expandiu", "universo se expande", "evidencias do big bang", "provas do big bang", "sinais do big bang", "multiverso", "outros universos", "universos paralelos", "existem outros universos"
         ],
         "responses": [
             {
@@ -626,7 +800,7 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["evidencias", "provas", "como sabemos", "comprovacao"],
+                "match_hints": ["evidencias", "provas", "como sabemos", "comprovacao", "sinais", "evidências", "aconteceu", "ocorreu"],
                 "text": (
                     "O Big Bang aconteceu há bilhões de anos, mas deixou sinais que ainda conseguimos observar hoje.\n\n"
                     "Um dos principais sinais é a radiação cósmica de fundo. Em 1965, cientistas detectaram um sinal de micro-ondas vindo de todas as direções do céu. Esse sinal é uma luz muito antiga, formada quando o universo era extremamente quente. \n\n"
@@ -641,7 +815,6 @@ INTENTS = [
             {
                 "match_hints": ["antes", "antes do big bang", "o que havia", "anterior"],
                 "text": (
-                    "A pergunta sobre o que havia antes do Big Bang pode não fazer sentido.\n\n"
                     "O tempo surgiu junto com o universo. Perguntar o que havia antes é como perguntar o que está ao sul do Polo Sul. A resposta é: nada, pois o próprio conceito de direção (ou tempo) começa ali.\n\n"
                     "Algumas teorias propõem um universo cíclico, ou um multiverso onde nosso universo seria apenas um bolso de espuma quântica. Mas são especulações e ainda não temos como testá-las.\n\n"
                 ),
@@ -649,6 +822,19 @@ INTENTS = [
                     "pergunta": "Quer saber sobre o destino final do universo, como tudo isso vai terminar?",
                     "proxima_tag": "destino_universo",
                     "proximo_hint": "o que e"
+                }
+            },
+            {
+                "match_hints": ["multiverso", "outros universos", "universos paralelos", "existem outros universos"],
+                "text": (
+                    "A ideia de múltiplos universos é matematicamente plausível em algumas teorias, mas ainda não é verificável.\n\n"
+                    "O astrônomo Alan Guth propôs que nosso universo poderia ser apenas uma bolha numa árvore de infinitas bolhas, cada uma com suas próprias leis físicas.\n\n"
+                    "A teoria das supercordas prevê até 10 dimensões e um vasto número de universos possíveis. Por enquanto, essas ideias estão na fronteira entre a física teórica e a especulação filosófica.\n\n"
+                ),
+                "followup": {
+                    "pergunta": "Quer explorar o destino do nosso universo, como ele vai terminar?",
+                    "proxima_tag": "destino_universo",
+                    "proximo_hint": "fim do universo"
                 }
             }
         ]
@@ -709,12 +895,13 @@ INTENTS = [
                 "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "materia escura"],
                 "text": (
                     "Matéria escura é uma substância invisível que não emite, absorve nem reflete luz.\n\n"
+                    "O nome 'escura' não significa que ela é negra ou sombria. Significa que ela é invisível para nós.\n\n"
                     "Sabemos que existe porque sua gravidade afeta galáxias e aglomerados de formas que a matéria visível não explica.\n\n"
                     "Segundo a NASA, ela compõe cerca de 27% do universo. Já tudo o que conseguimos observar, como estrelas, planetas e até nós mesmos, corresponde a apenas 5%."
                 ),
                 "imagem": "img/materia-escura-energia-escura-universo.jpg",
                 "followup": {
-                    "pergunta": "Como os cientistas detectam algo que não pode ser visto?",
+                    "pergunta": "Quer saber como os cientistas detectam algo que não pode ser visto?",
                     "proxima_tag": "materia_escura",
                     "proximo_hint": "como detecta"
                 }
@@ -755,12 +942,11 @@ INTENTS = [
     {
         "tag": "sol",
         "patterns": [
-            "sol", "nossa estrela", "o sol", "sobre o sol",
-            "como o sol funciona", "vida do sol", "morte do sol"
+            "o sol", "o que e o sol", "o que e sol", "me explica o sol", "estrela ana amarela", "nossa estrela", "como o sol funciona", "o que e vento solar", "tempestade solar", "corona", "aurora", "aurora boreal", "morte do sol", "como morre o sol", "futuro do sol", "maior tempestade solar", "maior tempestade registrada", "evento carrington", "carrington", "erupcao solar", "erupção solar", "mancha solar", "manchas solares", "cor do sol", "se atingisse a terra", "se fosse atingir a terra", "se atingisse a terra", "se fosse atingir a terra"
         ],
         "responses": [
             {
-                "match_hints": ["o que", "o que e", "defin", "conceito", "explica"],
+                "match_hints": ["sol", "nossa estrela", "estrela ana amarela", "explica"],
                 "text": (
                     "O Sol é uma estrela anã amarela com 4,6 bilhões de anos de idade.\n\n"
                     "Tem 109 vezes o diâmetro da Terra e contém 99,8% de toda a massa do sistema solar.\n\n"
@@ -768,33 +954,106 @@ INTENTS = [
                 ),
                 "imagem": "img/Sol.png",
                 "followup": {
-                    "pergunta": "Quer entender os fenômenos da superfície do Sol, como manchas solares e erupções?",
+                    "pergunta": "Quer entender os fenômenos da superfície do Sol, como manchas solares?",
                     "proxima_tag": "sol",
-                    "proximo_hint": "superficie"
+                    "proximo_hint": "mancha"
                 }
             },
             {
-                "match_hints": ["superficie", "mancha", "erupcao", "tempestade solar", "corona", "vento solar"],
+                "match_hints": ["mancha solar", "manchas solares", "mancha", "corona",],
                 "text": (
-                    "A superfície do Sol é muito mais agitada do que parece.\n\n"
-                    "Manchas solares são regiões mais frias causadas por campos magnéticos intensos e podem ser maiores que a Terra.\n\n"
-                    "Erupções solares liberam em minutos mais energia do que a humanidade consumiu em toda a história. O vento solar, um fluxo de partículas carregadas, viaja até 800 km/s e é responsável pelas auroras na Terra. A NASA monitora isso com a missão Parker Solar Probe."
+                    "Manchas solares são regiões mais frias causadas por campos magnéticos intensos e podem ser maiores que a Terra."
+                ),
+                "imagem": "img/mancha-solar.jpg",
+                "followup": {
+                    "pergunta": "Quer descobrir o que são erupções solares?",
+                    "proxima_tag": "sol",
+                    "proximo_hint": "erupcao"
+                }
+            },
+            {
+                "match_hints": ["erupcao solar", "erupcao", "erupcoes solares", "erupções solares", "explosao solar", "explosão solar"],
+                "text": (
+                    "Erupções solares são explosões que acontecem na superfície do Sol. Elas liberam em minutos mais energia do que a humanidade consumiu em toda a história."
+                ),
+                "imagem": "img/erupcao.jpg",
+                "followup": {
+                    "pergunta": "Quer descobrir o que é o vento solar, e como ele afeta a Terra?",
+                    "proxima_tag": "sol",
+                    "proximo_hint": "vento"
+                }
+            },
+            {
+                "match_hints": ["vento solar", "vento", "corona", "aurora", "aurora boreal"],
+                "text": (
+                    "O vento solar é um fluxo contínuo de partículas carregadas que o Sol emite o tempo todo. Elas podem atingir velocidades de até 800 km/s e são responsáveis pelas auroras na Terra."
                 ),
                 "imagem": "img/aurora-boreal.jpg",
                 "followup": {
-                    "pergunta": "Como o Sol vai morrer e o que acontece com a Terra?",
+                    "pergunta": "Quer entender o que são tempestades solares, as explosões mais violentas do Sol?",
+                    "proxima_tag": "sol",
+                    "proximo_hint": "tempestade solar"
+                }
+            },
+            {
+                "match_hints": ["tempestade solar", "tempestades solares", "ejecao de massa coronal"],
+                "text": (
+                    "Uma tempestade solar ocorre quando o Sol lança uma nuvem de plasma magnetizado para o espaço.\n\n"
+                    "Esse plasma viaja pelo espaço e, quando atinge a Terra, pode perturbar o campo magnético do planeta, causando falhas em satélites, GPS e até blecautes em redes elétricas.\n\n"
+                    "O campo magnético e a atmosfera da Terra funcionam como escudo. Sem eles, as tempestades solares seriam letais para a vida na superfície.\n\n"
+                ),
+                "followup": {
+                    "pergunta": "Quer conhecer a maior tempestade solar já registrada, que aconteceu em 1859?",
+                    "proxima_tag": "sol",
+                    "proximo_hint": "carrington"
+                }
+            },
+            {
+                "match_hints": ["carrington", "evento carrington", "maior tempestade solar", "tempestade de 1859", "maior tempestade registrada"],
+                "text": (
+                    "O Evento Carrington, em 1859, foi a tempestade solar mais intensa já registrada.\n\n"
+                    "Ela foi tão forte que sistemas de telégrafo pegaram fogo e funcionaram mesmo desligados.\n\n"
+                    "Auroras foram vistas em regiões tropicais, algo extremamente raro.\n\n"
+                ),
+                "followup": {
+                    "pergunta": "Mesmo com tecnologia moderna, ainda estamos vulneráveis. Quer saber o que poderia acontecer hoje?",
+                    "proxima_tag": "sol",
+                    "proximo_hint": "hoje"
+                }
+            },
+            {
+                "match_hints": ["atingir", "atingiria", "atingisse", "fosse atingir", "se fosse atingir", "se atingisse", "se atingisse a terra", "se fosse atingir a terra"],
+                "text": (
+                    "Se uma tempestade solar do nível do Evento Carrington atingisse a Terra hoje, os impactos seriam muito maiores.\n\n"
+                    "Satélites poderiam ser danificados, sistemas de GPS ficariam imprecisos e redes elétricas poderiam sofrer apagões em larga escala.\n\n"
+                    "Missões espaciais e até voos em alta altitude também seriam afetados pela radiação.\n\n"
+                ),
+                "followup": {
+                    "pergunta": "Quer entender como a Terra se protege dessas tempestades solares com seu campo magnético?",
+                    "proxima_tag": "terra",
+                    "proximo_hint": "campo magnetico"
+                }
+            },
+            {
+                "match_hints": ["cor do sol", "cor", "cor vermelho", "cor laranja", "cor amarela", "por que é vermelho", "por que é laranja", "por que é amarelo", "por do sol", "nascer do sol"],
+                "text": (
+                    "A verdadeira cor do Sol é branco. Embora pareça amarelo ou alaranjado da Terra, essa percepção é causada pela dispersão da luz na atmosfera terrestre.\n\n"
+                    "O Sol emite todas as cores visíveis simultaneamente, o que, misturadas, resultam na luz branca, cor real observada por astronautas no espaço.\n\n"
+                    "Por isso o céu é azul durante o dia, mas o Sol parece alaranjado quando está no horizonte.\n\n"
+                ),
+                "followup": {
+                    "pergunta": "Quer saber mais sobre o que o Sol vai se tornar quando morrer?",
                     "proxima_tag": "sol",
                     "proximo_hint": "morte do sol"
                 }
             },
             {
-                "match_hints": ["morte do sol", "como morre", "futuro do sol", "gigante vermelha", "daqui a"],
+                "match_hints": ["morte do sol", "morrer", "como morre", "futuro do sol", "gigante vermelha", "daqui a"],
                 "text": (
                     "Daqui a cerca de 5 bilhões de anos, o Sol vai esgotar o hidrogênio no núcleo.\n\n"
                     "Ele vai se expandir e virar uma gigante vermelha, engolindo Mercúrio, Vênus e provavelmente a Terra.\n\n"
-                    "Depois, as camadas externas serão expulsas formando uma nebulosa planetária colorida. O que sobra é uma anã branca, um núcleo quente do tamanho da Terra que vai esfriar por trilhões de anos."
+                    "Depois, as camadas externas serão expulsas formando uma nebulosa planetária colorida. O que sobra é uma anã branca, um núcleo quente do tamanho da Terra que vai esfriar por trilhões de anos.\n\n"
                 ),
-                "imagem": "img/gigante-vermelha.jpg",
                 "followup": {
                     "pergunta": "Quer conhecer os planetas que orbitam o Sol, começando pelo mais próximo?",
                     "proxima_tag": "mercurio",
@@ -805,19 +1064,113 @@ INTENTS = [
     },
 
     # -------------------------------------------------------------------------
+    # SISTEMA SOLAR
+    # -------------------------------------------------------------------------
+    {
+        "tag": "sistema_solar",
+        "patterns": [
+            "o que e sistema solar", "nosso sistema solar", "como se formou o sistema solar", "origem do sistema solar", "planetas do sistema solar", "composicao do sistema solar", "como os planetas se movem", "orbitas dos planetas", "por que os planetas orbitam o sol", "qual a composição do sistema solar", "por que planetas sao redondos", "formato dos planetas", "por que esferico", "por que planetas proximos sao rochosos", "por que planetas distantes sao gasosos", "diferenca entre planetas", "eixo de rotação dos planetas", "por que os planetas tem o eixo de rotação"
+        ],
+        "responses": [
+            {
+                "match_hints": ["o que e sistema solar", "o que e o sistema", "como se formou", "origem"],
+                "text": (
+                    "O Sistema Solar se formou há cerca de 4,6 bilhões de anos a partir de uma nuvem de gás e poeira chamada nebulosa solar.\n\n"
+                    "A gravidade fez essa nuvem colapsar, concentrando a maior parte da massa no centro, onde se formou o Sol.\n\n"
+                    "O que sobrou desse material formou um disco em rotação, de onde surgiram os planetas, luas, asteroides e cometas. Hoje, o Sistema Solar tem 8 planetas oficiais, e Plutão foi reclassificado como planeta anão em 2006."
+                ),
+                "imagem": "img/sistema_solar.png",
+                "followup": {
+                    "pergunta": "Quer saber como a massa do Sistema Solar está distribuída?",
+                    "proxima_tag": "sistema_solar",
+                    "proximo_hint": "composicao"
+                }
+            },
+            {
+                "match_hints": ["composicao", "massa", "composicao do sistema solar", "quantidade de materia", "composição do sistema solar"],
+                "text": (
+                    "O Sol contém 99.85% de toda a matéria do Sistema Solar. \n\n"
+                    "Os planetas, que se condensaram a partir do mesmo disco de matéria de onde se formou o Sol, contêm apenas 0,135% da massa do sistema solar. Júpiter contém mais do dobro da matéria de todos os outros planetas juntos.\n\n"
+                    "Os satélites dos planetas, cometas, asteróides, meteoróides e o meio interplanetário constituem os restantes 0,015%."
+                ),
+                "imagem": "img/tamanho-sol.png",
+                "followup": {
+                    "pergunta": "Quer saber como os planetas se movem e por que não saem de suas órbitas?",
+                    "proxima_tag": "sistema_solar",
+                    "proximo_hint": "orbitas"
+                }
+            },
+            {
+                "match_hints": ["orbitas", "orbita", "por que os planetas orbitam o sol", "orbitam o sol", "orbitam", "giram", "movem", "gravitacao"],
+                "text": (
+                    "Os planetas orbitam o Sol porque herdaram o movimento giratório da nebulosa que formou o sistema solar.\n\n"
+                    "Quando essa nuvem colapsou, começou a girar cada vez mais rápido, formando um disco em rotação.\n\n"
+                    "A gravidade do Sol puxa os planetas para dentro, enquanto o movimento deles os mantém seguindo em frente. Esse equilíbrio faz com que eles permaneçam em órbita há anos\n\n"
+                ),
+                "followup": {
+                    "pergunta": "Mercúrio vive no limite desse equilíbrio. Quer saber como ele consegue sobreviver tão perto do Sol?",
+                    "proxima_tag": "mercurio", 
+                    "proximo_hint": "o que e"
+                }
+            },
+            {
+                "match_hints": ["redondo", "redondos", "esferico", "planetas sao esfericos", "formato dos planetas", "por que esferico"],
+                "text": (
+                    "Planetas são redondos porque a gravidade puxa a matéria igualmente para todos os lados em direção ao centro.\n\n"
+                    "A esfera é a única forma geométrica onde todos os pontos da superfície estão à mesma distância do núcleo. Qualquer saliência seria puxada de volta pela gravidade ao longo do tempo.\n\n"
+                    "Na prática, nenhum planeta é perfeitamente esférico. A rotação os achata levemente nos polos. A Terra, por exemplo, tem 43 km a mais no equador do que nos polos.\n\n"
+                ),
+                "followup": {
+                    "pergunta": "Quer saber por que os primeiros planetas são rochosos e os mais distantes são gasosos?",
+                    "proxima_tag": "sistema_solar",
+                    "proximo_hint": "rochosos e gasosos"
+                }
+            },
+            {
+                "match_hints": ["rochosos e gasosos", "rochosos", "gasosos", "por que planetas proximos sao rochosos", "por que planetas distantes sao gasosos", "diferenca entre planetas"],
+                "text": (
+                    "Logo após o Sol se formar, o vento solar soprou os gases leves para longe, empurrando o hidrogênio e o hélio para regiões mais distantes.\n\n"
+                    "Mais pesada, a poeira e os minerais ficaram próximos, formando os planetas rochosos. Nas regiões frias e distantes, os gases se acumularam formando os gigantes gasosos.\n\n"
+                    "Por isso planetas gasosos tendem a ser maiores: é mais fácil acumular gás em grande quantidade do que rochas."
+                ),
+                "imagem": "img/planetas.png",
+                "followup": {
+                    "pergunta": "Quer conhecer Júpiter, o maior de todos, que tem massa maior que todos os outros planetas juntos?",
+                    "proxima_tag": "jupiter",
+                    "proximo_hint": "o que e"
+                }
+            },
+            {
+                "match_hints": ["eixo", "rotação", "giram", "todos os planetas giram", "planetas giram em torno do proprio eixo", "rotacao dos planetas", "qual planeta gira mais rapido"],
+                "text": (
+                    "Sim, todos os planetas giram em torno do próprio eixo, pois conservam o movimento angular da nebulosa que os formou.\n\n"
+                    "O campeão de velocidade é Júpiter, que completa uma rotação em apenas 9h 55min, apesar de ser o maior. O mais lento é Vênus, com um dia de 243 dias terrestres.\n\n"
+                    "Na translação, Mercúrio é o mais rápido, com um ano de 88 dias terrestres. Netuno é o mais lento, levando 165 anos para dar uma volta ao redor do Sol.\n\n"
+                ),
+                "followup": {
+                    "pergunta": "Vênus tem uma rotação realmente estranha. Quer entender por quê?",
+                    "proxima_tag": "venus",
+                    "proximo_hint": "rotacao inversa"
+                }
+            }
+        ]
+    },
+    
+    # -------------------------------------------------------------------------
     # MERCURIO
     # -------------------------------------------------------------------------
     {
         "tag": "mercurio",
         "patterns": [
             "mercurio", "mercúrio", "planeta mercurio", "sobre mercurio",
-            "primeiro planeta", "primeiro planeta do sistema solar"
+            "primeiro planeta", "primeiro planeta do sistema solar", "planeta mais proximo do sol", "planeta mais próximo do sol", "menor planeta", "mais proximo", "mais perto do sol", "planeta mais perto do sol", "planeta proximo ao sol", "mais rapido", "planeta mais veloz"
         ],
         "responses": [
             {
-                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "sobre", "qual", "qual e"],
+                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "sobre", "qual", "qual e", "primeiro planeta", "primeiro planeta do sistema solar", "menor planeta", "planeta mais proximo do sol", "planeta mais próximo do sol", "planeta mais perto do sol", "mais rapido", "planeta mais veloz"],
                 "text": (
-                    "Mercúrio é o primeiro planeta do sistema solar, além de ser o menor e o mais próximo do Sol. Tem apenas 4.879 km de diâmetro, pouco maior que a Lua.\n\n"
+                    "Mercúrio é o primeiro planeta do sistema solar, além de ser o menor e o mais próximo do Sol. Tem cerca de 4.879 km de diâmetro, sendo pouco maior que a Lua.\n\n"
+                    "O planeta recebeu esse nome por causa do deus romano Mercúrio, o mensageiro veloz, já que ele é o planeta que se move mais rápido ao redor do Sol.\n\n"
                     "Apesar de ser o mais próximo do Sol, não é o mais quente. As temperaturas variam entre -180°C à noite e 430°C durante o dia."
                 ),
                 "imagem": "img/Mercúrio.png",
@@ -828,13 +1181,13 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["dia e ano", "rotacao", "orbita", "tempo", "lento"],
+                "match_hints": ["dia e ano", "rotacao", "orbita", "tempo", "lento", "planeta mais lento"],
                 "text": (
                     "Mercúrio tem uma das rotações mais lentas do sistema solar. Um dia dura 176 dias terrestres.\n\n"
                     "Mas um ano mercuriano leva apenas 88 dias terrestres. Então um dia em Mercúrio é literalmente mais longo do que um ano lá.\n\n"
                     "A NASA estudou Mercúrio de perto com a missão MESSENGER, que orbitou o planeta de 2011 a 2015."
                 ),
-                "imagem": "img/mercurio-superficie.jpg",
+                "imagem": "img/mercurio-perto.jpg",
                 "followup": {
                     "pergunta": "Quer conhecer Vênus, o vizinho seguinte?",
                     "proxima_tag": "venus",
@@ -850,15 +1203,16 @@ INTENTS = [
     {
         "tag": "venus",
         "patterns": [
-            "venus", "vênus", "planeta venus", "sobre venus",
-            "segundo planeta", "segundo planeta do sistema solar"
+            "venus", "vênus", "planeta venus", "sobre venus", "segundo",
+            "segundo planeta", "segundo planeta do sistema solar", "planeta mais brilhante", "planeta mais luminoso", "planeta mais quente", "mais quente do sistema solar", "planeta mais toxico"
         ],
         "responses": [
             {
-                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "sobre", "qual", "qual e"],
+                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "sobre", "qual", "qual e", "segundo", "segundo planeta", "segundo planeta do sistema solar", "planeta mais brilhante", "planeta mais luminoso", "planeta mais toxico"],
                 "text": (
                     "Vênus é o segundo planeta do sistema solar e o mais brilhante no céu noturno. É quase do mesmo tamanho que a Terra, por isso é chamado de planeta irmão.\n\n"
-                    "Sua atmosfera é 96% dióxido de carbono com nuvens de ácido sulfúrico. A pressão na superfície é 92 vezes maior que na Terra, equivalente a 900 metros de profundidade no oceano."
+                    "O planeta recebeu esse nome por causa da deusa romana Vênus, associada à beleza e ao brilho, já que ele é o objeto mais luminoso do céu depois do Sol e da Lua.\n\n"
+                    "Sua atmosfera é 96% dióxido de carbono com nuvens de ácido sulfúrico. A pressão na superfície é 92 vezes maior que na Terra, equivalente a 900 metros de profundidade no oceano, tornando Vênus o planeta mais tóxicos e inóspitos do Sistema Solar."
                 ),
                 "imagem": "img/Vênus.png",
                 "followup": {
@@ -868,15 +1222,15 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["mais quente", "temperatura", "calor", "efeito estufa"],
+                "match_hints": ["mais quente", "planeta mais quente", "temperatura", "calor", "efeito estufa"],
                 "text": (
                     "A temperatura na superfície de Vênus chega a 465°C, quente o suficiente para derreter chumbo.\n\n"
-                    "E é constante: não importa o dia ou a noite, o polo ou o equador.\n\n"
-                    "O culpado é um efeito estufa extremo: a atmosfera densa de CO₂ aprisiona o calor do Sol. Isso faz de Vênus mais quente que Mercúrio, mesmo estando mais longe do Sol."
+                    "E é constante, não importa o dia ou a noite, o polo ou o equador. A atmosfera densa de CO₂ aprisiona o calor do Sol. Isso faz de Vênus mais quente que Mercúrio, mesmo estando mais longe do Sol.\n\n"
+                    "A sonda soviética Venera 13 conseguiu pousar no planeta em 1982 e resistiu por pouco mais de duas horas, enviando imagens e dados antes de ser destruída pelas condições extremas."
                 ),
-                "imagem": "img/venus-superficie.jpg",
+                "imagem": ["img/venus-venera-13.jpg", "img/venera13.jpg"],
                 "followup": {
-                    "pergunta": "Sabia que Vênus gira ao contrário dos outros planetas e muito devagar?",
+                    "pergunta": "Vênus gira ao contrário dos outros planetas e muito devagar, bora entender por quê?",
                     "proxima_tag": "venus",
                     "proximo_hint": "rotacao inversa"
                 }
@@ -885,12 +1239,11 @@ INTENTS = [
                 "match_hints": ["rotacao inversa", "gira ao contrario", "dia longo", "rotacao"],
                 "text": (
                     "Vênus é um planeta peculiar na sua rotação. Ele gira no sentido horário, ao contrário da maioria dos planetas.\n\n"
-                    "E gira muito devagar: um dia em Vênus dura 243 dias terrestres, mais longo que o seu próprio ano, que dura 225 dias terrestres.\n\n"
-                    "A razão dessa rotação invertida ainda é debatida e pode ter sido uma colisão catastrófica no passado."
+                    "Além disso, um dia em Vênus dura 243 dias terrestres, mais longo que o seu próprio ano, que dura 225 dias terrestres.\n\n"
+                    "A razão dessa rotação invertida ainda é debatida e pode ter sido uma colisão catastrófica no passado.\n\n"
                 ),
-                "imagem": "img/venus-rotacao.jpg",
                 "followup": {
-                    "pergunta": "Vamos para a Terra, nosso planeta tem algumas curiosidades surpreendentes também.",
+                    "pergunta": "No meio de tantos extremos, existe um planeta único. Vamos explorar mais sobre nosso planeta?",
                     "proxima_tag": "terra",
                     "proximo_hint": "o que e"
                 }
@@ -905,12 +1258,12 @@ INTENTS = [
         "tag": "terra",
         "patterns": [
             "terra", "nosso planeta", "planeta terra", "sobre a terra",
-            "campo magnetico da terra", "atmosfera da terra",
-            "terceiro planeta", "terceiro planeta do sistema solar"
+            "campo magnetico da terra", "atmosfera da terra", "terceiro"
+            "terceiro planeta", "terceiro planeta do sistema solar", "planeta com vida", "planeta habitável", "planeta azul", "terra parasse de girar", "e se a terra parasse", "sem rotacao", "terra sem rotacao", "rotacionar", "parar de rotacionar", "sobre a terra"
         ],
         "responses": [
             {
-                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "sobre", "qual", "qual e"],
+            "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "sobre", "qual", "qual e", "terra", "nosso planeta", "planeta terra", "terceiro", "terceiro planeta", "terceiro planeta do sistema solar", "planeta com vida", "planeta habitável", "planeta azul", "sobre a terra"],
                 "text": (
                     "A Terra é o terceiro planeta do sistema solar, sendo o único com vida confirmada e o maior dos planetas rochosos.\n\n"
                     "71% da superfície é coberta por água líquida, o único planeta no sistema solar com esse fenômeno em abundância.\n\n"
@@ -937,17 +1290,16 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["lua", "satelite", "unico satelite", "quanto tempo", "formacao da lua"],
+                "match_hints": ["parar de girar", "parasse de girar", "e se a terra parasse", "sem rotacao", "terra sem rotacao", "rotacionar", "parar de rotacionar"],
                 "text": (
-                "A Terra é o único planeta rochoso do sistema solar com um satélite natural tão grande em proporção ao seu tamanho.\n\n"
-                "A Lua exerce uma influência enorme sobre a Terra: estabiliza a inclinação do eixo terrestre, o que mantém o clima previsível ao longo de milhões de anos.\n\n"
-                "Sem a Lua, o eixo da Terra oscilaria de forma caótica, tornando o clima extremamente instável e dificultando o surgimento de vida complexa."
+                    "Se a Terra parasse de girar, o dia duraria um ano inteiro, metade com sol, metade no escuro.\n\n"
+                    "O lado iluminado ficaria tórrido como Vênus, acima de 400°C, enquanto o lado escuro gelaria como Júpiter, abaixo de -100°C.\n\n"
+                    "Os oceanos se redistribuiriam para os polos, os ventos se tornariam extremos e a vida na superfície seria praticamente inviável. \n\n"
                 ),
-                "imagem": "img/terra-lua.jpg",
                 "followup": {
-                "pergunta": "Quer saber como a Lua se formou e qual foi o impacto que a criou?",
-                "proxima_tag": "lua",
-                "proximo_hint": "formacao"
+                    "pergunta": "Esse é só um cenário extremo na Terra. Quer descobrir o que pode acontecer com o universo inteiro?",
+                    "proxima_tag": "destino_universo",
+                    "proximo_hint": "destino"
                 }
             }
         ]
@@ -961,31 +1313,97 @@ INTENTS = [
         "patterns": [
             "lua", "mare", "maré", "eclipse", "missao apollo", "missão apollo",
             "armstrong", "lua cheia", "fases da lua", "crateras",
-            "como a lua se formou", "origem da lua"
+            "como a lua se formou", "origem da lua", "grande impacto", "formacao da lua", "artemis", "artemis 2", "artemis II", "o que e o programa artemis", "o que e artemis", "satelite da terra", "Como a Lua foi formada", "lua se formou", "o que e a lua", "influencia da lua", "qual a influencia da lua", "qual a importancia da lua", "formação da lua", "movimento da lua", "lua orbita a terra", "lua gira em torno da terra", "lua gira em volta da terra", "fases da lua", "como as fases da lua acontecem", "por que a lua tem fases", "lua nao tem atmosfera", "por que a lua nao tem ar", "atmosfera da lua", "ar na lua"
         ],
         "responses": [
             {
-                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "sobre"],
+                "match_hints": ["o que", "o que e", "lua", "o que e a lua", "defin", "conceito", "explica", "sobre", "satelite da terra"],
                 "text": (
                     "A Lua é o único satélite natural da Terra e o quinto maior do sistema solar.\n\n"
                     "Tem 3.474 km de diâmetro, cerca de um quarto da Terra.\n\n"
-                    "A Lua está em rotação síncrona com a Terra: completa uma rotação no mesmo tempo que orbita o planeta. Por isso sempre vemos a mesma face dela."
+                    "A Lua está em rotação síncrona com a Terra, ou seja, completa uma rotação no mesmo tempo que orbita o planeta. Por isso sempre vemos a mesma face dela."
                 ),
-                "imagem": "img/lua.jpg",
+                "imagem": "img/Lua.png",
                 "followup": {
-                    "pergunta": "Como a Lua se formou? A história é mais dramática do que parece.",
+                    "pergunta": "Quer saber como a Lua se formou? A história é mais dramática do que parece.", 
                     "proxima_tag": "lua",
                     "proximo_hint": "formacao"
                 }
             },
             {
-                "match_hints": ["formacao", "como se formou", "origem", "nasceu"],
+                "match_hints": ["formacao", "formou", "surgiu", "como se formou", "como a Lua foi formada", "origem", "nasceu"],
                 "text": (
                     "A hipótese mais aceita é a do Grande Impacto.\n\n"
                     "Há 4,5 bilhões de anos, um objeto do tamanho de Marte, chamado Theia, colidiu com a Terra jovem.\n\n"
-                    "Os detritos da colisão foram ejetados para órbita e se acumularam formando a Lua. A Lua está se afastando da Terra a 3,8 cm por ano. Quando os dinossauros viviam, os dias terrestres tinham 23 horas."
+                    "Os detritos da colisão foram ejetados para órbita e se acumularam formando a Lua.\n\n"
+                    "A Lua está se afastando da Terra a 3,8 cm por ano. Quando os dinossauros viviam, os dias terrestres tinham 23 horas."
                 ),
-                "imagem": "img/formacao-lua.jpg",
+                "imagem": "img/formacao-lua.png",
+                "followup": {
+                    "pergunta": "Quer saber por que a Lua é tão importante para a vida na Terra?",
+                    "proxima_tag": "lua",
+                    "proximo_hint": "unico satelite"
+                }
+            },
+            {
+                "match_hints": ["satelite", "unico satelite", "quanto tempo", "formacao da lua", "influencia da lua", "qual a influencia da lua", "qual a importancia da lua"],
+                "text": (
+                    "A Terra é o único planeta rochoso do sistema solar com um satélite natural tão grande em proporção ao seu tamanho.\n\n"
+                    "A Lua exerce uma influência enorme sobre a Terra, ajudando a estabiliza a inclinação do eixo terrestre e mantendo o clima previsível ao longo de milhões de anos.\n\n"
+                    "Sem a Lua, o eixo da Terra oscilaria de forma caótica, tornando o clima extremamente instável e dificultando o surgimento de vida complexa."
+                ),
+                "imagem": "img/terra-lua.jpg",
+                "followup": {
+                "pergunta": "Quer entender o movimento da Lua e por que sempre vemos a mesma face?",
+                    "proxima_tag": "lua",
+                    "proximo_hint": "movimento da lua"
+                }
+            },
+            {
+                "match_hints": ["translação", "rotação", "movimento da lua", "lua orbita a terra", "girar em volta", "lua gira em torno da terra", "lua gira em volta da terra"],
+                "text": (
+                    "A Lua demora aproximadamente 27,3 dias (período sideral) para completar uma volta ao redor da Terra em relação às estrelas.\n\n"
+                    "Esse movimento é chamado de translação. Durante esse período, a Lua também realiza uma rotação sobre seu próprio eixo, o que faz com que vejamos sempre a mesma face.\n\n"
+                ),
+                "followup": {
+                    "pergunta": "Quer saber como as fases da Lua acontecem e por que a vemos de formas diferentes ao longo do mês?",
+                    "proxima_tag": "lua",
+                    "proximo_hint": "fases da lua"
+                }
+            },
+            {
+                "match_hints": ["fases da lua", "como as fases da lua acontecem", "por que a lua tem fases"],
+                "text": (
+                    "As fases da Lua ocorrem porque ela orbita a Terra e não possui luz própria, refletindo a luz solar de ângulos diferentes.\n\n"
+                    "À medida que a Lua se move, a porção de sua superfície iluminada pelo Sol que enxergamos muda, passando por fases como nova, crescente, cheia e minguante em um ciclo de 29,5 dias (Período Sinódico (ciclo de fases))."
+                ),
+                "imagem": "img/fases-lua.png",
+                "followup": {
+                    "pergunta": "Quer saber por que a Lua não tem atmosfera?",
+                    "proxima_tag": "lua",
+                    "proximo_hint": "lua nao tem atmosfera"
+                }
+            },
+            {
+                "match_hints": ["lua nao tem atmosfera", "por que a lua nao tem ar", "atmosfera da lua", "ar na lua"],
+                "text": (
+                    "A gravidade da Lua é cerca de um sexto da Terra, fraca demais para reter gases.\n\n"
+                    "Na Terra, os gases precisam de 11 km/s para escapar para o espaço. Na Lua, basta 2,4 km/s. As moléculas dos gases se movem rápido o suficiente para simplesmente fugir.\n\n"
+                    "A Lua tem uma exosfera extremamente tênue, com traços de hidrogênio, hélio e outros gases, mas nada comparável a uma atmosfera real.\n\n"
+                ),
+                "followup": {
+                    "pergunta": "Sem atmosfera, a superfície da Lua fica exposta a impactos. Quer saber o que causou as crateras?",
+                    "proxima_tag": "lua",
+                    "proximo_hint": "crateras"
+                }
+            },
+            {
+                "match_hints": ["crateras", "lua cheia de crateras", "o que causou as crateras", "buraco na lua"],
+                "text": (
+                    "As crateras da Lua são resultado de bilhões de anos de bombardeio por asteroides e meteoritos.\n\n"
+                    "Sem atmosfera, não há fricção para frear ou queimar os objetos antes do impacto. E sem placas tectônicas ou erosão, as crateras se preservam por bilhões de anos.\n\n"
+                    "A maior cratera da Lua, a Bacia South Pole-Aitken, tem 2.500 km de diâmetro e 8 km de profundidade, uma das maiores do sistema solar.\n\n"
+                ),
                 "followup": {
                     "pergunta": "O programa Apollo foi um marco histórico. Quer saber o que os astronautas descobriram lá?",
                     "proxima_tag": "lua",
@@ -1007,13 +1425,15 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["artemis", "volta a lua", "retorno", "futuro da lua"],
+                "match_hints": ["artemis", "artemis II", "artemis 2", "o que e o programa artemis", "o que e artemis", "volta a lua", "retorno", "futuro da lua"],
                 "text": (
-                    "O programa Artemis da NASA tem como objetivo retornar humanos à Lua, desta vez para ficar.\n\n"
-                    "A meta é estabelecer uma presença sustentável com a Gateway, uma estação espacial em órbita lunar.\n\n"
-                    "O programa prevê levar a primeira mulher e a primeira pessoa negra à superfície lunar. A Lua também serve como trampolim para Marte, testando tecnologias e experiência operacional num ambiente próximo."
+                    "O programa Artemis, da NASA, pretende retomar a exploração da Lua, com uma série de missões planejadas para os próximos anos.\n\n"
+                    "O Artemis I, lançado em 2022, foi um voo não tripulado que testou o foguete e a cápsula Orion.\n\n"
+                    "O Artemis II, lançado em 2026, foi o primeiro voo tripulado do programa, levando astronautas ao redor da Lua.\n\n"
+                    "O Artemis III, previsto para 2027, tem como objetivo levar humanos de volta à superfície lunar.\n\n"
+                    "As missões seguintes, como Artemis IV e V, fazem parte do plano de estabelecer uma presença contínua na Lua, incluindo a construção da estação orbital Gateway e missões regulares à superfície, servindo como base para futuras viagens a Marte."
                 ),
-                "imagem": "img/artemis.jpg",
+                "imagem": ["img/Artemis-II.jpg", "img/artemis-decolando.jpg"],
                 "followup": {
                     "pergunta": "Quer explorar mais sobre o sistema solar ou partir para temas como galáxias e o Big Bang?",
                     "proxima_tag": None,
@@ -1031,13 +1451,14 @@ INTENTS = [
         "patterns": [
             "marte", "planeta marte", "sobre marte", "planeta vermelho",
             "perseverance", "vida em marte", "colonizacao de marte",
-            "quarto planeta", "quarto planeta do sistema solar"
+            "quarto", "quarto planeta", "quarto planeta do sistema solar", "mais parecido com a terra", "planeta parecido com a terra"
         ],
         "responses": [
             {
-                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "sobre", "qual", "qual e"],
+                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "sobre", "qual", "qual e", "marte", "planeta marte", "quarto", "quarto planeta", "quarto planeta do sistema solar", "mais parecido com a terra", "planeta parecido com a terra"],
                 "text": (
                     "Marte é o quarto planeta do sistema solar, chamado de Planeta Vermelho pela cor do óxido de ferro no solo. Tem metade do diâmetro da Terra e uma atmosfera mais fina.\n\n"
+                    "O planeta recebeu esse nome por causa do deus romano Marte, associado à guerra, justamente por sua aparência avermelhada no céu.\n\n"
                     "Um dia marciano dura 24h 37min, bem parecido com o da Terra. Porém, um ano tem 687 dias terrestres."
                 ),
                 "imagem": "img/Marte.png",
@@ -1051,7 +1472,7 @@ INTENTS = [
                 "match_hints": ["geografia", "vulcao", "olympus", "valles marineris", "canyon", "montanha"],
                 "text": (
                     "Marte tem recordes geográficos impressionantes.\n\n"
-                    "O Olympus Mons é o maior vulcão do sistema solar: 22 km de altura e 600 km de diâmetro. Para comparar, o Everest tem 8,8 km.\n\n"
+                    "O Olympus Mons é o maior vulcão do sistema solar, com 22 km de altura e 600 km de diâmetro. Para comparar, o Everest tem 8,8 km.\n\n"
                     "Já o Valles Marineris é um sistema de canyons com 4.000 km de comprimento e até 7 km de profundidade. O Grand Canyon dos EUA caberia inteiro num dos seus braços laterais."
                 ),
                 "imagem": ["img/olympus-mons.jpg", "img/valles-marineris.jpg"],
@@ -1080,13 +1501,12 @@ INTENTS = [
                 "text": (
                     "Levar humanos a Marte é um dos maiores desafios da exploração espacial.\n\n"
                     "A viagem leva entre 6 e 9 meses dependendo do alinhamento orbital. Durante esse tempo, os astronautas são expostos à radiação cósmica sem proteção magnética.\n\n"
-                    "Em Marte, a temperatura média é de -60°C, a atmosfera é irrespirável e as tempestades de poeira podem durar meses. A NASA planeja missões tripuladas para a década de 2030, mas ainda há muito a resolver."
+                    "Em Marte, a temperatura média é de -60°C, a atmosfera é irrespirável e as tempestades de poeira podem durar meses. A NASA planeja missões tripuladas para a década de 2030, mas ainda há muito a resolver.\n\n"
                 ),
-                "imagem": "img/marte-colonizacao.jpg",
                 "followup": {
-                    "pergunta": "Quer conhecer Júpiter, o maior planeta do sistema solar?",
-                    "proxima_tag": "jupiter",
-                    "proximo_hint": "o que e"
+                    "pergunta": "Quer saber sobre o programa Artemis, que pretende levar humanos de volta à Lua como passo para futuras missões a Marte?",
+                    "proxima_tag": "lua",
+                    "proximo_hint": "artemis"
                 }
             }
         ]
@@ -1099,15 +1519,14 @@ INTENTS = [
         "tag": "jupiter",
         "patterns": [
             "jupiter", "júpiter", "planeta jupiter", "sobre jupiter",
-            "grande mancha vermelha", "luas de jupiter", "europa lua",
-            "io lua", "ganimedes", "quinto planeta", "quinto planeta do sistema solar", "maior planeta", "maior planeta do sistema solar", "planeta gigante", "gigante gasoso"
+            "o que e a grande mancha vermelha", "mancha em jupiter", "luas de jupiter", "europa lua", "io lua", "ganimedes", "quinto", "quinto planeta", "quinto planeta do sistema solar", "maior planeta", "maior planeta do sistema solar", "planeta gigante", "gigante gasoso"
         ],
         "responses": [
             {
-                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "sobre", "qual", "qual e"],
+                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "sobre", "qual", "qual e", "quinto", "quinto planeta", "quinto planeta do sistema solar", "maior planeta", "maior planeta do sistema solar", "planeta gigante", "gigante gasoso"],
                 "text": (
-                    "Júpiter é o quinto e maior planeta do sistema solar, com 11 vezes o diâmetro da Terra e mais massivo que todos os outros planetas juntos.\n\n"
-                    "É um gigante gasoso composto principalmente de hidrogênio e hélio.\n\n"
+                    "Júpiter é o quinto e maior planeta do sistema solar, com 11 vezes o diâmetro da Terra e mais massivo que todos os outros planetas juntos. É um gigante gasoso composto principalmente de hidrogênio e hélio.\n\n"
+                    "O planeta recebeu esse nome por causa de Júpiter, o rei dos deuses na mitologia romana, refletindo seu tamanho e importância no Sistema Solar.\n\n"
                     "Um dia em Júpiter dura apenas 9h 55min, sendo o planeta que gira mais rápido. Essa rotação rápida achata os polos e cria faixas de nuvens características."
                 ),
                 "imagem": "img/Júpiter.png",
@@ -1118,15 +1537,15 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["grande mancha", "tempestade", "mancha vermelha"],
+                "match_hints": ["o que é a mancha em jupiter", "mancha em jupiter", "grande mancha", "tempestade", "mancha vermelha"],
                 "text": (
                     "A Grande Mancha Vermelha é uma tempestade anticiclônica que existe há pelo menos 350 anos.\n\n"
                     "Tem ventos de até 640 km/h e um tamanho maior que a Terra inteira.\n\n"
                     "Curiosamente, ela tem encolhido nas últimas décadas. A NASA acompanha esse fenômeno com a sonda Juno, que orbita Júpiter desde 2016."
                 ),
-                "imagem": "img/grande-mancha-vermelha.jpg",
+                "imagem": ["img/jupiter-terra.jpeg", "img/mancha-jupiter.jpg"],
                 "followup": {
-                    "pergunta": "Júpiter tem 95 luas confirmadas. Algumas delas são mundos fascinantes. Quer saber?",
+                    "pergunta": "Júpiter é o segundo planeta com o maior número de luas. Algumas delas são mundos fascinantes. Quer conhecer?",
                     "proxima_tag": "jupiter",
                     "proximo_hint": "luas"
                 }
@@ -1134,11 +1553,13 @@ INTENTS = [
             {
                 "match_hints": ["luas", "europa", "io", "ganimedes", "calisto"],
                 "text": (
-                    "As quatro maiores luas de Júpiter foram descobertas por Galileu em 1610.\n\n"
+                    "Júpiter tem 95 luas confirmadas, entre elas as quatro maiores, descobertas por Galileu em 1610.\n\n"
                     "Io é o objeto mais vulcanicamente ativo do sistema solar, com mais de 400 vulcões ativos.\n\n"
-                    "Europa tem um oceano líquido debaixo de uma camada de gelo, aquecido pelas forças de maré de Júpiter. É um dos candidatos mais promissores à vida. Ganimedes é a maior lua do sistema solar, maior até que Mercúrio."
+                    "Europa tem um oceano líquido sob uma camada de gelo, aquecido pelas forças de maré de Júpiter. É um dos candidatos mais promissores na busca por vida fora da Terra.\n\n"
+                    "Ganimedes é a maior lua do sistema solar, maior até que Mercúrio.\n\n"
+                    "Calisto é a mais distante das quatro e tem uma superfície cheia de crateras, uma das mais antigas e preservadas do Sistema Solar."
                 ),
-                "imagem": ["img/europa-lua.jpg", "img/io-lua.jpg"],
+                "imagem": "img/luas-jupiter.png",
                 "followup": {
                     "pergunta": "Quer conhecer Saturno e seus famosos anéis?",
                     "proxima_tag": "saturno",
@@ -1155,12 +1576,12 @@ INTENTS = [
         "tag": "saturno",
         "patterns": [
             "saturno", "planeta saturno", "sobre saturno",
-            "aneis de saturno", "anéis de saturno", "titan lua",
-            "sexto planeta", "sexto planeta do sistema solar", "segundo maior planeta", "segundo maior planeta do sistema solar"
+            "aneis de saturno", "anéis de saturno", "titan lua", "sexto", 
+            "sexto planeta", "sexto planeta do sistema solar", "segundo maior planeta", "segundo maior planeta do sistema solar", "gigante gasoso", "luas de saturno", "numero de luas de saturno", "planeta com mais luas", "aneis de saturno", "de que sao feitos os aneis de saturno", "mais anéis", "planeta com mais aneis", "planeta com mais anéis"
         ],
         "responses": [
             {
-                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "sobre", "qual", "qual e"],
+                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "sobre", "qual", "qual e", "sexto", "sexto planeta", "sexto planeta do sistema solar", "segundo maior planeta", "segundo maior planeta do sistema solar", "gigante gasoso", "mais anéis", "planeta com mais aneis", "planeta com mais anéis"],
                 "text": (
                     "Saturno é o sexto planeta e o segundo maior do sistema solar, famoso pelos seus impressionantes anéis.\n\n"
                     "É um gigante gasoso com densidade tão baixa que flutuaria na água, se houvesse um oceano grande o suficiente.\n\n"
@@ -1170,11 +1591,11 @@ INTENTS = [
                 "followup": {
                     "pergunta": "Os anéis de Saturno são uma das maravilhas do sistema solar. Quer entendê-los?",
                     "proxima_tag": "saturno",
-                    "proximo_hint": "aneis"
+                    "proximo_hint": "aneis de saturno"
                 }
             },
             {
-                "match_hints": ["aneis", "anéis", "composicao dos aneis", "de que sao feitos"],
+                "match_hints": ["aneis de saturno", "anéis de saturno", "composicao dos aneis", "de que sao feitos"],
                 "text": (
                     "Os anéis de Saturno são compostos de partículas de gelo e rocha, do tamanho de grãos até o de casas.\n\n"
                     "Se espalhados, cobriam a distância da Terra à Lua. Mas são incrivelmente finos, apenas 10 a 100 metros de espessura em relação ao diâmetro de 270.000 km.\n\n"
@@ -1182,19 +1603,32 @@ INTENTS = [
                 ),
                 "imagem": "img/aneis-saturno.jpg",
                 "followup": {
-                    "pergunta": "A lua Titan de Saturno é única, tem atmosfera densa e lagos de metano líquido. Quer saber mais?",
+                    "pergunta": "Além dos anéis, Saturno tem um sistema de luas fascinante. Bora conhecer algumas delas?",
+                    "proxima_tag": "saturno",
+                    "proximo_hint": "luas de saturno"
+                }
+            },
+            {
+                "match_hints": ["luas", "luas de saturno", "numero de luas de saturno", "planeta com mais luas"],
+                "text": (
+                    "Saturno é o planeta com o maior número de luas confirmadas no Sistema Solar, com um total de 274 luas conhecidas após novas descobertas anunciadas em 2025.\n\n"
+                    "Essas luas variam de tamanho, sendo Titã a maior e com atmosfera densa, enquanto muitas outras são pequenas e irregulares."
+                ),
+                "imagem": "img/luas-de-saturno.jpg",
+                "followup": {
+                    "pergunta": "A lua Titã é única, tem atmosfera densa e lagos de metano líquido. Quer saber mais?",
                     "proxima_tag": "saturno",
                     "proximo_hint": "titan"
                 }
             },
             {
-                "match_hints": ["titan", "lua titan", "metano", "lagos"],
+                "match_hints": ["tita", "titã", "lua titan"],
                 "text": (
-                    "Titan é a segunda maior lua do sistema solar e a única com atmosfera densa.\n\n"
+                    "Titã é a segunda maior lua do sistema solar e a única com atmosfera densa.\n\n"
                     "Sua atmosfera é principalmente nitrogênio, parecida com a da Terra primordial. Na superfície, existem lagos e rios de metano e etano líquidos.\n\n"
-                    "A NASA enviou a missão Dragonfly para explorar Titan, uma espécie de drone nuclear que vai pousar lá na década de 2030. Encélado, outra lua de Saturno, jorra vapor de água com compostos orgânicos para o espaço."
+                    "A NASA enviou a missão Dragonfly para explorar Titan, uma espécie de drone nuclear que vai pousar lá na década de 2030."
                 ),
-                "imagem": ["img/titan-lua.jpg", "img/enceladus.jpg"],
+                "imagem": ["img/titan-saturno.jpg", "img/titan-saturno2.jpg"],
                 "followup": {
                     "pergunta": "Quer conhecer Urano, o planeta que gira de lado?",
                     "proxima_tag": "urano",
@@ -1212,19 +1646,20 @@ INTENTS = [
         "patterns": [
             "urano", "planeta urano", "sobre urano",
             "planeta gelado", "gigante de gelo urano",
-            "setimo planeta", "sétimo planeta", "setimo planeta do sistema solar"
+            "setimo planeta", "sétimo", "sétimo planeta", "setimo planeta do sistema solar", "planeta azul esverdeado", "planeta mais frio", "planeta mais frio do sistema solar", "planeta que gira de lado", "aneis de urano", "luas de urano", "planeta mais frio"
         ],
         "responses": [
             {
-                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "sobre", "qual", "qual e"],
+                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "sobre", "qual", "qual e", "setimo", "sétimo", "sétimo planeta", "setimo planeta do sistema solar", "planeta gelado", "gigante de gelo", "planeta mais frio", "mais frio"],
                 "text": (
-                    "Urano é o sétimo planeta do sistema solar e o primeiro dos gigantes de gelo.\n\n"
+                    "Urano é o sétimo planeta do Sistema Solar e o primeiro dos gigantes de gelo. Também é o mais frio, com temperaturas que podem chegar a cerca de -224°C.\n\n"
                     "Tem 4 vezes o diâmetro da Terra e é composto principalmente de água, metano e amônia no estado gelado.\n\n"
+                    "O planeta recebeu esse nome por causa de Urano, o deus grego do céu, sendo o único planeta do Sistema Solar nomeado diretamente da mitologia grega, e não romana.\n\n"
                     "O metano na atmosfera absorve a luz vermelha e reflete a azul-esverdeada, por isso sua cor característica."
                 ),
                 "imagem": "img/Urano.png",
                 "followup": {
-                    "pergunta": "Urano tem uma peculiaridade única: ele gira praticamente de lado. Sabe por quê?",
+                    "pergunta": "Urano tem uma peculiaridade única: ele gira praticamente de lado. Quer entender por quê?",
                     "proxima_tag": "urano",
                     "proximo_hint": "eixo inclinado"
                 }
@@ -1233,11 +1668,36 @@ INTENTS = [
                 "match_hints": ["eixo inclinado", "gira de lado", "inclinacao", "colisao"],
                 "text": (
                     "O eixo de Urano é inclinado 98 graus em relação à sua órbita, ele praticamente rola ao redor do Sol.\n\n"
-                    "A causa mais aceita é uma colisão com um objeto do tamanho da Terra no passado distante.\n\n"
-                    "Isso cria estações extremas: cada polo fica 42 anos em luz solar contínua e 42 anos em escuridão total. Também tem 28 luas, todas batizadas com nomes de personagens de Shakespeare e Alexander Pope."
+                    "A explicação mais aceita é que ele tenha sofrido uma grande colisão com um objeto do tamanho da Terra no passado distante.\n\n"
+                    "Essa inclinação extrema cria estações únicas, cada polo passa cerca de 42 anos em luz contínua, seguidos por 42 anos de escuridão.\n\n"
                 ),
-                "imagem": "img/urano-eixo.jpg",
                 "followup": {
+                    "pergunta": "Urano também tem bastantes luas. Quer conhecer mais sobre elas?",
+                    "proxima_tag": "urano",
+                    "proximo_hint": "luas de urano"
+                }
+            },
+            {
+                "match_hints": ["luas", "numero de luas de urano", "luas de urano"],
+                "text": (
+                    "Urano possui 28 luas conhecidas, com nomes inspirados em personagens das obras de Shakespeare e Alexander Pope.\n\n"
+                    "As maiores são Titânia, Oberon, Umbriel, Ariel e Miranda. Miranda é especialmente interessante por suas formações geológicas extremas, como falésias de até 20 km de altura e regiões com terreno caótico, sugerindo um passado geologicamente ativo."
+                ),
+                "imagem": "img/luas-urano.jpeg",
+                "followup": {
+                    "pergunta": "Assim como Saturno, Urano tem um sistema de anéis. Quer conhecer mais sobre eles?",
+                    "proxima_tag": "urano",
+                    "proximo_hint": "anéis de urano"
+                }
+            },
+            {
+                "match_hints": ["anéis de urano", "aneis de urano", "sistema de anéis"],
+                "text": (
+                    "Urano também tem anéis, embora sejam muito mais tênues e escuros que os de Saturno.\n\n"
+                    "Eles foram descobertos em 1977 e são compostos principalmente de partículas de gelo e rocha. Esses anéis são muito finos, com espessura de apenas alguns metros, e acredita-se que sejam relativamente jovens, formados por detritos de luas destruídas por impactos ou forças de maré."
+                ),
+                    "imagem": "img/aneis-urano.jpg",
+                    "followup": {
                     "pergunta": "Quer conhecer Netuno, o planeta mais distante e ventoso do sistema solar?",
                     "proxima_tag": "netuno",
                     "proximo_hint": "o que e"
@@ -1253,15 +1713,16 @@ INTENTS = [
         "tag": "netuno",
         "patterns": [
             "netuno", "planeta netuno", "sobre netuno",
-            "planeta mais distante", "tritao lua",
-            "oitavo planeta", "oitavo planeta do sistema solar", "planeta ventoso", "gigante de gelo netuno", "planeta azul escuro", "planeta mais distante do sistema solar"
+            "planeta mais distante", "tritao", "oitavo",
+            "oitavo planeta", "oitavo planeta do sistema solar", "planeta ventoso", "gigante de gelo netuno", "planeta azul escuro", "planeta mais distante do sistema solar", "aneis de netuno", "luas de netuno", "numero de luas de netuno", "mais distante", "mais distante do sol", "mais longe do sol", "mais lento", "planeta mais lento"
         ],
         "responses": [
             {
-                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "sobre", "qual", "qual e"],
+                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "sobre", "qual", "qual e", "oitavo planeta", "planeta mais distante", "planeta azul escuro", "planeta mais distante do sistema solar", "planeta mais distante do sol", "planeta mais longe do sol", "mais distante", "mais distante do sol", "mais longe do sol", "mais lento", "planeta mais lento"],
                 "text": (
                     "Netuno é o oitavo e mais distante planeta do sistema solar.\n\n"
-                    "Fica a 30 vezes a distância Terra-Sol e leva 165 anos terrestres para completar uma órbita.\n\n"
+                    "Ele fica a cerca de 30 vezes a distância entre a Terra e o Sol e leva 165 anos terrestres para completar uma órbita, sendo o planeta mais lento do Sistema Solar\n\n"
+                    "O planeta recebeu esse nome por causa de Netuno, o deus romano dos mares, devido à sua cor azul intensa, que lembra os oceanos.\n\n"
                     "É um gigante de gelo azul-escuro, com ventos de até 2.100 km/h, os mais rápidos do sistema solar. A NASA visitou Netuno apenas uma vez, com a Voyager 2 em 1989."
                 ),
                 "imagem": "img/Netuno.png",
@@ -1272,13 +1733,25 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["tritao", "tritão", "lua de netuno", "lua retrograda"],
+                "match_hints": ["tritao", "tritão", "luas", "numero de luas de netuno", "luas de netuno", "quantas luas tem netuno", "lua retrograda"],
                 "text": (
-                    "Tritão é a maior lua de Netuno e tem uma característica única: orbita no sentido contrário à rotação de Netuno.\n\n"
+                    "Netuno possui 14 luas conhecidas, mas a mais famosa é Tritão, a maior delas. O que torna Tritão tão peculiar é que ele orbita Netuno no sentido contrário à rotação do planeta, um movimento chamado de órbita retrógrada.\n\n"
                     "Isso sugere que ele foi capturado pelo campo gravitacional de Netuno e não se formou junto com o planeta.\n\n"
                     "Tritão tem temperatura de -235°C e geysers de nitrogênio na superfície, os mais frios já observados no sistema solar. Com o tempo, a órbita de Tritão vai decair e ele será destruído pelas forças de maré, formando um anel."
                 ),
                 "imagem": "img/tritao.jpg",
+                "followup": {
+                    "pergunta": "Netuno tem um sistema de anéis tênues, assim como Urano. Quer conhecer mais sobre eles?",
+                    "proxima_tag": "netuno",
+                    "proximo_hint": "anéis de netuno"
+                }
+            },
+            {
+                "match_hints": ["aneis de netuno", "sistema de aneis"],
+                "text": (
+                    "Netuno também posui um sistema de anéis tênues, compostos principalmente de partículas de gelo e rocha.\n\n"
+                    "Esses anéis são muito finos, com espessura de apenas alguns metros, e acredita-se que sejam relativamente jovens, formados por detritos de luas destruídas por impactos ou forças de maré.\n\n"
+                ),
                 "followup": {
                     "pergunta": "Além dos 8 planetas, existe Plutão e o cinturão de Kuiper. Quer explorar as fronteiras do sistema solar?",
                     "proxima_tag": "plutao",
@@ -1301,6 +1774,7 @@ INTENTS = [
                 "text": (
                     "Plutão foi considerado o nono planeta por 76 anos, até ser rebaixado a planeta anão em 2006.\n\n"
                     "Isso se deve ao fato de ele compartilhar a órbita com muitos outros objetos no Cinturão de Kuiper e não ter limpado sua órbita.\n\n"
+                    "O nome Plutão vem do deus romano do submundo, associado à escuridão e ao frio, o que combina com sua localização distante e gelada.\n\n"
                     "Plutão tem 2.377 km de diâmetro, menor que a Lua. A missão New Horizons da NASA fez o sobrevoo histórico em 2015 e revelou montanhas de gelo e um coração gelado na superfície."
                 ),
                 "imagem": "img/Plutão.png",
@@ -1348,8 +1822,7 @@ INTENTS = [
         "tag": "exoplanetas",
         "patterns": [
             "exoplaneta", "exoplanetas", "o que e exoplaneta",
-            "planetas fora do sistema solar", "trappist", "kepler",
-            "planeta habitavel", "zona habitavel", "goldilocks"
+            "planetas fora do sistema solar", "trappist", "trappist-1", "kepler", "planeta habitavel", "zona habitavel", "goldilocks", "detecta", "planetas distantes"
         ],
         "responses": [
             {
@@ -1357,9 +1830,8 @@ INTENTS = [
                 "text": (
                     "Exoplanetas são planetas que orbitam outras estrelas, fora do nosso sistema solar.\n\n"
                     "A NASA confirmou mais de 5.700 deles e estima que cada estrela da galáxia tenha em média um planeta.\n\n"
-                    "Isso significa centenas de bilhões de planetas só na Via Láctea."
+                    "Isso significa centenas de bilhões de planetas só na Via Láctea.\n\n"
                 ),
-                "imagem": "img/exoplanetas.jpg",
                 "followup": {
                     "pergunta": "Como detectamos planetas a anos-luz de distância sem conseguir vê-los diretamente?",
                     "proxima_tag": "exoplanetas",
@@ -1367,13 +1839,12 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["como detecta", "metodo", "transito", "como encontra", "telescopio"],
+                "match_hints": ["detecta", "metodo", "transito", "como encontra", "distantes", "telescopio"],
                 "text": (
                     "O método mais usado é o de trânsito: quando um planeta passa na frente da estrela, a luz dela diminui ligeiramente.\n\n"
                     "O telescópio Kepler usou esse método e encontrou mais de 2.600 planetas.\n\n"
-                    "O James Webb Space Telescope vai além e consegue analisar a atmosfera dos exoplanetas. Ao filtrar a luz da estrela que passa pela atmosfera do planeta, identifica moléculas como água, metano ou CO₂."
+                    "O James Webb Space Telescope vai além e consegue analisar a atmosfera dos exoplanetas. Ao filtrar a luz da estrela que passa pela atmosfera do planeta, identifica moléculas como água, metano ou CO₂.\n\n"
                 ),
-                "imagem": "img/transito-exoplaneta.jpg",
                 "followup": {
                     "pergunta": "Quer saber sobre o sistema TRAPPIST-1, um dos candidatos mais promissores à vida fora da Terra?",
                     "proxima_tag": "exoplanetas",
@@ -1381,13 +1852,12 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["trappist", "sistema trappist", "trappist-1"],
+                "match_hints": ["trappist", "sistema", "sistema trappist", "sistema trappist-1","trappist-1"],
                 "text": (
                     "TRAPPIST-1 é um sistema a 40 anos-luz da Terra com 7 planetas rochosos do tamanho da Terra.\n\n"
                     "Três deles estão na zona habitável, a distância ideal da estrela para ter água líquida na superfície.\n\n"
-                    "A estrela é uma anã vermelha fria, muito menor que o Sol. O James Webb já detectou que pelo menos um dos planetas pode ter atmosfera, uma descoberta histórica."
+                    "A estrela é uma anã vermelha fria, muito menor que o Sol. O James Webb já detectou que pelo menos um dos planetas pode ter atmosfera, uma descoberta histórica.\n\n"
                 ),
-                "imagem": "img/trappist.jpg",
                 "followup": {
                     "pergunta": "Quer entender o que é a zona habitável e por que ela é crucial na busca por vida?",
                     "proxima_tag": "exoplanetas",
@@ -1399,9 +1869,8 @@ INTENTS = [
                 "text": (
                     "A zona habitável, ou Goldilocks Zone, é a faixa de distância de uma estrela onde a água pode existir líquida na superfície.\n\n"
                     "Nem quente demais, nem fria demais. Mas estar nessa zona não garante vida.\n\n"
-                    "Vênus está na zona habitável do Sol e é um inferno de 465°C. O que importa é a combinação de atmosfera, composição e geologia."
+                    "Vênus está na zona habitável do Sol e é um inferno de 465°C. O que importa é a combinação de atmosfera, composição e geologia.\n\n"
                 ),
-                "imagem": "img/zona-habitavel.jpg",
                 "followup": {
                     "pergunta": "Quer explorar a possibilidade de vida extraterrestre de forma mais ampla?",
                     "proxima_tag": "vida_extraterrestre",
@@ -1423,13 +1892,12 @@ INTENTS = [
         ],
         "responses": [
             {
-                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "somos sozinhos", "existe"],
+                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "somos sozinhos", "existe", "vida no universo", "vida extraterrestre"],
                 "text": (
                     "A questão da vida extraterrestre é uma das mais profundas da ciência.\n\n"
                     "Matematicamente, parece impossível que sejamos sozinhos. Existem mais estrelas no universo observável do que grãos de areia em todas as praias da Terra.\n\n"
-                    "A NASA catalogou mais de 5.700 exoplanetas, muitos em zonas habitáveis."
+                    "A NASA catalogou mais de 5.700 exoplanetas, muitos em zonas habitáveis.\n\n"
                 ),
-                "imagem": "img/vida-extraterrestre.jpg",
                 "followup": {
                     "pergunta": "O Paradoxo de Fermi pergunta: se há tanta possibilidade, onde estão todos? Quer explorar?",
                     "proxima_tag": "vida_extraterrestre",
@@ -1441,23 +1909,23 @@ INTENTS = [
                 "text": (
                     "Em 1950, o físico Enrico Fermi fez uma pergunta simples: onde estão todos?\n\n"
                     "O universo é velho e enorme. Se vida inteligente é comum, deveríamos ter detectado sinais.\n\n"
-                    "Algumas hipóteses para o silêncio: talvez vida inteligente seja rara, ou civilizações se autodestruam, ou as distâncias são grandes demais para comunicação."
+                    "Algumas hipóteses para o silêncio: talvez vida inteligente seja rara, ou civilizações se autodestruam, ou as distâncias são grandes demais para comunicação.\n\n"
                 ),
-                "imagem": "img/paradoxo-fermi.jpg",
                 "followup": {
-                    "pergunta": "Onde no sistema solar buscamos vida hoje?",
+                    "pergunta": "Marte, Europa e Encélado são os candidatos mais promissores à vida microbiana. Quer saber por quê?",
                     "proxima_tag": "vida_extraterrestre",
                     "proximo_hint": "onde buscar"
                 }
             },
             {
-                "match_hints": ["onde buscar", "marte", "europa", "enceladus", "candidatos"],
+                "match_hints": ["onde buscar", "marte", "europa", "enceladus", "candidatos", "candidatos mais promissores", "candidatos a vida", "candidatos a vida extraterrestre", "vida microbiana"],
                 "text": (
                     "Os candidatos mais promissores à vida estão bem perto de nós.\n\n"
                     "Marte: o rover Perseverance coleta amostras de antigas regiões lacustres em busca de biossinaturas.\n\n"
-                    "Europa, lua de Júpiter, tem um oceano líquido debaixo do gelo, aquecido por forças de maré, com condições favoráveis à vida microbiana. Encélado, lua de Saturno, jorra vapor de água com compostos orgânicos para o espaço."
+                    "Europa, lua de Júpiter, tem um oceano líquido debaixo do gelo, aquecido por forças de maré, com condições favoráveis à vida microbiana.\n\n"
+                    "Encélado, lua de Saturno, jorra vapor de água com compostos orgânicos para o espaço."
                 ),
-                "imagem": ["img/europa-oceano.jpg", "img/enceladus-jato.jpg"],
+                "imagem": "img/luas-vida.png",
                 "followup": {
                     "pergunta": "Se encontrarmos apenas vida microbiana, isso mudaria tudo o que sabemos. Quer entender por quê?",
                     "proxima_tag": "vida_extraterrestre",
@@ -1469,9 +1937,8 @@ INTENTS = [
                 "text": (
                     "Encontrar qualquer forma de vida fora da Terra, mesmo uma bactéria, seria a maior descoberta científica da história.\n\n"
                     "Significaria que a vida não é um acidente único da Terra, mas um fenômeno universal.\n\n"
-                    "Implicaria que o universo está provavelmente repleto de vida em diferentes formas. A NASA e a ESA buscam ativamente biossinaturas, moléculas ou padrões que indiquem processos biológicos."
+                    "Implicaria que o universo está provavelmente repleto de vida em diferentes formas. A NASA e a ESA buscam ativamente biossinaturas, moléculas ou padrões que indiquem processos biológicos.\n\n"
                 ),
-                "imagem": "img/biossinatura.jpg",
                 "followup": {
                     "pergunta": "Quer explorar outro tema? Posso falar sobre buracos negros, galáxias, o Big Bang ou qualquer planeta.",
                     "proxima_tag": None,
@@ -1487,10 +1954,9 @@ INTENTS = [
     {
         "tag": "cometas_asteroides",
         "patterns": [
-            "cometa", "cometas", "asteroide", "asteroides", "meteoro", "meteoros",
-            "meteorito", "meteoritos", "diferenca cometa asteroide",
+            "cometa", "cometas", "asteroide", "asteroides", "meteoro", "meteoros", "meteorito", "meteoritos", "diferenca cometa asteroide",
             "chuva de meteoros", "estrela cadente", "chuva de estrelas",
-            "missao dart", "cinturao de asteroides"
+            "missao dart", "cinturao de asteroides", "extinção dos dinossauros", 
         ],
         "responses": [
             {
@@ -1498,7 +1964,6 @@ INTENTS = [
                 "text": (
                     "Asteroide é uma rocha que orbita o Sol, geralmente no cinturão entre Marte e Júpiter.\n\n"
                 ),
-                "imagem": "img/asteroide.jpg",
                 "followup": {
                     "pergunta": "Quer saber sobre o asteroide que extinguiu os dinossauros?",
                     "proxima_tag": "cometas_asteroides",
@@ -1510,7 +1975,6 @@ INTENTS = [
                 "text": (
                     "Cometa é uma bola de gelo, rocha e poeira com órbita alongada. Quando se aproxima do Sol, forma a cauda brilhante.\n\n"
                 ),
-                "imagem": "img/cometa.jpg",
                 "followup": {
                     "pergunta": "Quer saber mais sobre o Cinturão de Asteroides, onde a maioria desses corpos orbita?",
                     "proxima_tag": "cometas_asteroides",
@@ -1523,7 +1987,6 @@ INTENTS = [
                     "Meteoro é um fragmento que entra na atmosfera e queima, criando o rastro de luz que chamamos de estrela cadente.\n\n"
                     "Meteorito é quando um fragmento sobrevive e chega ao solo.\n\n" 
                 ),
-                "imagem": "img/meteoro.jpg",
                 "followup": {
                     "pergunta": "Quer saber mais sobre o Cinturão de Asteroides, onde a maioria desses corpos orbita?",
                     "proxima_tag": "cometas_asteroides",
@@ -1531,13 +1994,13 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["dinossauros", "extincao", "impacto", "chicxulub"],
+                "match_hints": ["dinossauros", "extincao", "impacto", "chicxulub", "extinção dos dinossauros"],
                 "text": (
                     "Há 66 milhões de anos, um asteroide de cerca de 10 km colidiu na região do atual México, criando a cratera de Chicxulub.\n\n"
                     "O impacto liberou uma energia bilhões de vezes maior que qualquer bomba nuclear.\n\n"
                     "Incêndios globais, uma camada de fumaça bloqueando o Sol e um inverno castigoso resultaram na extinção de 76% das espécies. Essa extinção abriu espaço para os mamíferos e eventualmente para nós."
                 ),
-                "imagem": "img/chicxulub.jpg",
+                "imagem": "img/craterachicxulub.png",
                 "followup": {
                     "pergunta": "Quer saber mais sobre o Cinturão de Asteroides, onde a maioria desses corpos orbita?",
                     "proxima_tag": "cometas_asteroides",
@@ -1565,7 +2028,7 @@ INTENTS = [
                     "O objetivo era testar se conseguimos alterar a órbita de um asteroide e funcionou.\n\n"
                     "A órbita de Dimorphos encurtou em 32 minutos, muito mais do que o esperado. Foi o primeiro teste real de defesa planetária da humanidade. A NASA monitora mais de 2.000 asteroides potencialmente perigosos com o Planetary Defense Coordination Office."
                 ),
-                "imagem": "img/missao-dart.jpg",
+                "imagem": "img/dart.jpeg",
                 "followup": {
                     "pergunta": "Quer explorar outro tema? Posso falar sobre buracos negros, planetas ou o Big Bang.",
                     "proxima_tag": None,
@@ -1583,17 +2046,17 @@ INTENTS = [
         "patterns": [
             "relatividade", "einstein", "espaco tempo", "espaço tempo",
             "curvatura", "dilatacao do tempo", "dilatação do tempo",
-            "velocidade da luz", "wormhole", "buraco de minhoca", "viagem no tempo"
+            "velocidade da luz", "wormhole", "buraco de minhoca", "viagem no tempo", "outras dimensoes", "dimensoes", "como astronautas se orientam", "orientacao no espaco",
         ],
         "responses": [
             {
                 "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "relatividade", "einstein"],
                 "text": (
-                    "Einstein propôs que espaço e tempo não são fixos: eles formam um tecido único chamado espaço-tempo.\n\n"
+                    "Einstein propôs que espaço e tempo não são fixos, eles formam um tecido único chamado espaço-tempo.\n\n"
                     "Massa e energia curvam esse tecido, e essa curvatura é o que chamamos de gravidade.\n\n"
                     "O GPS do seu celular depende de correções relativísticas. Sem elas, erraria mais de 10 km por dia, pois os satélites em órbita estão num campo gravitacional menor e o tempo passa mais rápido para eles."
                 ),
-                "imagem": "img/espaco-tempo.jpg",
+                "imagem": "img/teoria-relatividade.jpg",
                 "followup": {
                     "pergunta": "Quer entender a dilatação do tempo, como o tempo pode passar em velocidades diferentes?",
                     "proxima_tag": "espaco_tempo",
@@ -1605,27 +2068,53 @@ INTENTS = [
                 "text": (
                     "A dilatação do tempo é real e foi medida experimentalmente.\n\n"
                     "Relógios atômicos em aviões de alta altitude mostram diferença mensurável em relação aos do solo.\n\n"
-                    "Se você viajasse a 99,9% da velocidade da luz por um ano, voltaria para encontrar décadas passadas na Terra. Não é ficção científica. É a relatividade especial de Einstein, confirmada inúmeras vezes."
+                    "Se você viajasse a 99,9% da velocidade da luz por um ano, voltaria para encontrar décadas passadas na Terra. Não é ficção científica. É a relatividade especial de Einstein, confirmada inúmeras vezes.\n\n"
                 ),
-                "imagem": "img/dilatacao-tempo.jpg",
                 "followup": {
-                    "pergunta": "Wormholes seriam atalhos no espaço-tempo. Eles poderiam existir de verdade?",
+                    "pergunta": "Buracos de minhoca seriam atalhos no espaço-tempo. Eles poderiam existir de verdade?",
                     "proxima_tag": "espaco_tempo",
-                    "proximo_hint": "wormhole"
+                    "proximo_hint": "buraco de minhoca"
                 }
             },
             {
-                "match_hints": ["wormhole", "buraco de minhoca", "atalho", "viagem no tempo"],
+                "match_hints": ["wormhole", "buraco de minhoca", "O que e um buraco de minhoca", "buracos de minhoca", "atalho", "viagem no tempo"],
                 "text": (
-                    "Wormholes são matematicamente permitidos pelas equações da Relatividade Geral.\n\n"
-                    "Seriam pontes conectando dois pontos distantes do espaço-tempo.\n\n"
-                    "O problema: para existir de forma estável, precisariam de energia exótica com pressão negativa. Não temos evidência de que isso existe na natureza. Viagem no tempo para o futuro é possível pela dilatação do tempo. Para o passado, ainda é especulação teórica."
+                    "Buracos de minhoca são estruturas previstas pelas equações da Relatividade Geral.\n\n"
+                    "Em teoria, funcionariam como atalhos, conectando dois pontos distantes do espaço-tempo.\n\n"
+                    "O problema é que para existir de forma estável, precisariam de energia exótica com pressão negativa. Não temos evidência de que isso existe na natureza.\n\n"
+                    "Já a viagem no tempo para o futuro é possível por efeitos como a dilatação do tempo. Para o passado, porém, ainda permanece no campo da especulação teórica."
                 ),
-                "imagem": "img/wormhole.jpg",
+                "imagem": ["img/ponte-de-einstein-rosen.jpg", "img/wormhole.jpg"],
+                "followup": {
+                    "pergunta": "Quer explorar as teorias que propõem mais dimensões além das quatro que conhecemos?",
+                    "proxima_tag": "espaco_tempo",
+                    "proximo_hint": "outras dimensoes"
+                }
+            },
+            {
+                "match_hints": ["outras dimensoes", "dimensoes extras", "dimensoes alem das quatro", "superstring", "supercorda"],
+                "text": (
+                    "Além das quatro dimensões que conhecemos (comprimento, altura, profundidade e tempo), teorias modernas propõem muito mais.\n\n"
+                    "A teoria das supercordas prevê 10 dimensões. As dimensões extras seriam compactadas em escalas menores que um átomo, invisíveis para nós.\n\n"
+                    "Ainda não temos evidências experimentais dessas dimensões extras. O Grande Colisor de Hádrons (LHC) do CERN busca sinais indiretos delas em colisões de partículas.\n\n"
+                ),
                 "followup": {
                     "pergunta": "Quer explorar outro tema? Posso falar sobre buracos negros, galáxias ou o Big Bang.",
                     "proxima_tag": None,
                     "proximo_hint": None
+                }
+            },
+            {
+                "match_hints": ["como astronautas se orientam", "orientacao no espaco", "bussola no espaco", "gps no espaco", "navegacao espacial"],
+                "text": (
+                    "No espaço, bússolas não funcionam pois não há campo magnético uniforme. A orientação é feita com sensores estelares.\n\n"
+                    "Esses sensores identificam a posição relativa da nave em relação às estrelas e ao Sol. Em órbita da Terra, o GPS ainda funciona. Além dela, não.\n\n"
+                    "Em missões mais distantes, as naves usam a posição do Sol, da Terra e de estrelas de referência para calcular a localização. A Voyager 1, hoje a mais de 22 bilhões de km da Terra, ainda é rastreada com precisão por esse método.\n\n"
+                ),
+                "followup": {
+                    "pergunta": "Quer entender como a gravidade e a curvatura do espaço-tempo afetam a trajetória de naves e objetos no universo?",
+                    "proxima_tag": "espaco_tempo",
+                    "proximo_hint": "o que"
                 }
             }
         ]
@@ -1642,15 +2131,14 @@ INTENTS = [
         ],
         "responses": [
             {
-                "match_hints": ["o que", "o que e", "signific", "defin", "conceito"],
+                "match_hints": ["o que", "o que e", "signific", "defin", "conceito", "ano-luz", "ano luz", "distancia no espaco", "como medir distancia", "quanto e um ano luz"],
                 "text": (
                     "Um ano-luz é a distância que a luz percorre em um ano, equivalente a aproximadamente 9,46 trilhões de quilômetros.\n\n"
                     "A estrela mais próxima da Terra, Proxima Centauri, fica a 4,24 anos-luz. Isso significa que a luz que sai dela leva mais de 4 anos para chegar aqui.\n\n"
-                    "Quando você olha para o céu, está vendo o passado."
+                    "Quando você olha para o céu, está vendo o passado.\n\n"
                 ),
-                "imagem": "img/proxima-centauri.jpg",
                 "followup": {
-                    "pergunta": "Por que a velocidade da luz é um limite para o universo?",
+                    "pergunta": "Já parou pra pensar por que a velocidade da luz é um limite?",
                     "proxima_tag": "ano_luz",
                     "proximo_hint": "limite da luz"
                 }
@@ -1660,69 +2148,12 @@ INTENTS = [
                 "text": (
                     "A velocidade da luz, cerca de 300 mil km/s, é o limite de velocidade do universo.\n\n"
                     "Não por convenção, mas porque a física impõe isso. À medida que um objeto acelera, sua massa aumenta relativisticamente.\n\n"
-                    "Para atingir a velocidade da luz, precisaria de energia infinita, o que é impossível. Só partículas sem massa, como fótons, conseguem viajar à velocidade da luz."
+                    "Para atingir a velocidade da luz, precisaria de energia infinita, o que é impossível. Só partículas sem massa, como fótons, conseguem viajar à velocidade da luz.\n\n"
                 ),
-                "imagem": "img/velocidade-luz.jpg",
                 "followup": {
                     "pergunta": "Quer entender a dilatação do tempo, o que acontece quando você chega perto dessa velocidade?",
                     "proxima_tag": "espaco_tempo",
                     "proximo_hint": "dilatacao do tempo"
-                }
-            }
-        ]
-    },
-
-    # -------------------------------------------------------------------------
-    # SISTEMA SOLAR (geral)
-    # -------------------------------------------------------------------------
-    {
-        "tag": "sistema_solar",
-        "patterns": [
-            "sistema solar", "nosso sistema solar", "como se formou o sistema solar",
-            "origem do sistema solar", "quantos planetas tem o sistema solar",
-            "orbita dos planetas", "sol e planetas"
-        ],
-        "responses": [
-            {
-                "match_hints": ["o que", "o que e", "defin", "conceito", "explica", "como se formou", "origem"],
-                "text": (
-                    "O sistema solar se formou há 4,6 bilhões de anos a partir de uma nuvem de gás e poeira chamada nebulosa solar.\n\n"
-                    "A gravidade fez a nuvem colapsar. O centro concentrou 99,8% da massa e virou o Sol.\n\n"
-                    "O restante formou um disco giratório de onde surgiram os planetas, luas, asteroides e cometas. Hoje temos 8 planetas oficiais. Plutão foi rebaixado a planeta anão em 2006."
-                ),
-                "imagem": "img/sistema-solar.jpg",
-                "followup": {
-                    "pergunta": "Quer explorar os planetas um a um, começando pelo mais próximo do Sol?",
-                    "proxima_tag": "mercurio",
-                    "proximo_hint": "o que e"
-                }
-            },
-            {
-                "match_hints": ["composicao", "massa", "sol", "jupiter", "cinturao"],
-                "text": (
-                    "O Sol contém 99,8% de toda a massa do sistema solar.\n\n"
-                    "Júpiter, o maior planeta, tem mais massa do que todos os outros planetas juntos.\n\n"
-                    "Entre Marte e Júpiter existe o Cinturão de Asteroides, com milhões de rochas. Além de Netuno começa o Cinturão de Kuiper, onde Plutão orbita junto com outros objetos gelados."
-                ),
-                "imagem": "img/sistema-solar-composicao.jpg",
-                "followup": {
-                    "pergunta": "Quer saber como os planetas se movem e por que não saem de suas órbitas?",
-                    "proxima_tag": "sistema_solar",
-                    "proximo_hint": "orbitas"
-                }
-            },
-            {
-                "match_hints": ["orbitas", "orbita", "giram", "movem", "gravitacao"],
-                "text": (
-                    "Os planetas orbitam o Sol porque herdaram o movimento giratório da nebulosa que formou o sistema solar.\n\n"
-                    "Quando a nuvem de gás colapsou, ela começou a girar mais rápido, como uma bailarina que fecha os braços.\n\n"
-                    "A gravidade do Sol os mantém em órbita: a força centrífuga e a atração gravitacional se equilibram perfeitamente. Esse equilíbrio é tão estável que os planetas orbitam assim há 4,6 bilhões de anos."
-                ),
-                "imagem": "img/orbitas-planetas.jpg",
-                "followup": {
-                    "pergunta": "Quer conhecer algum planeta específico ou explorar outros temas?",
-                    "proxima_tag": None,
-                    "proximo_hint": None
                 }
             }
         ]
