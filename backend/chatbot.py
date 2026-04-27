@@ -197,7 +197,19 @@ def get_response(user_input: str, sessao_id: str, followup_pendente=None) -> dic
         ultimo_tema = buscar_ultimo_tema(sessao_id)
         candidatos = [t for t in _TAGS_SORTEAVEIS if t != ultimo_tema]
         resultado = get_response_for_tag(random.choice(candidatos))
-        resultado["text"] = "Vou te surpreender com um tema!\n\n" + resultado["text"]
+
+        aberturas = [
+            "Vou te surpreender com um tema!\n\n",
+            "Deixa comigo, olha isso:\n\n",
+            "Olha que interessante:\n\n",
+            "Esse é interessante:\n\n",
+            "Se liga nisso:\n\n",
+            "Você vai curtir esse:\n\n",
+            "Esse aqui é bem interessante:\n\n",
+            "Esse aqui é bem maneiro:\n\n"
+        ]
+
+        resultado["text"] = random.choice(aberturas) + resultado["text"]
         return resultado
  
     # 2. Followup pendente
