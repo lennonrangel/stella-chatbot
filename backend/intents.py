@@ -1577,7 +1577,7 @@ INTENTS = [
         "patterns": [
             "saturno", "planeta saturno", "sobre saturno",
             "aneis de saturno", "anéis de saturno", "titan lua", "sexto", 
-            "sexto planeta", "sexto planeta do sistema solar", "segundo maior planeta", "segundo maior planeta do sistema solar", "gigante gasoso", "luas de saturno", "numero de luas de saturno", "planeta com mais luas", "aneis de saturno", "de que sao feitos os aneis de saturno", "mais anéis", "planeta com mais aneis", "planeta com mais anéis"
+            "sexto planeta", "sexto planeta do sistema solar", "segundo maior planeta", "segundo maior planeta do sistema solar", "gigante gasoso", "luas de saturno", "numero de luas de saturno", "planeta com mais luas", "tem mais luas", "mais luas", "aneis de saturno", "de que sao feitos os aneis de saturno", 
         ],
         "responses": [
             {
@@ -1609,7 +1609,7 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["luas", "luas de saturno", "numero de luas de saturno", "planeta com mais luas"],
+                "match_hints": ["luas", "luas de saturno", "numero de luas de saturno", "planeta com mais luas", "mais luas"],
                 "text": (
                     "Saturno é o planeta com o maior número de luas confirmadas no Sistema Solar, com um total de 274 luas conhecidas após novas descobertas anunciadas em 2025.\n\n"
                     "Essas luas variam de tamanho, sendo Titã a maior e com atmosfera densa, enquanto muitas outras são pequenas e irregulares."
@@ -2165,7 +2165,7 @@ INTENTS = [
     {
         "tag": "spacex",
         "patterns": [
-            "spacex", "space x", "empresa spacex", "elon musk spacex", "empresa de foguetes spacex", "quem criou a spacex", "o que e spacex", "o que é spacex", "o que a spacex faz", "foguetes da spacex", "falcon 9", "falcon heavy", "starship", "lancamentos da spacex", "lançamentos da spacex", "reutilizacao de foguetes", "foguete reutilizavel"
+            "spacex", "space x", "empresa spacex", "elon musk spacex", "empresa de foguetes spacex", "quem criou a spacex", "o que e spacex", "o que é spacex", "o que a spacex faz", "foguetes da spacex", "falcon 9", "falcon heavy", "starship", "lancamentos da spacex", "lançamentos da spacex", "reutilizacao de foguetes", "foguete reutilizavel", "tesla", "carro tesla"
         ],
         "responses": [
              {
@@ -2211,7 +2211,7 @@ INTENTS = [
                 }
             },
             {
-                "match_hints": ["falcon heavy", "foguete mais poderoso"],
+                "match_hints": ["falcon heavy", "foguete mais poderoso", "tesla", "roadster", "carro"],
                 "text": (
                     "O Falcon Heavy é um dos foguetes mais poderosos já construídos.\n\n"
                     "Ele usa três boosters do Falcon 9 juntos, permitindo transportar cargas extremamente pesadas para o espaço.\n\n"
