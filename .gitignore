@@ -10,10 +10,6 @@ venv/
 ENV/
 env/
 
-# Environment variables / credentials
-.env
-.env.*
-
 # Local databases
 *.db
 *.sqlite3
@@ -27,4 +23,8 @@ Desktop.ini
 
 # Commit plan
 commit_plan.md
+
+# Environment variables
+.env
+
 
