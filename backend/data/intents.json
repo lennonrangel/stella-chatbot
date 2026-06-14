@@ -1,0 +1,821 @@
+[
+  {
+    "tag": "saudacao",
+    "conteudo": [
+      {
+        "texto": "Oi! Que bom te ver por aqui. O universo é enorme e cheio de mistérios."
+      },
+      {
+        "texto": "Olá! Sou a Stella, sua guia pelo cosmos."
+      },
+      {
+        "texto": "Hey! Tô aqui prontinha pra embarcar numa viagem pelo espaço com você."
+      }
+    ]
+  },
+  {
+    "tag": "despedida",
+    "conteudo": [
+      {
+        "texto": "Até logo! Toda vez que você olhar para o céu à noite, lembra: está vendo o passado do universo."
+      },
+      {
+        "texto": "Tchau! Foi incrível explorar o cosmos com você. O universo vai continuar aqui esperando pelas suas perguntas."
+      },
+      {
+        "texto": "Até mais! Você é literalmente feito de poeira de estrelas. Pensa nisso hoje à noite."
+      }
+    ]
+  },
+  {
+    "tag": "buraco_negro",
+    "conteudo": [
+      {
+        "texto": "Um buraco negro é uma região do espaço onde a gravidade é tão intensa que nada consegue escapar, nem mesmo a luz.\n\nNão é um buraco no sentido literal, mas um ponto onde a matéria foi esmagada a densidades absurdas.\n\nPerto de um buraco negro, o espaço e o tempo são distorcidos. O tempo passa mais devagar ali, um efeito previsto pela Teoria da Relatividade Geral de Einstein.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "Um buraco negro estelar se forma quando uma estrela com mais de 20 massas solares chega ao fim da vida. Ela colapsa sobre si mesma numa supernova e o núcleo é comprimido até virar uma singularidade.\n\nJá os buracos negros supermassivos, com milhões ou bilhões de massas solares, têm origem ainda debatida pelos cientistas. A NASA acredita que podem ter se formado nos primeiros momentos do universo.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "O buraco negro no centro da Via Láctea se chama Sagitário A*. Ele tem a massa de 4 milhões de sóis comprimidos numa região menor que nosso sistema solar.\n\nEm 2022, o Event Horizon Telescope divulgou a primeira imagem real dele:",
+        "imagem": [
+          "img/sagitario-a.jpg",
+          "img/via-lactea.jpeg"
+        ]
+      }
+    ]
+  },
+  {
+    "tag": "constelacoes",
+    "conteudo": [
+      {
+        "texto": "Constelações são grupos de estrelas que, vistas da Terra, formam desenhos no céu, mesmo estando a distâncias diferentes.\n\nExistem 88 constelações oficiais que dividem todo o céu, como se fosse um mapa. Toda estrela que vemos faz parte de alguma delas.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "O Cruzeiro do Sul é a menor, porém mais famosa constelação da Via Láctea, facilmente visível no Hemisfério Sul.\n\nEle é usado há séculos para orientação, ajudando a localizar o sul no céu.",
+        "imagem": [
+          "img/cruzeiro-sul.jpg"
+        ]
+      },
+      {
+        "texto": "A constelação do Cruzeiro do Sul é o elemento central do círculo azul na bandeira brasileira, representando o céu do Rio de Janeiro em 19 de novembro de 1889 e simbolizando a localização austral do país.\n\nAlém do Brasil, outros países também têm o Cruzeiro do Sul em suas bandeiras, como Austrália, Nova Zelândia e Papua Nova Guiné, simbolizando sua posição no Hemisfério Sul.",
+        "imagem": [
+          "img/bandeira.png",
+          "img/bandeiras.png"
+        ]
+      },
+      {
+        "texto": "O Cinturão de Órion, popularmente conhecido como Três Marias, é formado por três estrelas alinhadas na constelação de Órion.\n\nSeus nomes são Alnitak, Alnilam e Mintaka. Elas estão a diferentes distâncias da Terra, variando de cerca de 800 a 2.000 anos-luz, e estão entre as estrelas mais brilhantes do céu noturno.\n\nEmbora pareçam pontos únicos no céu, Alnitak é um sistema triplo de estrelas, Alnilam é uma supergigante azul e Mintaka é um sistema quádruplo.",
+        "imagem": [
+          "img/cinturao-orion.jpg"
+        ]
+      },
+      {
+        "texto": "A Constelação de Órion é uma das mais reconhecíveis do céu e visível em quase todo o planeta.\n\nAbaixo do cinturão fica a Nebulosa de Órion, uma das regiões de formação estelar mais ativas próximas da Terra, a cerca de 1.344 anos-luz de distância.\n\nDuas das estrelas mais famosas da Constelação de Órion são Betelgeuse, uma supergigante vermelha que pode explodir em supernova em qualquer momento em escala astronômica, e Rigel, uma das estrelas mais luminosas do céu noturno.",
+        "imagem": [
+          "img/orion.png"
+        ]
+      },
+      {
+        "texto": "Betelgeuse é uma supergigante vermelha localizada no ombro da Constelação de Órion, a cerca de 700 anos-luz da Terra.\n\nEla é tão grande que, se estivesse no lugar do Sol, se estenderia até além da órbita de Júpiter\n\nEm 2019, ela escureceu de forma incomum, o que gerou especulação sobre uma supernova iminente. Os astrônomos concluíram que foi uma ejeção de massa, mas Betelgeuse está mesmo no fim da vida e vai explodir em supernova, provavelmente nos próximos 100 mil anos.\n\n",
+        "imagem": []
+      }
+    ]
+  },
+  {
+    "tag": "signos",
+    "conteudo": [
+      {
+        "texto": "Os signos do zodíaco têm origem na astronomia antiga. As civilizações observaram que o Sol parece passar por diferentes grupos de estrelas ao longo do ano.\n\nEsses grupos foram divididos em 12 constelações, que formam o zodíaco. A ideia era que a posição do Sol em relação a essas constelações no momento do nascimento de alguém influenciaria sua personalidade.\n\nA astronomia e a astrologia caminharam juntas por séculos antes de se separarem como ciência e crença.",
+        "imagem": [
+          "img/constelacoes-zodiaco.jpg"
+        ]
+      },
+      {
+        "texto": "A astronomia e a astrologia divergem em um ponto fundamental, a posição do Sol nas constelações mudou desde que o zodíaco foi criado há 2.500 anos.\n\nIsso acontece por causa da precessão dos equinócios, uma oscilação lenta do eixo da Terra. Hoje o Sol está numa constelação diferente da que a astrologia indica para cada signo.\n\nAlém disso, a astrologia usa 12 constelações, mas o Sol na verdade passa por 13, incluindo Ofiúco, que a astrologia tradicional simplesmente ignora.",
+        "imagem": [
+          "img/ofiúco.jpg"
+        ]
+      },
+      {
+        "texto": "A precessão dos equinócios é um movimento lento do eixo da Terra, parecido com o bambolear de um pião que está perdendo velocidade.\n\nUm ciclo completo leva cerca de 26.000 anos. Por causa disso, a estrela que apontamos como norte muda ao longo dos milênios. Hoje é Polaris, mas daqui a 12.000 anos será Vega.\n\nOs antigos egípcios e gregos já observavam esse fenômeno, e foi justamente essa mudança gradual que desconectou os signos astrológicos das constelações reais ao longo dos séculos.",
+        "imagem": [
+          "img/precessao.png"
+        ]
+      }
+    ]
+  },
+  {
+    "tag": "estrelas",
+    "conteudo": [
+      {
+        "texto": "Estrelas são esferas de gás, principalmente hidrogênio e hélio, que brilham por fusão nuclear.\n\nNo núcleo, a temperatura passa de 15 milhões de graus Celsius.",
+        "imagem": [
+          "img/estrelas.jpg"
+        ]
+      },
+      {
+        "texto": "Estima-se que existam mais de 10 sextilhões (10^22) de estrelas no universo observável.\n\nA NASA calcula que existem cerca de 200 a 400 bilhões de estrelas só na Via Láctea. No universo inteiro, há mais estrelas do que grãos de areia em todas as praias da Terra.\n\nUm dos aglomerados mais densos e compactos já observados é o Messier 69, localizado próximo ao centro da Via Láctea. Ele contém cerca de 1 milhão de estrelas em uma região com apenas 50 anos-luz de diâmetro.",
+        "imagem": [
+          "img/Messier_69.jpg"
+        ]
+      },
+      {
+        "texto": "Estrelas nascem em nebulosas, nuvens de gás e poeira que a gravidade vai comprimindo.\n\nQuando a pressão e a temperatura no centro ficam altas o suficiente, a fusão nuclear acende.\n\nO Sol passou por isso há 4,6 bilhões de anos. O processo de formação pode levar de 100 mil a 1 milhão de anos.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "O destino de uma estrela depende da sua massa.\n\nEstrelas como o Sol viram gigantes vermelhas, depois nebulosas planetárias e, por fim, anãs brancas.\n\nEstrelas muito massivas terminam em supernova e deixam para trás uma estrela de nêutrons ou um buraco negro. O Sol ainda tem cerca de 5 bilhões de anos de vida pela frente, segundo a NASA.",
+        "imagem": [
+          "img/ciclo-vida-estrelas.png"
+        ]
+      },
+      {
+        "texto": "Próxima Centauri é a estrela mais próxima da Terra depois do sol, localizada a cerca de 4,24 anos-luz de distância.\n\nEla é uma anã vermelha, menor e mais fria que o Sol, mas ainda assim muito ativa, com erupções frequentes.\n\nAo seu redor orbita pelo menos um planeta, Próxima Centauri b, que está na chamada zona habitável, onde poderia existir água líquida.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "Stephenson 2-18 é considerada a maior estrela já descoberta.\n\nEla é uma hipergigante vermelha com um raio cerca de 2.100 vezes maior que o do Sol.\n\nSe estivesse no lugar do Sol, sua superfície ultrapassaria a órbita de Saturno.\n\nMesmo sendo tão gigantesca, é uma estrela instável e está nos estágios finais da sua vida.",
+        "imagem": [
+          "img/Stephenson_2-18.png"
+        ]
+      },
+      {
+        "texto": "Carl Sagan dizia que somos feitos de poeira estelar, e é literalmente verdade.\n\nOs elementos químicos que formam nosso corpo, como carbono, nitrogênio, oxigênio e ferro, foram sintetizados no interior de estrelas bilhões de anos atrás.\n\nQuando essas estrelas explodiram em supernovas, espalharam esses elementos pelo espaço. Eles se juntaram para formar novos sistemas solares, planetas e, eventualmente, vida. Somos o universo tentando se compreender.\n\n",
+        "imagem": []
+      }
+    ]
+  },
+  {
+    "tag": "supernova",
+    "conteudo": [
+      {
+        "texto": "Supernova é a explosão de uma estrela massiva no fim de sua vida.\n\nEsse fenômeno libera uma energia gigantesca, dispersando elementos químicos pesados que formam novas estrelas e planetas.\n\nO ferro no seu sangue foi forjado em uma supernova.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "Quando uma estrela massiva esgota o hidrogênio no núcleo, começa a fundir elementos mais pesados.\n\nQuando chega ao ferro, a fusão deixa de gerar energia e o núcleo colapsa em menos de um segundo.\n\nA onda de choque resultante explode as camadas externas com energia absurda. Em alguns casos, a explosão libera mais energia do que o Sol vai emitir em toda a sua vida.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "Depois da explosão, o que sobra depende da massa do núcleo.\n\nSe o núcleo tiver entre 1,4 e 3 massas solares, vira uma estrela de nêutrons, incrivelmente densa.\n\nSe for maior, o colapso não para e forma um buraco negro. A Nebulosa do Caranguejo, observada em 1054, é o resquício de uma supernova ainda visível hoje.",
+        "imagem": [
+          "img/nebulosa-caranguejo.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "tag": "estrela_neutrons",
+    "conteudo": [
+      {
+        "texto": "Uma estrela de nêutrons é uma estrela extremamente densa, resultado do colapso de uma estrela massiva.\n\nElas têm a massa do Sol comprimida em apenas 20 km de diâmetro.\n\nUma colher de chá do material delas pesaria cerca de 10 milhões de toneladas. Isso acontece porque a gravidade do colapso é tão intensa que esmaga prótons e elétrons juntos, formando nêutrons.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "Quando duas estrelas de nêutrons orbitam uma à outra, elas vão se aproximando lentamente ao longo de milhões de anos.\n\nQuando finalmente colidem, liberam uma quantidade enorme de energia em ondas gravitacionais, ondulações no próprio tecido do espaço-tempo. Em 2017, o detector LIGO captou pela primeira vez esse evento, chamado kilonova.\n\nEssa colisão também forja elementos pesados como ouro, platina e urânio. O ouro da sua aliança ou do seu celular provavelmente nasceu numa colisão como essa, bilhões de anos atrás.",
+        "imagem": [
+          "img/kilonova.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "tag": "nebulosa",
+    "conteudo": [
+      {
+        "texto": "Uma nebulosa é uma grande nuvem de gás e poeira no espaço. Elas podem ter formas e cores diferentes, dependendo dos elementos presentes e da luz das estrelas ao redor.\n\nMuitas delas são chamadas de berçários estelares, pois é onde novas estrelas começam a se formar.\n\nAlgumas são densas e escuras, enquanto outras brilham intensamente, criando algumas das imagens mais impressionantes do universo.",
+        "imagem": [
+          "img/nebulosa-helix.jpg",
+          "img/nebulosa-borboleta.jpg"
+        ]
+      },
+      {
+        "texto": "A Nebulosa de Órion é uma das mais famosas e fica na constelação de Órion, localizada na nossa galáxia. Ela está situada no mesmo braço espiral que o sistema solar.\n\nEla é um dos berçários estelares mais próximos da Terra e pode até ser vista a olho nu em noites escuras.\n\nAli, novas estrelas estão se formando ativamente.",
+        "imagem": [
+          "img/Orion_Nebula.jpg"
+        ]
+      },
+      {
+        "texto": "Existem diferentes tipos de nebulosas.\n\nAlgumas são regiões de nascimento de estrelas, outras são restos de explosões de supernovas, e também existem as chamadas nebulosas planetárias, formadas quando estrelas como o Sol chegam ao fim da vida.\n\nCada tipo mostra uma fase diferente da vida das estrelas.",
+        "imagem": [
+          "img/cassiopeia-a.jpg"
+        ]
+      },
+      {
+        "texto": "A Nebulosa de Hélix (NGC 7293), também conhecida como \"Olho de Deus\" ou \"Olho de Sauron\", é uma nebulosa planetária localizada na constelação de Hélix.\n\nEla é formada por uma estrela que explodiu como supernova e deixou para trás uma camada de gás e poeira que se expande no espaço.",
+        "imagem": [
+          "img/nebulosa-helix.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "tag": "galaxias",
+    "conteudo": [
+      {
+        "texto": "Galáxias são sistemas de estrelas, gás, poeira e matéria escura mantidos unidos pela gravidade.\n\nA maioria das grandes galáxias, incluindo a Via Láctea, tem um buraco negro central supermassivo.\n\nExistem em formas diferentes: espirais, elípticas e irregulares.",
+        "imagem": [
+          "img/tipos-galaxias.jpg"
+        ]
+      },
+      {
+        "texto": "As galáxias formaram-se há mais de 10 bilhões de anos, logo após o Big Bang, através do colapso gravitacional de nuvens gigantescas de gás (hidrogênio e hélio) e matéria escura.\n\nO crescimento ocorreu de forma hierárquica, com galáxias menores colidindo e se fundindo para formar galáxias maiores.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "A Via Láctea é uma galáxia espiral barrada, com um núcleo em forma de barra e braços espirais saindo.\n\nO sistema solar fica num dos braços, a cerca de 26 mil anos-luz do centro.",
+        "imagem": [
+          "img/via-lactea-terra.jpg"
+        ]
+      },
+      {
+        "texto": "A Galáxia de Andrômeda é a galáxia mais próxima da Via Láctea. Ela está a 2,5 milhões de anos-luz da Terra e se aproxima da Via Láctea a cerca de 110 km por segundo.\n\nDaqui a 4,5 bilhões de anos, as duas vão colidir e fundir numa galáxia elíptica gigante. Mas não precisa se preocupar, o espaço entre as estrelas é tão vasto que quase nenhuma vai realmente bater em outra.",
+        "imagem": [
+          "img/andromeda.jpg"
+        ]
+      },
+      {
+        "texto": "Estima-se que existam cerca de 2 trilhões de galáxias no universo observável.\n\nEsse número é uma projeção baseada em imagens de campo profundo feitas por telescópios como o Hubble e o James Webb, que analisam pequenas áreas do céu e extrapolam para todo o cosmos.\n\nEstudos recentes indicam que até 90% dessas galáxias ainda não foram observadas diretamente.",
+        "imagem": [
+          "img/galaxias.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "tag": "big_bang",
+    "conteudo": [
+      {
+        "texto": "A teoria do Big Bang é a explicação mais aceita para a origem do nosso Universo.\n\nDe acordo com essa hipótese, todos os elementos conhecidos e desconhecidos que estão presentes no espaço vieram de um único ponto de altíssima temperatura e densidade infinita que era chamado então de “átomo primordial”.\n\nHá aproximadamente 13,8 bilhões de anos, esse único ponto começou a se inflar, por uma pequena fração de tempo, e “explodiu” logo na sequência, isto é, começou o seu processo de expansão, que continua até o presente.",
+        "imagem": [
+          "img/big-bang.png"
+        ]
+      },
+      {
+        "texto": "O Big Bang aconteceu há bilhões de anos, mas deixou sinais que ainda conseguimos observar hoje.\n\nUm dos principais sinais é a radiação cósmica de fundo. Em 1965, cientistas detectaram um sinal de micro-ondas vindo de todas as direções do céu. Esse sinal é uma luz muito antiga, formada quando o universo era extremamente quente. \n\nOutro sinal é a expansão do universo. As galáxias estão se afastando umas das outras. Isso mostra que o universo está aumentando de tamanho. Ao analisar esse movimento ao contrário, tudo aponta para um passado em que estava muito mais concentrado.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "O tempo surgiu junto com o universo. Perguntar o que havia antes é como perguntar o que está ao sul do Polo Sul. A resposta é: nada, pois o próprio conceito de direção (ou tempo) começa ali.\n\nAlgumas teorias propõem um universo cíclico, ou um multiverso onde nosso universo seria apenas um bolso de espuma quântica. Mas são especulações e ainda não temos como testá-las.\n\n",
+        "imagem": []
+      }
+    ]
+  },
+  {
+    "tag": "destino_universo",
+    "conteudo": [
+      {
+        "texto": "O universo está se expandindo, e cada vez mais rápido, empurrado pela energia escura.\n\nO cenário mais aceito hoje é o Big Freeze, ou Grande Congelamento.\n\nDaqui a trilhões de anos, as estrelas vão se apagar, os buracos negros vão evaporar e o universo vai esfriar até o zero absoluto. Tudo para. Tudo esfria.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "Existem três cenários principais para o destino do universo.\n\nBig Freeze: expansão eterna até o universo esfriar completamente. É o mais provável.\n\nBig Rip: a energia escura fica forte demais e rasga o próprio tecido do espaço, até os átomos seriam destruídos.\n\nBig Crunch: o universo para de se expandir, reverte e colapsa sobre si mesmo. Tudo depende da natureza da energia escura, que ainda não entendemos completamente.",
+        "imagem": [
+          "img/fim-universo.png"
+        ]
+      }
+    ]
+  },
+  {
+    "tag": "materia_escura",
+    "conteudo": [
+      {
+        "texto": "Matéria escura é uma substância invisível que não emite, absorve nem reflete luz.\n\nO nome 'escura' não significa que ela é negra ou sombria. Significa que ela é invisível para nós.\n\nSabemos que existe porque sua gravidade afeta galáxias e aglomerados de formas que a matéria visível não explica.\n\nSegundo a NASA, ela compõe cerca de 27% do universo. Já tudo o que conseguimos observar, como estrelas, planetas e até nós mesmos, corresponde a apenas 5%.",
+        "imagem": [
+          "img/materia-escura-energia-escura-universo.jpg"
+        ]
+      },
+      {
+        "texto": "A matéria escura é detectada pelos seus efeitos gravitacionais.\n\nUm dos métodos é o lente gravitacional: a matéria escura dobra a luz de objetos distantes, distorcendo sua imagem.\n\nO Hubble e o telescópio James Webb já mapearam a distribuição da matéria escura com essa técnica. Outra evidência é que galáxias giram mais rápido do que deveriam se houvesse apenas matéria visível nelas.",
+        "imagem": [
+          "img/lente-gravitacional.jpg"
+        ]
+      },
+      {
+        "texto": "Energia escura representa cerca de 68% do universo e está acelerando sua expansão.\n\nEm 1998, dois grupos de cientistas descobriram essa aceleração estudando supernovas distantes. Eles ganharam o Nobel de Física em 2011 por isso.\n\nNão sabemos o que é a energia escura. É a maior questão em aberto da cosmologia moderna.\n\n",
+        "imagem": []
+      }
+    ]
+  },
+  {
+    "tag": "sol",
+    "conteudo": [
+      {
+        "texto": "O Sol é uma estrela anã amarela com 4,6 bilhões de anos de idade.\n\nTem 109 vezes o diâmetro da Terra e contém 99,8% de toda a massa do sistema solar.\n\nNo núcleo, a temperatura chega a 15 milhões de graus Celsius. A cada segundo, ele converte 600 milhões de toneladas de hidrogênio em hélio por fusão nuclear.",
+        "imagem": [
+          "img/Sol.png"
+        ]
+      },
+      {
+        "texto": "Manchas solares são regiões mais frias causadas por campos magnéticos intensos e podem ser maiores que a Terra.",
+        "imagem": [
+          "img/mancha-solar.jpg"
+        ]
+      },
+      {
+        "texto": "Erupções solares são explosões que acontecem na superfície do Sol. Elas liberam em minutos mais energia do que a humanidade consumiu em toda a história.",
+        "imagem": [
+          "img/erupcao.jpg"
+        ]
+      },
+      {
+        "texto": "O vento solar é um fluxo contínuo de partículas carregadas que o Sol emite o tempo todo. Elas podem atingir velocidades de até 800 km/s e são responsáveis pelas auroras na Terra.",
+        "imagem": [
+          "img/aurora-boreal.jpg"
+        ]
+      },
+      {
+        "texto": "Uma tempestade solar ocorre quando o Sol lança uma nuvem de plasma magnetizado para o espaço.\n\nEsse plasma viaja pelo espaço e, quando atinge a Terra, pode perturbar o campo magnético do planeta, causando falhas em satélites, GPS e até blecautes em redes elétricas.\n\nO campo magnético e a atmosfera da Terra funcionam como escudo. Sem eles, as tempestades solares seriam letais para a vida na superfície.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "O Evento Carrington, em 1859, foi a tempestade solar mais intensa já registrada.\n\nEla foi tão forte que sistemas de telégrafo pegaram fogo e funcionaram mesmo desligados.\n\nAuroras foram vistas em regiões tropicais, algo extremamente raro.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "Se uma tempestade solar do nível do Evento Carrington atingisse a Terra hoje, os impactos seriam muito maiores.\n\nSatélites poderiam ser danificados, sistemas de GPS ficariam imprecisos e redes elétricas poderiam sofrer apagões em larga escala.\n\nMissões espaciais e até voos em alta altitude também seriam afetados pela radiação.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "A verdadeira cor do Sol é branco. Embora pareça amarelo ou alaranjado da Terra, essa percepção é causada pela dispersão da luz na atmosfera terrestre.\n\nO Sol emite todas as cores visíveis simultaneamente, o que, misturadas, resultam na luz branca, cor real observada por astronautas no espaço.\n\nPor isso o céu é azul durante o dia, mas o Sol parece alaranjado quando está no horizonte.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "Daqui a cerca de 5 bilhões de anos, o Sol vai esgotar o hidrogênio no núcleo.\n\nEle vai se expandir e virar uma gigante vermelha, engolindo Mercúrio, Vênus e provavelmente a Terra.\n\nDepois, as camadas externas serão expulsas formando uma nebulosa planetária colorida. O que sobra é uma anã branca, um núcleo quente do tamanho da Terra que vai esfriar por trilhões de anos.\n\n",
+        "imagem": []
+      }
+    ]
+  },
+  {
+    "tag": "sistema_solar",
+    "conteudo": [
+      {
+        "texto": "O Sistema Solar é composto por 8 planetas, suas luas, asteroides, cometas e o Sol no centro. Ele se formou há cerca de 4,6 bilhões de anos a partir de uma nuvem de gás e poeira chamada nebulosa solar.",
+        "imagem": [
+          "img/sistema_solar.png"
+        ]
+      },
+      {
+        "texto": "O Sistema Solar se formou há cerca de 4,6 bilhões de anos a partir de uma nuvem de gás e poeira chamada nebulosa solar.\n\nA gravidade fez essa nuvem colapsar, concentrando a maior parte da massa no centro, onde se formou o Sol.\n\nO que sobrou desse material formou um disco em rotação, de onde surgiram os planetas, luas, asteroides e cometas. Hoje, o Sistema Solar tem 8 planetas oficiais, e Plutão foi reclassificado como planeta anão em 2006.",
+        "imagem": [
+          "img/sistema_solar.png"
+        ]
+      },
+      {
+        "texto": "O Sol contém 99.85% de toda a matéria do Sistema Solar. \n\nOs planetas, que se condensaram a partir do mesmo disco de matéria de onde se formou o Sol, contêm apenas 0,135% da massa do sistema solar. Júpiter contém mais do dobro da matéria de todos os outros planetas juntos.\n\nOs satélites dos planetas, cometas, asteróides, meteoróides e o meio interplanetário constituem os restantes 0,015%.",
+        "imagem": [
+          "img/tamanho-sol.png"
+        ]
+      },
+      {
+        "texto": "Os planetas orbitam o Sol porque herdaram o movimento giratório da nebulosa que formou o sistema solar.\n\nQuando essa nuvem colapsou, começou a girar cada vez mais rápido, formando um disco em rotação.\n\nA gravidade do Sol puxa os planetas para dentro, enquanto o movimento deles os mantém seguindo em frente. Esse equilíbrio faz com que eles permaneçam em órbita há anos\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "Planetas são redondos porque a gravidade puxa a matéria igualmente para todos os lados em direção ao centro.\n\nA esfera é a única forma geométrica onde todos os pontos da superfície estão à mesma distância do núcleo. Qualquer saliência seria puxada de volta pela gravidade ao longo do tempo.\n\nNa prática, nenhum planeta é perfeitamente esférico. A rotação os achata levemente nos polos. A Terra, por exemplo, tem 43 km a mais no equador do que nos polos.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "Logo após o Sol se formar, o vento solar soprou os gases leves para longe, empurrando o hidrogênio e o hélio para regiões mais distantes.\n\nMais pesada, a poeira e os minerais ficaram próximos, formando os planetas rochosos. Nas regiões frias e distantes, os gases se acumularam formando os gigantes gasosos.\n\nPor isso planetas gasosos tendem a ser maiores: é mais fácil acumular gás em grande quantidade do que rochas.",
+        "imagem": [
+          "img/planetas.png"
+        ]
+      },
+      {
+        "texto": "Sim, todos os planetas giram em torno do próprio eixo, pois conservam o movimento angular da nebulosa que os formou.\n\nO campeão de velocidade é Júpiter, que completa uma rotação em apenas 9h 55min, apesar de ser o maior. O mais lento é Vênus, com um dia de 243 dias terrestres.\n\nNa translação, Mercúrio é o mais rápido, com um ano de 88 dias terrestres. Netuno é o mais lento, levando 165 anos para dar uma volta ao redor do Sol.\n\n",
+        "imagem": []
+      }
+    ]
+  },
+  {
+    "tag": "mercurio",
+    "conteudo": [
+      {
+        "texto": "Mercúrio é o primeiro planeta do sistema solar, além de ser o menor e o mais próximo do Sol. Tem cerca de 4.879 km de diâmetro, sendo pouco maior que a Lua.\n\nO planeta recebeu esse nome por causa do deus romano Mercúrio, o mensageiro veloz, já que ele é o planeta que se move mais rápido ao redor do Sol.\n\nApesar de ser o mais próximo do Sol, não é o mais quente. As temperaturas variam entre -180°C à noite e 430°C durante o dia.",
+        "imagem": [
+          "img/Mercúrio.png"
+        ]
+      },
+      {
+        "texto": "Mercúrio tem uma das rotações mais lentas do sistema solar. Um dia dura 176 dias terrestres.\n\nMas um ano mercuriano leva apenas 88 dias terrestres. Então um dia em Mercúrio é literalmente mais longo do que um ano lá.\n\nA NASA estudou Mercúrio de perto com a missão MESSENGER, que orbitou o planeta de 2011 a 2015.",
+        "imagem": [
+          "img/mercurio-perto.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "tag": "venus",
+    "conteudo": [
+      {
+        "texto": "Vênus é o segundo planeta do sistema solar e o mais brilhante no céu noturno. É quase do mesmo tamanho que a Terra, por isso é chamado de planeta irmão.\n\nO planeta recebeu esse nome por causa da deusa romana Vênus, associada à beleza e ao brilho, já que ele é o objeto mais luminoso do céu depois do Sol e da Lua.\n\nSua atmosfera é 96% dióxido de carbono com nuvens de ácido sulfúrico. A pressão na superfície é 92 vezes maior que na Terra, equivalente a 900 metros de profundidade no oceano, tornando Vênus o planeta mais tóxicos e inóspitos do Sistema Solar.",
+        "imagem": [
+          "img/Vênus.png"
+        ]
+      },
+      {
+        "texto": "A temperatura na superfície de Vênus chega a 465°C, quente o suficiente para derreter chumbo.\n\nE é constante, não importa o dia ou a noite, o polo ou o equador. A atmosfera densa de CO₂ aprisiona o calor do Sol. Isso faz de Vênus mais quente que Mercúrio, mesmo estando mais longe do Sol.",
+        "imagem": [
+          "img/Vênus.png",
+          "img/venus-venera-13.jpg"
+        ]
+      },
+      {
+        "texto": "A sonda soviética Venera 13 conseguiu pousar no planeta em 1982 e resistiu por pouco mais de duas horas, enviando imagens e dados antes de ser destruída pelas condições extremas.",
+        "imagem": [
+          "img/venera13.jpg"
+        ]
+      },
+      {
+        "texto": "Vênus é um planeta peculiar na sua rotação. Ele gira no sentido horário, ao contrário da maioria dos planetas.\n\nAlém disso, um dia em Vênus dura 243 dias terrestres, mais longo que o seu próprio ano, que dura 225 dias terrestres.\n\nA razão dessa rotação invertida ainda é debatida e pode ter sido uma colisão catastrófica no passado.\n\n",
+        "imagem": []
+      }
+    ]
+  },
+  {
+    "tag": "terra",
+    "conteudo": [
+      {
+        "texto": "A Terra é o terceiro planeta do sistema solar, sendo o único com vida confirmada e o maior dos planetas rochosos.\n\n71% da superfície é coberta por água líquida, o único planeta no sistema solar com esse fenômeno em abundância.\n\nA NASA considera essa combinação de água, atmosfera e temperatura o motivo pelo qual a vida surgiu aqui.",
+        "imagem": [
+          "img/Terra.png"
+        ]
+      },
+      {
+        "texto": "A Terra tem dois escudos naturais para a vida.\n\nO campo magnético, gerado pelo núcleo de ferro líquido, desvia o vento solar e a radiação cósmica. Sem ele, a atmosfera seria varrida como aconteceu com Marte.\n\nA atmosfera em si, com sua camada de ozônio, bloqueia a radiação ultravioleta. A NASA monitora essas camadas com satélites como o Aura e o DSCOVR.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "Se a Terra parasse de girar, o dia duraria um ano inteiro, metade com sol, metade no escuro.\n\nO lado iluminado ficaria tórrido como Vênus, acima de 400°C, enquanto o lado escuro gelaria como Júpiter, abaixo de -100°C.\n\nOs oceanos se redistribuiriam para os polos, os ventos se tornariam extremos e a vida na superfície seria praticamente inviável. \n\n",
+        "imagem": []
+      }
+    ]
+  },
+  {
+    "tag": "lua",
+    "conteudo": [
+      {
+        "texto": "A lua é um satélite natural, um corpo celeste que orbita um planeta. Ela é o único satélite natural da Terra e o quinto maior do sistema solar.\n\nTem uma influência significativa sobre o nosso planeta, afetando as marés, a estabilidade do eixo de rotação e até mesmo a evolução da vida.",
+        "imagem": [
+          "img/lua-satélite.jpg"
+        ]
+      },
+      {
+        "texto": "A Lua é redonda (esférica) pelo mesmo motivo que os planetas: a gravidade. \n\nQuando a Lua se formou, ela era composta por material quente e fundido. A gravidade puxou toda essa massa em direção ao centro de forma igual em todas as direções, moldando-a como uma esfera.\n\nAssim como a Terra, ela não é uma esfera perfeita; a gravidade e as forças de maré da Terra a deixam ligeiramente alongada, mas para quem olha daqui, ela parece perfeitamente redonda.",
+        "imagem": [
+          "img/Lua.png"
+        ]
+      },
+      {
+        "texto": "A Lua está em rotação síncrona com a Terra, ou seja, completa uma rotação no mesmo tempo que orbita o planeta. Por isso sempre vemos a mesma face dela.",
+        "imagem": [
+          "img/Lua.png"
+        ]
+      },
+      {
+        "texto": "As fases da Lua ocorrem porque ela orbita a Terra e não possui luz própria, refletindo a luz solar de ângulos diferentes.\n\nÀ medida que a Lua se move, a porção de sua superfície iluminada pelo Sol que enxergamos muda, passando por fases como nova, crescente, cheia e minguante em um ciclo de 29,5 dias (Período Sinódico (ciclo de fases)).",
+        "imagem": [
+          "img/fases-lua.png"
+        ]
+      },
+      {
+        "texto": "A hipótese mais aceita é a do Grande Impacto.\n\nHá 4,5 bilhões de anos, um objeto do tamanho de Marte, chamado Theia, colidiu com a Terra jovem.\n\nOs detritos da colisão foram ejetados para órbita e se acumularam formando a Lua.\n\nA Lua está se afastando da Terra a 3,8 cm por ano. Quando os dinossauros viviam, os dias terrestres tinham 23 horas.",
+        "imagem": [
+          "img/formacao-lua.png"
+        ]
+      },
+      {
+        "texto": "A Terra é o único planeta rochoso do sistema solar com um satélite natural tão grande em proporção ao seu tamanho.\n\nA Lua exerce uma influência enorme sobre a Terra, ajudando a estabiliza a inclinação do eixo terrestre e mantendo o clima previsível ao longo de milhões de anos.\n\nSem a Lua, o eixo da Terra oscilaria de forma caótica, tornando o clima extremamente instável e dificultando o surgimento de vida complexa.",
+        "imagem": [
+          "img/terra-lua.jpg"
+        ]
+      },
+      {
+        "texto": "A gravidade da Lua é cerca de um sexto da Terra, fraca demais para reter gases.\n\nNa Terra, os gases precisam de 11 km/s para escapar para o espaço. Na Lua, basta 2,4 km/s. As moléculas dos gases se movem rápido o suficiente para simplesmente fugir.\n\nA Lua tem uma exosfera extremamente tênue, com traços de hidrogênio, hélio e outros gases, mas nada comparável a uma atmosfera real.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "As crateras da Lua são resultado de bilhões de anos de bombardeio por asteroides e meteoritos.\n\nSem atmosfera, não há fricção para frear ou queimar os objetos antes do impacto. E sem placas tectônicas ou erosão, as crateras se preservam por bilhões de anos.\n\nA maior cratera da Lua, a Bacia South Pole-Aitken, tem 2.500 km de diâmetro e 8 km de profundidade, uma das maiores do sistema solar.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "Entre 1969 e 1972, o programa Apollo da NASA enviou 12 astronautas à superfície lunar.\n\nEles trouxeram 382 kg de rochas que ainda são estudadas hoje.\n\nNeil Armstrong e Buzz Aldrin pousaram na Lua em 20 de julho de 1969. A missão Apollo 17 em 1972 foi a última e até hoje nenhum humano voltou à superfície lunar.",
+        "imagem": [
+          "img/apollo.jpg"
+        ]
+      },
+      {
+        "texto": "O programa Artemis, da NASA, pretende retomar a exploração da Lua, com uma série de missões planejadas para os próximos anos.\n\nO Artemis I, lançado em 2022, foi um voo não tripulado que testou o foguete e a cápsula Orion.\n\nO Artemis II, lançado em 2026, foi o primeiro voo tripulado do programa, levando astronautas ao redor da Lua.\n\nO Artemis III, previsto para 2027, tem como objetivo levar humanos de volta à superfície lunar.\n\nAs missões seguintes, como Artemis IV e V, fazem parte do plano de estabelecer uma presença contínua na Lua, incluindo a construção da estação orbital Gateway e missões regulares à superfície, servindo como base para futuras viagens a Marte.",
+        "imagem": [
+          "img/Artemis-II.jpg",
+          "img/artemis-decolando.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "tag": "marte",
+    "conteudo": [
+      {
+        "texto": "Marte é o quarto planeta do sistema solar, chamado de Planeta Vermelho pela cor do óxido de ferro no solo. Tem metade do diâmetro da Terra e uma atmosfera mais fina.\n\nO planeta recebeu esse nome por causa do deus romano Marte, associado à guerra, justamente por sua aparência avermelhada no céu.\n\nUm dia marciano dura 24h 37min, bem parecido com o da Terra. Porém, um ano tem 687 dias terrestres.",
+        "imagem": [
+          "img/Marte.png"
+        ]
+      },
+      {
+        "texto": "Marte tem recordes geográficos impressionantes.\n\nO Olympus Mons é o maior vulcão do sistema solar, com 22 km de altura e 600 km de diâmetro. Para comparar, o Everest tem 8,8 km.\n\nJá o Valles Marineris é um sistema de canyons com 4.000 km de comprimento e até 7 km de profundidade. O Grand Canyon dos EUA caberia inteiro num dos seus braços laterais.",
+        "imagem": [
+          "img/olympus-mons.jpg",
+          "img/valles-marineris.jpg"
+        ]
+      },
+      {
+        "texto": "Evidências sólidas mostram que Marte teve água líquida na superfície há bilhões de anos.\n\nO rover Curiosity encontrou minerais que só se formam na presença de água. O rover Perseverance, lançado em 2020, coleta amostras de rochas de regiões que foram lagos ou rios.\n\nEssas amostras serão trazidas à Terra numa missão futura para análise de possíveis biossinaturas. Hoje, água existe em Marte congelada nas calotas polares e possivelmente no subsolo.",
+        "imagem": [
+          "img/perseverance.jpg"
+        ]
+      },
+      {
+        "texto": "Levar humanos a Marte é um dos maiores desafios da exploração espacial.\n\nA viagem leva entre 6 e 9 meses dependendo do alinhamento orbital. Durante esse tempo, os astronautas são expostos à radiação cósmica sem proteção magnética.\n\nEm Marte, a temperatura média é de -60°C, a atmosfera é irrespirável e as tempestades de poeira podem durar meses. A NASA planeja missões tripuladas para a década de 2030, mas ainda há muito a resolver.\n\n",
+        "imagem": []
+      }
+    ]
+  },
+  {
+    "tag": "jupiter",
+    "conteudo": [
+      {
+        "texto": "Júpiter é o quinto e maior planeta do sistema solar, com 11 vezes o diâmetro da Terra e mais massivo que todos os outros planetas juntos. É um gigante gasoso composto principalmente de hidrogênio e hélio.\n\nO planeta recebeu esse nome por causa de Júpiter, o rei dos deuses na mitologia romana, refletindo seu tamanho e importância no Sistema Solar.\n\nUm dia em Júpiter dura apenas 9h 55min, sendo o planeta que gira mais rápido. Essa rotação rápida achata os polos e cria faixas de nuvens características.",
+        "imagem": [
+          "img/Júpiter.png"
+        ]
+      },
+      {
+        "texto": "A Grande Mancha Vermelha é uma tempestade anticiclônica que existe há pelo menos 350 anos.\n\nTem ventos de até 640 km/h e um tamanho maior que a Terra inteira.\n\nCuriosamente, ela tem encolhido nas últimas décadas. A NASA acompanha esse fenômeno com a sonda Juno, que orbita Júpiter desde 2016.",
+        "imagem": [
+          "img/jupiter-terra.jpeg",
+          "img/mancha-jupiter.jpg"
+        ]
+      },
+      {
+        "texto": "Júpiter tem 95 luas confirmadas, entre elas as quatro maiores, descobertas por Galileu em 1610.\n\nIo é o objeto mais vulcanicamente ativo do sistema solar, com mais de 400 vulcões ativos.\n\nEuropa tem um oceano líquido sob uma camada de gelo, aquecido pelas forças de maré de Júpiter. É um dos candidatos mais promissores na busca por vida fora da Terra.\n\nGanimedes é a maior lua do sistema solar, maior até que Mercúrio.\n\nCalisto é a mais distante das quatro e tem uma superfície cheia de crateras, uma das mais antigas e preservadas do Sistema Solar.",
+        "imagem": [
+          "img/luas-jupiter.png"
+        ]
+      }
+    ]
+  },
+  {
+    "tag": "saturno",
+    "conteudo": [
+      {
+        "texto": "Saturno é o sexto planeta e o segundo maior do sistema solar, famoso pelos seus impressionantes anéis.\n\nÉ um gigante gasoso com densidade tão baixa que flutuaria na água, se houvesse um oceano grande o suficiente.\n\nUm dia dura 10h 33min e um ano tem 29 anos terrestres.",
+        "imagem": [
+          "img/Saturno.png"
+        ]
+      },
+      {
+        "texto": "Os anéis de Saturno são compostos de partículas de gelo e rocha, do tamanho de grãos até o de casas.\n\nSe espalhados, cobriam a distância da Terra à Lua. Mas são incrivelmente finos, apenas 10 a 100 metros de espessura em relação ao diâmetro de 270.000 km.\n\nA missão Cassini da NASA orbitou Saturno de 2004 a 2017 e revelou que os anéis são relativamente jovens, entre 10 e 100 milhões de anos.",
+        "imagem": [
+          "img/aneis-saturno.jpg"
+        ]
+      },
+      {
+        "texto": "Saturno é o planeta com o maior número de luas confirmadas no Sistema Solar, com um total de 274 luas conhecidas após novas descobertas anunciadas em 2025.\n\nEssas luas variam de tamanho, sendo Titã a maior e com atmosfera densa, enquanto muitas outras são pequenas e irregulares.",
+        "imagem": [
+          "img/luas-de-saturno.jpg"
+        ]
+      },
+      {
+        "texto": "Titã é a segunda maior lua do sistema solar e a única com atmosfera densa.\n\nSua atmosfera é principalmente nitrogênio, parecida com a da Terra primordial. Na superfície, existem lagos e rios de metano e etano líquidos.\n\nA NASA enviou a missão Dragonfly para explorar Titan, uma espécie de drone nuclear que vai pousar lá na década de 2030.",
+        "imagem": [
+          "img/titan-saturno.jpg",
+          "img/titan-saturno2.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "tag": "urano",
+    "conteudo": [
+      {
+        "texto": "Urano é o sétimo planeta do Sistema Solar e o primeiro dos gigantes de gelo.\n\nTem 4 vezes o diâmetro da Terra e é composto principalmente de água, metano e amônia no estado gelado.\n\nO planeta recebeu esse nome por causa de Urano, o deus grego do céu, sendo o único planeta do Sistema Solar nomeado diretamente da mitologia grega, e não romana.\n\nO metano na atmosfera absorve a luz vermelha e reflete a azul-esverdeada, por isso sua cor característica.",
+        "imagem": [
+          "img/Urano.png"
+        ]
+      },
+            {
+        "texto": "Urano é o planeta mais frio do sistema solar, com temperaturas que podem chegar a cerca de -224°C. \n\nIsso ocorre porque ele é um gigante de gelo, composto principalmente de água, metano e amônia no estado gelado, e tem uma atmosfera que não retém o calor do Sol de forma eficiente.",
+        "imagem": [
+          "img/Urano.png"
+        ]
+      },
+      {
+        "texto": "O eixo de Urano é inclinado 98 graus em relação à sua órbita, ele praticamente rola ao redor do Sol.\n\nA explicação mais aceita é que ele tenha sofrido uma grande colisão com um objeto do tamanho da Terra no passado distante.\n\nEssa inclinação extrema cria estações únicas, cada polo passa cerca de 42 anos em luz contínua, seguidos por 42 anos de escuridão.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "Urano possui 28 luas conhecidas, com nomes inspirados em personagens das obras de Shakespeare e Alexander Pope.\n\nAs maiores são Titânia, Oberon, Umbriel, Ariel e Miranda. Miranda é especialmente interessante por suas formações geológicas extremas, como falésias de até 20 km de altura e regiões com terreno caótico, sugerindo um passado geologicamente ativo.",
+        "imagem": [
+          "img/luas-urano.jpeg"
+        ]
+      },
+      {
+        "texto": "Urano também tem anéis, embora sejam muito mais tênues e escuros que os de Saturno.\n\nEles foram descobertos em 1977 e são compostos principalmente de partículas de gelo e rocha. Esses anéis são muito finos, com espessura de apenas alguns metros, e acredita-se que sejam relativamente jovens, formados por detritos de luas destruídas por impactos ou forças de maré.",
+        "imagem": [
+          "img/aneis-urano.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "tag": "netuno",
+    "conteudo": [
+      {
+        "texto": "Netuno é o oitavo e mais distante planeta do sistema solar.\n\nEle fica a cerca de 30 vezes a distância entre a Terra e o Sol e leva 165 anos terrestres para completar uma órbita, sendo o planeta mais lento do Sistema Solar\n\nO planeta recebeu esse nome por causa de Netuno, o deus romano dos mares, devido à sua cor azul intensa, que lembra os oceanos.\n\nÉ um gigante de gelo azul-escuro, com ventos de até 2.100 km/h, os mais rápidos do sistema solar. A NASA visitou Netuno apenas uma vez, com a Voyager 2 em 1989.",
+        "imagem": [
+          "img/Netuno.png"
+        ]
+      },
+      {
+        "texto": "Netuno possui 14 luas conhecidas, mas a mais famosa é Tritão, a maior delas. O que torna Tritão tão peculiar é que ele orbita Netuno no sentido contrário à rotação do planeta, um movimento chamado de órbita retrógrada.\n\nIsso sugere que ele foi capturado pelo campo gravitacional de Netuno e não se formou junto com o planeta.\n\nTritão tem temperatura de -235°C e geysers de nitrogênio na superfície, os mais frios já observados no sistema solar. Com o tempo, a órbita de Tritão vai decair e ele será destruído pelas forças de maré, formando um anel.",
+        "imagem": [
+          "img/tritao.jpg"
+        ]
+      },
+      {
+        "texto": "Netuno também posui um sistema de anéis tênues, compostos principalmente de partículas de gelo e rocha.\n\nEsses anéis são muito finos, com espessura de apenas alguns metros, e acredita-se que sejam relativamente jovens, formados por detritos de luas destruídas por impactos ou forças de maré.\n\n",
+        "imagem": []
+      }
+    ]
+  },
+  {
+    "tag": "plutao",
+    "conteudo": [
+      {
+        "texto": "Plutão foi considerado o nono planeta por 76 anos, até ser rebaixado a planeta anão em 2006.\n\nIsso se deve ao fato de ele compartilhar a órbita com muitos outros objetos no Cinturão de Kuiper e não ter limpado sua órbita.\n\nO nome Plutão vem do deus romano do submundo, associado à escuridão e ao frio, o que combina com sua localização distante e gelada.\n\nPlutão tem 2.377 km de diâmetro, menor que a Lua. A missão New Horizons da NASA fez o sobrevoo histórico em 2015 e revelou montanhas de gelo e um coração gelado na superfície.",
+        "imagem": [
+          "img/Plutão.png"
+        ]
+      },
+      {
+        "texto": "O Cinturão de Kuiper é uma região além de Netuno com bilhões de objetos gelados.\n\nÉ semelhante ao Cinturão de Asteroides, mas muito maior, 20 vezes mais largo e até 200 vezes mais massivo.\n\nAlém de Plutão, outros planetas anões como Éris, Makemake e Haumea vivem nessa região. Éris, descoberta em 2005, é ligeiramente menor que Plutão.",
+        "imagem": [
+          "img/objetos-kuiper.png",
+          "img/cinturao-kuiper.jpg"
+        ]
+      },
+      {
+        "texto": "A Nuvem de Oort é uma esfera de trilhões de objetos gelados que envolve todo o sistema solar.\n\nComeça a cerca de 2.000 UA do Sol e se estende até 100.000 UA, quase um quarto do caminho até a estrela mais próxima.\n\nÉ o lugar de origem da maioria dos cometas de longo período. Nenhuma sonda já chegou até lá. A Voyager 1, o objeto humano mais distante, ainda está a mais de 21.000 UA do Sol.",
+        "imagem": [
+          "img/nuvem-oort.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "tag": "exoplanetas",
+    "conteudo": [
+      {
+        "texto": "Exoplanetas são planetas que orbitam outras estrelas, fora do nosso sistema solar.\n\nA NASA confirmou mais de 5.700 deles e estima que cada estrela da galáxia tenha em média um planeta.\n\nIsso significa centenas de bilhões de planetas só na Via Láctea.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "A zona habitável, ou Goldilocks Zone, é a faixa de distância de uma estrela onde a água pode existir líquida na superfície.\n\nNem quente demais, nem fria demais. Mas estar nessa zona não garante vida.\n\nVênus está na zona habitável do Sol e é um inferno de 465°C. O que importa é a combinação de atmosfera, composição e geologia.\n\n",
+        "imagem": []
+      }
+    ]
+  },
+  {
+    "tag": "vida_extraterrestre",
+    "conteudo": [
+      {
+        "texto": "A questão da vida extraterrestre é uma das mais profundas da ciência.\n\nMatematicamente, parece impossível que sejamos sozinhos. Existem mais estrelas no universo observável do que grãos de areia em todas as praias da Terra.\n\n Em 1950, o físico Enrico Fermi fez uma pergunta simples: onde estão todos?\n\nO universo é velho e enorme. Se vida inteligente é comum, deveríamos ter detectado sinais.\n\nAlgumas hipóteses para o silêncio: talvez vida inteligente seja rara, ou civilizações se autodestruam, ou as distâncias são grandes demais para comunicação.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "Os candidatos mais promissores à vida estão bem perto de nós.\n\nMarte: o rover Perseverance coleta amostras de antigas regiões lacustres em busca de biossinaturas.\n\nEuropa, lua de Júpiter, tem um oceano líquido debaixo do gelo, aquecido por forças de maré, com condições favoráveis à vida microbiana.\n\nEncélado, lua de Saturno, jorra vapor de água com compostos orgânicos para o espaço.",
+        "imagem": [
+          "img/luas-vida.png"
+        ]
+      },
+      {
+        "texto": "Encontrar qualquer forma de vida fora da Terra, mesmo uma bactéria, seria a maior descoberta científica da história.\n\nSignificaria que a vida não é um acidente único da Terra, mas um fenômeno universal.\n\nImplicaria que o universo está provavelmente repleto de vida em diferentes formas. A NASA e a ESA buscam ativamente biossinaturas, moléculas ou padrões que indiquem processos biológicos.\n\n",
+        "imagem": []
+      }
+    ]
+  },
+  {
+    "tag": "cometas_asteroides",
+    "conteudo": [
+      {
+        "texto": "Asteroide é uma rocha que orbita o Sol, geralmente no cinturão entre Marte e Júpiter.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "Cometa é uma bola de gelo, rocha e poeira com órbita alongada. Quando se aproxima do Sol, forma a cauda brilhante.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "Meteoro é um fragmento que entra na atmosfera e queima, criando o rastro de luz que chamamos de estrela cadente.\n\nMeteorito é quando um fragmento sobrevive e chega ao solo.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "Há 66 milhões de anos, um asteroide de cerca de 10 km colidiu na região do atual México, criando a cratera de Chicxulub.\n\nO impacto liberou uma energia bilhões de vezes maior que qualquer bomba nuclear.\n\nIncêndios globais, uma camada de fumaça bloqueando o Sol e um inverno castigoso resultaram na extinção de 76% das espécies. Essa extinção abriu espaço para os mamíferos e eventualmente para nós.",
+        "imagem": [
+          "img/craterachicxulub.png"
+        ]
+      },
+      {
+        "texto": "O Cinturão de Asteroides é uma região entre as órbitas de Marte e Júpiter onde orbitam milhões de rochas e corpos menores.\n\nEstão cheias dos restos rochosos de planetas falhados que, ocasionalmente, chocam uns com os outros, originando rastos de poeira.\n\nAcredita-se que o material do cinturão nunca formou um planeta por causa da influência gravitacional de Júpiter, que impediu a acreção. A massa total do cinturão é menor que a da Lua.",
+        "imagem": [
+          "img/cinturao-asteroides.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "tag": "espaco_tempo",
+    "conteudo": [
+      { 
+        "texto": "Einstein propôs que espaço e tempo não são fixos, eles formam um tecido único chamado espaço-tempo.\n\nMassa e energia curvam esse tecido, e essa curvatura é o que chamamos de gravidade.\n\nO GPS do seu celular depende de correções relativísticas. Sem elas, erraria mais de 10 km por dia, pois os satélites em órbita estão num campo gravitacional menor e o tempo passa mais rápido para eles.",
+        "imagem": [
+          "img/teoria-relatividade.jpg"
+        ]
+      },
+      {
+        "texto": "Buracos de minhoca são estruturas previstas pelas equações da Relatividade Geral.\n\nEm teoria, funcionariam como atalhos, conectando dois pontos distantes do espaço-tempo.\n\nO problema é que para existir de forma estável, precisariam de energia exótica com pressão negativa. Não temos evidência de que isso existe na natureza.\n\nJá a viagem no tempo para o futuro é possível por efeitos como a dilatação do tempo. Para o passado, porém, ainda permanece no campo da especulação teórica.",
+        "imagem": [
+          "img/ponte-de-einstein-rosen.jpg",
+          "img/wormhole.jpg"
+        ]
+      },
+      {
+        "texto": "No espaço, bússolas não funcionam pois não há campo magnético uniforme. A orientação é feita com sensores estelares.\n\nEsses sensores identificam a posição relativa da nave em relação às estrelas e ao Sol. Em órbita da Terra, o GPS ainda funciona. Além dela, não.\n\nEm missões mais distantes, as naves usam a posição do Sol, da Terra e de estrelas de referência para calcular a localização. A Voyager 1, hoje a mais de 22 bilhões de km da Terra, ainda é rastreada com precisão por esse método.\n\n",
+        "imagem": []
+      }
+    ]
+  },
+  {
+    "tag": "ano_luz",
+    "conteudo": [
+      {
+        "texto": "Um ano-luz é a distância que a luz percorre em um ano, equivalente a aproximadamente 9,46 trilhões de quilômetros.\n\nA estrela mais próxima da Terra, Proxima Centauri, fica a 4,24 anos-luz. Isso significa que a luz que sai dela leva mais de 4 anos para chegar aqui.\n\nQuando você olha para o céu, está vendo o passado.\n\n",
+        "imagem": []
+      },
+      {
+        "texto": "A velocidade da luz, cerca de 300 mil km/s, é o limite de velocidade do universo.\n\nNão por convenção, mas porque a física impõe isso. À medida que um objeto acelera, sua massa aumenta relativisticamente.\n\nPara atingir a velocidade da luz, precisaria de energia infinita, o que é impossível. Só partículas sem massa, como fótons, conseguem viajar à velocidade da luz.\n\n",
+        "imagem": []
+      }
+    ]
+  },
+  {
+    "tag": "spacex",
+    "conteudo": [
+      {
+        "texto": "A SpaceX é uma empresa aeroespacial fundada em 2002 por Elon Musk.\n\nO objetivo principal dela é reduzir o custo das viagens espaciais e tornar possível a colonização de Marte.\n\nEla revolucionou o setor ao criar foguetes reutilizáveis, algo que antes parecia impossível.",
+        "imagem": [
+          "img/spacex.jpg"
+        ]
+      },
+      {
+        "texto": "O foguete da SpaceX Falcon 9 consegue voltar e pousar na Terra após o lançamento.\n\nIsso reduz drasticamente os custos, já que o mesmo foguete pode ser usado várias vezes.\n\nEle pousa verticalmente, usando motores para desacelerar antes de tocar o solo.",
+        "imagem": [
+          "img/falcon9.jpg",
+          "img/Falcon9.gif"
+        ]
+      },
+      {
+        "texto": "O Starship é o foguete mais ambicioso da SpaceX.\n\nEle foi projetado para levar humanos à Lua, Marte e além.\n\nA ideia é tornar viagens interplanetárias algo viável no futuro, com capacidade para dezenas de pessoas por missão.",
+        "imagem": [
+          "img/Starship.jpg"
+        ]
+      },
+      {
+        "texto": "O Falcon Heavy é um dos foguetes mais poderosos já construídos.\n\nEle usa três boosters do Falcon 9 juntos, permitindo transportar cargas extremamente pesadas para o espaço.\n\nEm 2018, no primeiro lançamento, a SpaceX enviou um Tesla Roadster ao espaço como teste.",
+        "imagem": [
+          "img/falcon-heavy.jpg",
+          "img/Roadster.jpg",
+          "img/Roadster1.png"
+        ]
+      }
+    ]
+  },
+  {
+    "tag": "default",
+    "conteudo": [
+      {
+        "texto": "Não entendi o que você perguntou.",
+        "imagem": []
+      },
+      {
+        "texto": "Hmm, não entendi bem o que você quis dizer.",
+        "imagem": []
+      }
+    ]
+  }
+]
