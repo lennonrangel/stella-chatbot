@@ -10,6 +10,7 @@ const interestelarBg = document.getElementById("interestelar-bg");
 let SESSION_ID = localStorage.getItem("stellar_session");
 let followupPendente = null;
 let mibQuestionRow = null;
+let mibResponsePromise = null;
 
 /* ===== SESSÃO ===== */
 
@@ -247,6 +248,7 @@ async function sendMessage(text) {
   if (isMibQuestion(text)) {
     inputEl.value = "";
     mibQuestionRow = addUserMessage(text);
+    mibResponsePromise = fetchMibResponse(text);
     await triggerMibEasterEgg();
     return;
   }
@@ -373,8 +375,26 @@ async function triggerMibEasterEgg() {
   painel.classList.add("visivel");
 }
 
+async function fetchMibResponse(text) {
+  try {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: text,
+        sessao_id: SESSION_ID,
+        followup_pendente: followupPendente
+      })
+    });
+    return await res.json();
+  } catch (err) {
+    console.error("Erro ao buscar resposta do MIB:", err);
+    return { error: true };
+  }
+}
+
 /* ── Fechar o painel e restaurar ── */
-function fecharMib() {
+async function fecharMib() {
   const overlay = document.getElementById("mib-overlay");
   const nave    = document.getElementById("mib-nave");
   const feixe   = document.getElementById("mib-feixe");
@@ -403,16 +423,44 @@ function fecharMib() {
   // Remove overlay
   overlay.classList.remove("ativo");
 
-  // Remove a pergunta que acionou o MIB do chat principal
-  if (mibQuestionRow) {
-    mibQuestionRow.remove();
-    mibQuestionRow = null;
-  }
-
   // Forçar reflow
   void chatBox.offsetWidth;
+
+  // Mantém a pergunta no chat (apenas limpa a referência para a próxima pergunta)
+  mibQuestionRow = null;
+
+  // Se houver uma busca em andamento
+  if (mibResponsePromise) {
+    loading = true;
+    sendBtn.disabled = true;
+    showTyping();
+
+    try {
+      const data = await mibResponsePromise;
+      removeTyping();
+
+      if (!data || data.error) {
+        addBotMessage("Ops, algo deu errado com a transmissão dos Homens de Preto. Tenta de novo!", "default");
+      } else {
+        addBotMessage(data.response, data.imagem, data.followup_pergunta, data.source);
+        
+        // Salva o followup_data para a próxima mensagem
+        if (data.followup_data && data.followup_data.proxima_tag) {
+          followupPendente = data.followup_data;
+        } else {
+          followupPendente = null;
+        }
+      }
+    } catch {
+      removeTyping();
+      addBotMessage("Conexão com o cosmos falhou. Tenta novamente!", "default");
+    } finally {
+      loading = false;
+      sendBtn.disabled = false;
+      inputEl.focus();
+      mibResponsePromise = null;
+    }
+  }
 }
 
 document.getElementById("mib-fechar-btn").addEventListener("click", fecharMib);
-
-
