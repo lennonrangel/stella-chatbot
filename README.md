@@ -1,162 +1,118 @@
-# Stella — ChatBot de Curiosidades Cósmicas
+# Stella - Chatbot de Astronomia
 
-Chatbot inteligente com arquitetura **BDI (Beliefs, Desires, Intentions)** desenvolvido para exploração de temas astronômicos e espaciais. A Stella combina uma **Base de Conhecimento** factual com um **LLM (Qwen2.5-7B-Instruct)** disponível no Hugging Face para oferecer respostas precisas e naturais.
+Stella é um chatbot inteligente desenvolvido para responder perguntas sobre astronomia de forma interativa. O sistema utiliza uma arquitetura **BDI (Beliefs, Desires, Intentions)** combinada com processamento de linguagem natural (PLN) para identificar intenções, consultar uma base de conhecimento factual estruturada e, se necessário, utilizar um modelo de linguagem (LLM - Qwen2.5) para gerar respostas sobre temas como buracos negros, estrelas, planetas e o universo.
 
----
+## Interface
 
-## 🚀 Como Executar a Stella
+<p align="center">
+  <img src="./frontend/img/landingpage.png" alt="Landing Page do Projeto"/>
+</p>
 
-### 1. Instalar Dependências
+## Tecnologias utilizadas
 
-```powershell
-pip install -r requirements.txt
-python -m spacy download pt_core_news_sm
-```
+* **Python 3.13** (Linguagem de programação principal)
+* **Flask & Flask-CORS** (Servidor web e gerenciamento de requisições API)
+* **SQLite** (Persistência de sessões e histórico de mensagens)
+* **spaCy & Stemmer RSLP** (Processamento de Linguagem Natural e lematização)
+* **Transformers & PyTorch** (Execução local e remota do modelo LLM)
+* **HTML, CSS & JavaScript** (Interface do usuário responsiva e dinâmica)
+* **TF-IDF & Similaridade de Cosseno** (Algoritmo de busca por similaridade na base de dados)
 
----
+## Funcionalidades
 
-### 2. Instalar o PyTorch com Suporte a GPU (CUDA) ⚠️
+* **Chat interativo em tempo real** com interface responsiva e moderna.
+* **Identificação de intenções com NLP** e normalização de texto avançada.
+* **Respostas com suporte a imagens** da base de conhecimento para temas astronômicos.
+* **Fallback Inteligente (LLM)**: perguntas fora da base de conhecimento são encaminhadas para o modelo Qwen2.5-7B-Instruct (via API remota do Hugging Face ou local).
+* **Três modos de operação do LLM**:
+  * `remoto` (HF Inference Providers)
+  * `local` (GPU/CPU local)
+  * `auto` (cascata automática: tenta remoto primeiro, se falhar usa local)
+* **Memória de Sessão & Followup**: o chatbot mantém o contexto das últimas mensagens para responder a perguntas sequenciais.
+* **Anti-alucinação**: filtros para garantir que fatos críticos e superlativos científicos sejam servidos apenas pela base de dados.
 
-> O `pip install -r requirements.txt` instala o PyTorch na versão **CPU-only** por padrão.
-> Para usar a GPU (recomendado), é necessário reinstalar manualmente com o índice correto.
+## Estrutura do projeto
 
-**Passo 1** — Verifique a versão do CUDA do seu driver:
-```powershell
-nvidia-smi
-```
-Procure a linha `CUDA Version: X.X` no canto superior direito da tabela.
+O projeto está organizado em uma estrutura modular:
 
-**Passo 2** — Reinstale o PyTorch com o comando correspondente:
+**backend**
 
-```powershell
-# CUDA 12.4 (drivers recentes — RTX 30xx, 40xx)
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+* `main.py` (Ponto de entrada principal do servidor Flask)
+* **api**
+  * `routes.py` (Definição de endpoints e gerenciamento do fluxo HTTP)
+* **bot**
+  * `bdi_models.py` (Classes que definem Crenças, Desejos e Intenções)
+  * `intent_classifier.py` (Classificação de intenções do usuário)
+  * `orchestrator.py` (Orquestrador BDI que escolhe entre base de conhecimento ou LLM)
+* **db**
+  * `database.py` (Inicialização e conexão com o banco SQLite)
+  * `models.py` (Modelos ORM/tabelas para histórico de chat)
+* **llm**
+  * `fallback_service.py` (Gerenciador de inferência remota/local do Qwen)
+* **nlp**
+  * `text_utils.py` (Limpeza, normalização, stopwords e stemming)
+  * `indexer.py` (Indexação de documentos usando TF-IDF)
+  * `search_service.py` (Motor de busca usando similaridade de cosseno)
+  * `image_service.py` (Pesquisa e seleção de imagens astronômicas correlacionadas)
 
-# CUDA 12.1
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+**frontend**
 
-# CUDA 11.8 (GPUs mais antigas)
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-```
+* `index.html` (Visual e estrutura da página de chat)
+* `style.css` (Estilização em CSS puro com visual moderno)
+* `script.js` (Consumo da API backend e manipulação dinâmica do chat)
 
-**Passo 3** — Confirme que a GPU foi detectada:
-```powershell
-python -c "import torch; print(torch.cuda.is_available()); print(torch.cuda.get_device_name(0))"
-```
-Saída esperada:
-```
-True
-NVIDIA GeForce RTX XXXX
-```
+## Como executar o projeto
 
-> **Sem GPU?** A Stella funciona normalmente em CPU, mas as respostas do LLM
-> serão mais lentas (15–40s). Considere usar o modelo menor via variável de ambiente (ver seção 3).
+1. **Clone o repositório**:
+   ```bash
+   git clone <url-do-repositorio>
+   ```
 
----
+2. **Instale as dependências e o modelo spaCy**:
+   ```bash
+   pip install -r requirements.txt
+   python -m spacy download pt_core_news_sm
+   ```
 
-### 3. Configurar o `.env`
+3. **(Opcional) Instale o PyTorch com suporte a GPU (CUDA)**:
+   > O PyTorch é instalado em versão CPU por padrão. Para rodar o modelo local via GPU NVIDIA:
+   * Verifique a versão do CUDA (`nvidia-smi`)
+   * Reinstale o PyTorch com o comando correspondente à sua versão do CUDA, por exemplo:
+     ```bash
+     pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+     ```
 
-Crie (ou edite) o arquivo `.env` na raiz do projeto:
+4. **Crie o arquivo chamado `.env` na raiz do projeto e insira as seguintes chaves**:
+   ```env
+   # auto (remoto com fallback local), local (offline) ou remoto (HF Inference)
+   LLM_MODE=auto
 
-```env
-# ── Modo de operação ──────────────────────────────────────────
-# auto   → tenta remoto primeiro; se falhar usa local  (padrão)
-# local  → somente modelo local — sem internet, sem créditos
-# remoto → somente HF Inference Providers
-LLM_MODE=auto
+   # Token Hugging Face (https://huggingface.co/settings/tokens)
+   HF_TOKEN=seu_token_aqui
+   STELLA_REMOTE_MODEL=Qwen/Qwen2.5-7B-Instruct
 
-# ── Modelo remoto (HF Inference Providers) ────────────────────
-# Token: https://huggingface.co/settings/tokens
-# Créditos gratuitos: https://huggingface.co/settings/billing
-HF_TOKEN=seu_token_aqui
-STELLA_REMOTE_MODEL=Qwen/Qwen2.5-7B-Instruct
+   # Escolha conforme sua VRAM (1.5B para CPUs/PCs fracos, 7B para GPUs de 8GB+)
+   STELLA_LOCAL_MODEL=Qwen/Qwen2.5-7B-Instruct
 
-# ── Modelo local (baixado uma vez, roda offline) ──────────────
-# Escolha conforme seu hardware:
-#   Qwen/Qwen2.5-1.5B-Instruct  → ~2 GB RAM  (PC fraco / CPU)
-#   Qwen/Qwen2.5-3B-Instruct    → ~5 GB RAM  (CPU intermediário)
-#   Qwen/Qwen2.5-7B-Instruct    → ~9 GB VRAM (GPU recomendado)
-STELLA_LOCAL_MODEL=Qwen/Qwen2.5-7B-Instruct
-```
+   # Define o tempo limite de espera (timeout) em segundos para a geração de respostas do modelo de linguagem (LLM).
+   LLM_TIMEOUT=120
+   ```
 
-> O modelo local é **baixado automaticamente do Hugging Face na primeira execução**
-> e salvo em cache. Nas execuções seguintes, carrega direto do disco.
+   > ⚠️ **IMPORTANTE**: O GitHub possui um mecanismo automatizado de varredura de segurança (*Secret Scanning*). Se você commitar o arquivo `.env` ou qualquer trecho de código        contendo o seu token ativo do Hugging Face (`HF_TOKEN`) para um repositório público, **o GitHub identificará a credencial exposta e ela será imediatamente revogada               (deletada/desativada) de forma automática pelo Hugging Face por segurança**. Para evitar que precise gerar um token novo toda vez, garanta que o arquivo `.env` esteja no seu        `.gitignore` e configure o token localmente apenas.
 
----
+5. **Execute a aplicação**:
+   ```bash
+   python main.py
+   ```
 
-### 4. Iniciar a Stella
+6. **Acesse no navegador**:
+   Abra o endereço abaixo para interagir com a Stella:
+   ```
+   http://127.0.0.1:5000
+   ```
 
-```powershell
-python main.py
-```
+## Observações
 
-Acesse em: **http://127.0.0.1:5000**
-
----
-
-## 🧠 Arquitetura do Projeto
-
-A Stella utiliza uma estrutura modular em cinco camadas:
-
-| Camada | Arquivos | Responsabilidade |
-|--------|----------|-----------------|
-| **Frontend** | `frontend/` | Interface do usuário no navegador |
-| **API REST** | `backend/api/routes.py` | Endpoints Flask, roteamento de requisições |
-| **Orquestrador BDI** | `backend/bot/` | Lógica de decisão: base → LLM |
-| **PLN + Busca** | `backend/nlp/` | Tokenização, TF-IDF, similaridade de cosseno |
-| **LLM** | `backend/llm/fallback_service.py` | Inferência remota (HF) e local (GPU/CPU) |
-| **Persistência** | `backend/db/` | SQLite — sessões e histórico de mensagens |
-
-### Fluxo de Decisão
-
-```
-Pergunta do usuário
-       ↓
-  Normalização PLN (RSLP + spaCy)
-       ↓
-  Classificador de Intenções (BDI)
-       ↓
-  Base de Conhecimento (TF-IDF + Aliases)
-       ↓ score suficiente?
-   ┌───┴───┐
-  SIM     NÃO
-   ↓       ↓
-Resposta  LLM Fallback
-da base   (remoto → local)
-```
-
----
-
-## 🛠️ Tecnologias Utilizadas
-
-| Componente | Tecnologia |
-|---|---|
-| **Linguagem** | Python 3.13 |
-| **Framework Web** | Flask + Flask-CORS |
-| **LLM** | Qwen2.5-7B-Instruct (Hugging Face) |
-| **Inferência** | Transformers + PyTorch (CUDA 12.4) |
-| **Processamento de Texto** | spaCy + Stemmer RSLP |
-| **Algoritmo de Busca** | TF-IDF + Similaridade de Cosseno + Alias Boost |
-| **Banco de Dados** | SQLite |
-
----
-
-## 🌟 Funcionalidades
-
-1. **Respostas Factuais**: consulta a Base de Conhecimento antes de qualquer chamada ao LLM, garantindo precisão científica em fatos astronômicos.
-2. **Fallback Inteligente**: perguntas fora do escopo da base são respondidas pelo LLM com contexto da sessão.
-3. **Três modos de LLM**: `remoto` (HF Inference Providers), `local` (GPU/CPU) e `auto` (cascata automática).
-4. **Memória de Sessão**: o bot lembra dos últimos temas discutidos para responder perguntas contextuais.
-5. **Anti-alucinação**: superlativos e fatos críticos são sempre servidos pela base, bloqueando o LLM nesses casos.
-
----
-
-## 🔧 Solução de Problemas
-
-| Sintoma | Causa provável | Solução |
-|---------|---------------|---------|
-| Respostas lentas (>30s) | PyTorch CPU-only instalado | Reinstalar com CUDA (ver seção 2) |
-| `CUDA disponível: False` | torch sem suporte a CUDA | Reinstalar com `--index-url` correto |
-| `402 Payment Required` | Créditos HF esgotados | Mudar `LLM_MODE=local` no `.env` |
-| `Model doesn't support task` | Versão antiga do `huggingface-hub` | `pip install --upgrade huggingface-hub` |
-| Respostas incorretas sobre fatos | Modelo local 1B em fallback | Verificar logs — créditos HF podem ter acabado |
+* **Banco de dados**: O arquivo SQLite (`stellar.db`) é criado automaticamente no primeiro início do servidor.
+* **Modelo Local**: Na primeira vez que a Stella precisar rodar localmente, o modelo de LLM configurado em `STELLA_LOCAL_MODEL` será baixado para o disco (isso pode levar alguns minutos dependendo da conexão).
+* **Ausência de GPU**: Caso utilize o processador (CPU) para inferência local, as respostas podem demorar entre 15 e 40 segundos.

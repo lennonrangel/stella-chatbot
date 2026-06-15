@@ -23,3 +23,6 @@ Desktop.ini
 
 # Commit plan
 commit_plan.md
+
+# Environment variables
+.env
