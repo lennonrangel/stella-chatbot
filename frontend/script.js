@@ -5,9 +5,11 @@ const messagesEl = document.getElementById("messages");
 const inputEl    = document.getElementById("msg-input");
 const sendBtn    = document.getElementById("send-btn");
 const timeEl     = document.getElementById("header-time");
+const interestelarBg = document.getElementById("interestelar-bg");
 
 let SESSION_ID = localStorage.getItem("stellar_session");
 let followupPendente = null;
+let mibQuestionRow = null;
 
 /* ===== SESSÃO ===== */
 
@@ -107,11 +109,12 @@ function addUserMessage(text) {
 
   messagesEl.appendChild(row);
   scrollBottom();
+  return row;
 }
 
 /* ===== BALÃO DE MENSAGEM DO BOT ===== */
 
-function addBotMessage(text, imagem = null, followupPergunta = null) {
+function addBotMessage(text, imagem = null, followupPergunta = null, source = null) {
   hideWelcome();
 
   const row = document.createElement("div");
@@ -127,13 +130,29 @@ function addBotMessage(text, imagem = null, followupPergunta = null) {
     ? `<p class="msg-followup">${escapeHtml(followupPergunta)}</p>`
     : "";
 
+  // Badge de fonte — mostra ao usuário de onde veio a resposta
+  let sourceBadge = "";
+  if (source === "knowledge_base") {
+    sourceBadge = `<span class="source-badge source-kb" title="Resposta da Base de Conhecimento">Base de conhecimento</span>`;
+  } else if (source === "llm") {
+    sourceBadge = `<span class="source-badge source-llm" title="Resposta gerada pela IA">LLM</span>`;
+  }
+
+  // Formata texto: suporte a *negrito* e quebras de linha
+  const formattedText = escapeHtml(text.trim())
+    .replace(/\n/g, "<br>")
+    .replace(/\*([^*]+)\*/g, "<em>$1</em>");
+
   row.innerHTML = `
     <div class="msg-bot bot-av">✦</div>
     <div class="msg-col">
       <div class="message bot-msg">
-        <p class="msg-text">${escapeHtml(text).replace(/\n/g, "<br>")}</p>
-        ${imagemHtml}
-        ${followupHtml}
+        <p class="msg-text">${formattedText}</p>
+        <div class="msg-footer">
+          ${imagemHtml}
+          ${followupHtml}
+          ${sourceBadge}
+        </div>
       </div>
     </div>
   `;
@@ -178,6 +197,42 @@ function escapeHtml(str) {
     .replace(/>/g, "&gt;");
 }
 
+function normalizeText(text) {
+  return text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+const INTERESTELAR_KEYWORDS = [
+  "interestelar",
+  "interstellar",
+  "filme interestelar",
+  "o filme interestelar",
+];
+
+function isInterestelarQuestion(text) {
+  const lower = normalizeText(text);
+  return INTERESTELAR_KEYWORDS.some(keyword =>
+    lower.includes(normalizeText(keyword))
+  );
+}
+
+function setInterestelarBackground(active) {
+  if (!interestelarBg) return;
+
+  document.body.classList.toggle("interestelar-mode", active);
+  interestelarBg.classList.toggle("ativo", active);
+
+  if (active) {
+    const playPromise = interestelarBg.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(() => {});
+    }
+    return;
+  }
+
+  interestelarBg.pause();
+  interestelarBg.currentTime = 0;
+}
+
 /* ===== ENVIO DA MENSAGEM ===== */
 
 let loading = false;
@@ -185,6 +240,16 @@ let loading = false;
 async function sendMessage(text) {
   text = text.trim();
   if (!text || loading) return;
+
+  setInterestelarBackground(isInterestelarQuestion(text));
+
+  /* ── MIB Easter Egg check ── */
+  if (isMibQuestion(text)) {
+    inputEl.value = "";
+    mibQuestionRow = addUserMessage(text);
+    await triggerMibEasterEgg();
+    return;
+  }
 
   inputEl.value = "";
   addUserMessage(text);
@@ -213,7 +278,7 @@ async function sendMessage(text) {
       return;
     }
 
-    addBotMessage(data.response, data.imagem, data.followup_pergunta);
+    addBotMessage(data.response, data.imagem, data.followup_pergunta, data.source);
 
     // Salva o followup_data para a próxima mensagem
     if (data.followup_data && data.followup_data.proxima_tag) {
@@ -238,3 +303,116 @@ inputEl.addEventListener("keydown", e => {
 });
 
 initSession();
+
+/* ════════════════════════════════════════════════════════
+  MIB EASTER EGG — Nave alienígena + GIF
+  Dispara quando o usuário menciona MIB / Men in Black
+  ════════════════════════════════════════════════════════ */
+
+const MIB_KEYWORDS = [
+  "mib", "men in black", "homens de preto", "homem de preto",
+  "agente j", "agente k", "agent j", "agent k", "will smith mib",
+  "neuralizador", "neuralyzer", "edgar o bug", "edgar bug",
+  "worm alien", "worms mib", "vermes alien", "verminhos",
+  "tommy lee jones mib", "frank o pug", "frank pug",
+  "salvo pelo sino", "sede da mib", "mib sede"
+];
+
+function isMibQuestion(text) {
+  const lower = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  return MIB_KEYWORDS.some(kw =>
+    lower.includes(kw.normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
+  );
+}
+
+/* ── Partículas de sucção ── */
+function spawnSuckParticles() {
+  const chatRect = document.querySelector(".chat-container").getBoundingClientRect();
+  for (let i = 0; i < 22; i++) {
+    setTimeout(() => {
+      const p = document.createElement("div");
+      p.className = "suck-particle";
+      const x = chatRect.left + Math.random() * chatRect.width;
+      const y = chatRect.top  + Math.random() * chatRect.height;
+      p.style.cssText = `left:${x}px; top:${y}px; --dx:${(Math.random()-0.5)*40}px; --dy:-${200 + Math.random()*200}px; --dur:${0.5 + Math.random()*0.5}s`;
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 1200);
+    }, i * 45);
+  }
+}
+
+/* ── Sequência principal ── */
+async function triggerMibEasterEgg() {
+  const overlay   = document.getElementById("mib-overlay");
+  const nave      = document.getElementById("mib-nave");
+  const feixe     = document.getElementById("mib-feixe");
+  const feixeL    = document.getElementById("mib-feixe-linhas");
+  const painel    = document.getElementById("mib-painel");
+  const chatBox   = document.querySelector(".chat-container");
+
+  // 1. Escurece a tela
+  overlay.classList.add("ativo");
+
+  // 2. Nave desce
+  await new Promise(r => {
+    nave.classList.add("descendo");
+    nave.addEventListener("animationend", r, { once: true });
+  });
+
+  // 3. Feixe aparece + partículas
+  feixe.classList.add("ativo");
+  feixeL.classList.add("ativo");
+  spawnSuckParticles();
+
+  // 4. Chat sobe sendo sugado
+  await new Promise(r => setTimeout(r, 300));
+  chatBox.classList.add("sendo-sugado");
+  await new Promise(r => setTimeout(r, 900));
+
+  // 5. Painel do GIF aparece
+  painel.classList.add("visivel");
+}
+
+/* ── Fechar o painel e restaurar ── */
+function fecharMib() {
+  const overlay = document.getElementById("mib-overlay");
+  const nave    = document.getElementById("mib-nave");
+  const feixe   = document.getElementById("mib-feixe");
+  const feixeL  = document.getElementById("mib-feixe-linhas");
+  const painel  = document.getElementById("mib-painel");
+  const chatBox = document.querySelector(".chat-container");
+
+  // Painel sai
+  painel.classList.remove("visivel");
+  feixe.classList.remove("ativo");
+  feixeL.classList.remove("ativo");
+
+  // Nave sobe
+  nave.classList.remove("descendo", "sugando");
+  nave.classList.add("subindo");
+  nave.addEventListener("animationend", () => {
+    nave.classList.remove("subindo");
+  }, { once: true });
+
+  // Restaura o chat
+  chatBox.classList.remove("sendo-sugado");
+  chatBox.style.animation = "";
+  chatBox.style.opacity   = "";
+  chatBox.style.transform = "";
+
+  // Remove overlay
+  overlay.classList.remove("ativo");
+
+  // Remove a pergunta que acionou o MIB do chat principal
+  if (mibQuestionRow) {
+    mibQuestionRow.remove();
+    mibQuestionRow = null;
+  }
+
+  // Forçar reflow
+  void chatBox.offsetWidth;
+}
+
+document.getElementById("mib-fechar-btn").addEventListener("click", fecharMib);
+
+
