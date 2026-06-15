@@ -1,7 +1,12 @@
-from flask import Flask
+from flask import Flask 
 from flask_cors import CORS
-from backend.routes import bp
-from backend.database import init_db
+from backend.api.routes import bp
+from backend.db.database import init_db
+from dotenv import load_dotenv  
+import os
+
+# Carrega variáveis de ambiente do arquivo .env
+load_dotenv()
 
 def create_app() -> Flask:
     app = Flask(__name__, static_folder=None)
